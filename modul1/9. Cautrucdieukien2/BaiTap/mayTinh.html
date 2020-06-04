@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MAYTINH</title>
+</head>
+<body>
+<style>
+    button {
+        width: 35px;
+        height: 35px;
+        border: 1px ridge black;
+        margin-top: 3px;
+        margin-left: 6px;
+    }
+</style>
+<form name="maytinh">
+    <p><b>BẤM VÀO ĐÂY</b></p>
+    <input id="input" type="text"><br>
+    <br>
+    <button type="button" name="b7" value="7" onclick="bay()">7</button>
+    <button type="button" name="b8" value="8" onclick="tam()">8</button>
+    <button type="button" name="b9" value="9" onclick="chin()">9</button>
+    <button type="button" onclick="chia()" name="dauchia" value="/">/</button><br><br>
+    <button type="button" name="b4" value="4" onclick="bon()">4</button>
+    <button type="button" name="b5" value="5" onclick="nam()">5</button>
+    <button type="button" name="b6" value="6" onclick="sau()">6</button>
+    <button type="button" onclick="nhan()" name="daunhan" value="x">x</button><br><br>
+    <button type="button" name="b1" value="1" onclick="mot()">1</button>
+    <button type="button" name="b2" value="2" onclick="hai()">2</button>
+    <button type="button" name="b3" value="3" onclick="ba()">3</button>
+    <button type="button" onclick="tru()" name="dautru" value="-">-</button><br><br>
+    <button type="button" name="b0" value="0" onclick="khong()">0</button>
+    <button type="button" name="daucham" value="." onclick="cham()">.</button>
+    <button type="button" onclick="bang()" name="daubang" value="=" style="background-color:lightblue;">=</button>
+    <button type="button" onclick="cong()" name="daucong" value="+">+</button><br><br>
+</form>
+<script>
+    function mot() {
+        document.getElementById('input').value += 1;
+    }
+    function hai() {
+        document.getElementById('input').value += 2;
+    }
+    function ba() {
+        document.getElementById('input').value += 3;
+    }
+    function bon() {
+        document.getElementById('input').value += 4;
+    }
+    function nam() {
+        document.getElementById('input').value += 5;
+    }
+    function sau() {
+        document.getElementById('input').value += 6;
+    }
+    function bay() {
+        document.getElementById('input').value += 7;
+    }
+    function tam() {
+        document.getElementById('input').value += 8;
+    }
+    function chin() {
+        document.getElementById('input').value += 9;
+    }
+    function khong() {
+        document.getElementById('input').value += 0;
+    }
+    function cong() {
+        document.getElementById('input').value += '+';
+    }
+    function tru() {
+        document.getElementById('input').value += '-';
+    }
+    function nhan() {
+        document.getElementById('input').value += '*';
+    }
+    function chia() {
+        document.getElementById('input').value += '/';
+    }
+    function cham() {
+        document.getElementById('input').value += '.';
+    }
+    function bang() {
+        let pt = document.getElementById('input').value;
+        let kq = eval(pt);
+        document.getElementById('input').value = kq;
+    }
+
+</script>
+</body>
+</html>
