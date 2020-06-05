@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let name;
+    let cmnd;
+    let birthday;
+    let email;
+    let address;
+    let customer;
+    let discount;
+    let people;
+    let rentdays;
+    let servicetype;
+    let kindofroom;
+    let totalAmount = 0;
+
+    function add() {
+        name = prompt('Nhập Vào Họ Và Tên');
+        cmnd = prompt('Nhập Vào Số CMND');
+        birthday = prompt('Nhập Vào Ngày Tháng Năm Sinh');
+        email = prompt('Nhập Vào Địa Chỉ email');
+        address = prompt('Nhập Vào Địa Chỉ ');
+        customer = prompt('Nhập Vào Loại Customer (Diamond, Platinum, Gold, Silver, Member)');
+        discount = prompt('Nhập Vào Giảm Giá ( % ) ');
+        people = prompt('Nhập Vào Số Người ');
+        rentdays = prompt('Nhập Vào Số Ngày Thuê ');
+        servicetype = prompt('Nhập Vào Loại Dịch Vụ(Villa, House, Room) ');
+        kindofroom = prompt('Nhập Vào Loại Phòng Thuê (Vip, Business,  Normal)');
+
+        discount = parseInt(discount);
+        rentdays = parseInt(rentdays);
+
+        if (servicetype === 'Villa') {
+            totalAmount = 500 * rentdays * (1 - (discount / 100));
+        } else if (servicetype === 'House') {
+            totalAmount = 300 * rentdays * (1 - (discount / 100));
+        } else if (servicetype === 'Room') {
+            totalAmount = 100 * rentdays * (1 - (discount / 100));
+        } else {
+            alert('Nhập lại');
+        }
+
+    }
+
+
+    function display() {
+        alert('1Họ Và Tên: ' + name +
+            '\n2. Số CMND: ' + cmnd +
+            '\n3. Ngày Tháng Năm Sinh: ' + birthday +
+            '\n4. Địa Chỉ email: ' + email +
+            '\n5. Địa Chỉ: ' + address +
+            '\n6. Loại Customer: ' + customer +
+            '\n7. Giảm Giá: ' + discount +
+            '\n8. Số Người: ' + people +
+            '\n9. Số Ngày Thuê: ' + rentdays +
+            '\n10. Loại Dịch Vụ: ' + servicetype +
+            '\n11. Loại Phòng Thuê: ' + kindofroom +
+            '\n12. Tổng Tiền ($): ' + totalAmount)
+
+    }
+
+    function edit() {
+
+
+        let suaThongTin = prompt('Nhập vào thông tin cần sửa:\n1.Họ Và Tên\n 2.Số CMND\n 3.Ngày Tháng Năm Sinh' +
+            '\n 4.Địa Chỉ emai\n 5.Địa Chỉ\n 6.Loại Customer\n 7.Giảm Giá\n 8.Số người\n 9.Số Ngày Thuê' +
+            '\n 10.Loại Dịch Vụ\n 11.Loại Phòng Thuê ')
+
+
+        switch (suaThongTin) {
+            case '1':
+                name = prompt('Nhập Vào Họ Và Tên');
+                break;
+            case '2':
+                cmnd = prompt('Nhập Vào Số CMND');
+                break;
+            case '3':
+                birthday = prompt('Nhập vào Ngày Tháng Năm Sinh:');
+                break;
+            case '4':
+                email =  prompt('Nhập vào Địa Chỉ email: ');
+                break;
+            case '5':
+                address = prompt('Nhập vào Địa Chỉ email')
+                break
+            case '6':
+                customer =  prompt('Loại Customer: ');
+                break;
+            case '7':
+                discount =   prompt('Giảm Giá: ');
+                break;
+            case '8':
+                people =  prompt('Nhập vào Số Người: ');
+                break;
+            case '9':
+                rentdays = prompt('Nhập vào Số Ngày Thuê: ');
+                break;
+            case '10':
+                servicetype = prompt('Nhập vào Loại Dịch Vụ: ');
+                break;
+            case '11':
+                kindofroom = prompt('Nhập vào Loại Phòng Thuê: ');
+
+
+        }
+        display();
+    }
+
+    function menu() {
+        let choose = prompt("1.add\n" +
+            "2.display\n" + "3.edit")
+
+        switch (choose) {
+            case "1":
+                add();
+                menu();
+                break;
+            case "2":
+                display();
+                menu();
+                break;
+            case "3":
+                edit()
+                menu()
+
+            default:"Failed";
+                menu();
+        }
+    }
+
+    menu();
+
+</script>
+</body>
+</html>
