@@ -80,7 +80,7 @@
 
       //Xuất ra thông tin Customer
     function display() {
-        alert('1Họ Và Tên: ' + nameCustomer +
+        alert('1. Họ Và Tên: ' + nameCustomer +
             '\n2. Số CMND: ' + cmnd +
             '\n3. Ngày Tháng Năm Sinh: ' + birthDay +
             '\n4. Địa Chỉ email: ' + email +
@@ -126,19 +126,19 @@
                 email = prompt('Nhập vào Địa Chỉ email: ');
                 break;
             case 5:
-                address = prompt('Nhập vào Địa Chỉ email')
+                address = prompt('Nhập vào Địa Chỉ email');
                 break;
             case 6:
                 typeCustomer = prompt('Loại Customer: ');
                 break;
             case 7:
-                discount = prompt('Giảm Giá: ');
+                discount = parseInt(prompt('Giảm Giá: '));
                 break;
             case 8:
-                people = prompt('Nhập vào Số Người: ');
+                people = parseInt(prompt('Nhập vào Số Người: '));
                 break;
             case 9:
-                rentDays = prompt('Nhập vào Số Ngày Thuê: ');
+                rentDays = parseInt(prompt('Nhập vào Số Ngày Thuê: '));
                 break;
             case 10:
                 typeService = prompt('Nhập vào Loại Dịch Vụ: ');
@@ -146,11 +146,11 @@
             case 11:
                 typeRoom = prompt('Nhập vào Loại Phòng Thuê: ');
 
-            //menu lựa chọn
+
         }
         display();
     }
-
+    //menu lựa chọn
     function menu() {
         let choose = parseInt(prompt("1.bill\n" +
             "2.display\n" + "3.edit"));
@@ -158,18 +158,18 @@
         switch (choose) {
             case 1:
                 bill();
-
+                menu();
                 break;
             case 2:
                 display();
                 menu();
                 break;
             case 3:
-                edit()
-                menu()
+                edit();
+                menu();
 
             default:
-                alert('Failed')
+                alert('Failed');
                 menu()
         }
     }
