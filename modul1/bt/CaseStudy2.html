@@ -9,7 +9,7 @@
 
     let nameCustomer = 'Từ Sỹ Tùng';
     let cmnd = '123456789';
-    let birthDay = '27/01/1995';
+    let birthDay = '01/27/1995';
     let email = 'Tung@gmail.cu';
     let address = 'Đà Nẵng';
     let typeCustomer = 'Diamond';
@@ -35,7 +35,7 @@
         }
 
 
-            //Điều kiện address
+        //Điều kiện address
         let teamp = 0;
         if (address === 'Đà Nẵng') {
             teamp += 20;
@@ -44,7 +44,7 @@
         } else if (address === 'Quảng Nam') {
             teamp += 5;
         }
-             //Điều kiện rentDays
+        //Điều kiện rentDays
         if (rentDays > 7) {
             teamp += 30;
         } else if (rentDays > 5) {
@@ -62,23 +62,24 @@
         } else if (typeCustomer === "Silver ") {
             teamp = 2;
         }
-            // Điều kiện tuổi
-//         let current = new Date().getFullYear();
-//         let birthDay = new Date(birthDay).getFullYear();
-//         let ageCustomer = current - birthDay;
-//
-//         if (ageCustomer > 30 && address === 'Đà Nẵng'){
-//             teamp += 2;
-// }
-//         else if (ageCustomer > 20 && address === 'Đà Nẵng' ){
-//             teamp += 1 ;
-//         }
+        // Điều kiện tuổi
+        let current = new Date().getFullYear();
+        let birthday1 = new Date(birthDay).getFullYear();
+        let ageCustomer = current - birthday1;
+
+        if (ageCustomer >= 30 && address === 'Đà Nẵng') {
+            teamp += 2;
+        } else if (ageCustomer >= 20 && address === 'Đà Nẵng') {
+            teamp += 1;
+        }
+
         moneyPerDay = money * rentDays - teamp;
+
         alert('Tổng số tiền phải thanh toán: ' + moneyPerDay)
     }
 
 
-      //Xuất ra thông tin Customer
+    //Xuất ra thông tin Customer
     function display() {
         alert('1. Họ Và Tên: ' + nameCustomer +
             '\n2. Số CMND: ' + cmnd +
@@ -95,7 +96,7 @@
 
     }
 
-       //Edit thông tin Customer
+    //Edit thông tin Customer
     function edit() {
 
         let edit = parseInt(prompt('Nhập vào thông tin cần sửa:' +
@@ -150,6 +151,7 @@
         }
         display();
     }
+
     //menu lựa chọn
     function menu() {
         let choose = parseInt(prompt("1.bill\n" +
