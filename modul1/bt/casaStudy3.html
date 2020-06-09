@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let nameCustomer;
+    let cmnd;
+    let birthDay;
+    let email;
+    let address;
+    let typeCustomer;
+    let discount;
+    let people;
+    let rentDays;
+    let typeService;
+    let typeRoom;
+    check = false;
+
+
+    nameCustomer = prompt('Nhập Vào Họ Và Tên');
+    //Nhập tên
+    do{
+       cmnd = prompt('Nhập Vào Số CMND');
+       if(!isNaN(cmnd)){
+           cmnd=Number.parseInt(cmnd);
+       }
+       if(!Number.isInteger(cmnd)){
+           alert("CMND không đúng");
+           continue;
+       }
+       if(cmnd < 10000000 || cmnd> 999999999){
+           alert("CMND không đúng")
+           continue;
+       }
+       check = true
+   }while (!check);
+
+    //Nhập bithday
+    birthDay = prompt('Nhập Vào Ngày Tháng Năm Sinh');
+
+    //Nhập Email
+    do{
+       let countAt=0;
+       let countDoc=0
+        email = prompt('Nhập Vào Địa Chỉ email');
+       for(let i=0;  i <email.length;i++){
+           if (email.charAt(i)==="@"){
+               countAt++;
+               for ( let j =i+1; j<email.length; j++){
+                   if (email.charAt(j)==="."){
+                       countDoc++;
+                   }
+               }
+           }
+       }
+           if(countAt!=1 || countDoc<1){
+               alert("Email bạn nhập không đúng")
+           }else {
+               check=true;
+           }
+
+    }while (!check)
+
+    address = prompt('Nhập Vào Địa Chỉ ');
+    typeCustomer = prompt('Nhập Vào Loại Customer (Diamond, Platinum, Gold, Silver, Member)');
+    discount = prompt('Nhập Vào Giảm Giá ( % ) ');
+    people = prompt('Nhập Vào Số Người ');
+    rentDays = prompt('Nhập Vào Số Ngày Thuê ');
+    typeService = prompt('Nhập Vào Loại Dịch Vụ(Villa, House, Room) ');
+    typeRoom = prompt('Nhập Vào Loại Phòng Thuê (Vip, Business,  Normal)');
+
+
+    alert('Họ Và Tên: ' + nameCustomer +
+        '\nSố CMND: ' + cmnd +
+        '\nNgày Tháng Năm Sinh: ' + birthDay +
+        '\nĐịa Chỉ email: ' + email +
+        '\nĐịa Chỉ: ' + address +
+        '\nLoại Customer: ' + typeCustomer +
+        '\nGiảm Giá: ' + discount +
+        '\nSố Người: ' + people +
+        '\nSố Ngày Thuê: ' + rentDays +
+        '\nLoại Dịch Vụ: ' + typeService +
+        '\nLoại Phòng Thuê: ' + typeRoom)
+
+
+</script>
+</body>
+</html>
