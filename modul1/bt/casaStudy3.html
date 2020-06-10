@@ -22,47 +22,52 @@
 
     nameCustomer = prompt('Nhập Vào Họ Và Tên');
     //Nhập tên
-    do{
-       cmnd = prompt('Nhập Vào Số CMND');
-       if(!isNaN(cmnd)){
-           cmnd=Number.parseInt(cmnd);
-       }
-       if(!Number.isInteger(cmnd)){
-           alert("CMND không đúng");
-           continue;
-       }
-       if(cmnd < 10000000 || cmnd> 999999999){
-           alert("CMND không đúng")
-           continue;
-       }
-       check = true
-   }while (!check);
+    do {
+        cmnd = prompt('Nhập Vào Số CMND');
+        if (!isNaN(cmnd)) {
+            cmnd = Number.parseInt(cmnd);
+        }
+        if (!Number.isInteger(cmnd)) {
+            alert("CMND không đúng");
+            continue;
+        }
+        if (cmnd < 10000000 || cmnd > 999999999) {
+            alert("CMND không đúng")
+            continue;
+        }
+        check = true
+    } while (!check);
 
     //Nhập bithday
     birthDay = prompt('Nhập Vào Ngày Tháng Năm Sinh');
-
+    check=false;
     //Nhập Email
-    do{
-       let countAt=0;
-       let countDoc=0
+    do {
+        let countAt = 0;
+        let countDoc = 0;
         email = prompt('Nhập Vào Địa Chỉ email');
-       for(let i=0;  i <email.length;i++){
-           if (email.charAt(i)==="@"){
-               countAt++;
-               for ( let j =i+1; j<email.length; j++){
-                   if (email.charAt(j)==="."){
-                       countDoc++;
-                   }
-               }
-           }
-       }
-           if(countAt!=1 || countDoc<1){
-               alert("Email bạn nhập không đúng")
-           }else {
-               check=true;
-           }
-
-    }while (!check)
+        for (let i = 0; i < email.length; i++) {
+            if (email.charAt(i) === "@") {
+                countAt++;
+                for (let j = i + 1; j < email.length; j++) {
+                    if (email.charAt(j) === ".") {
+                        countDoc++;
+                    }
+                }
+            }
+        }
+        if (countAt != 1 || countDoc < 1) {
+            alert("Email bạn nhập không đúng")
+        } else {
+            check = true;
+        }
+        if (email.charAt(0) !== "@") {
+            check = true;
+        } else {
+            check = false;
+            alert("Email bạn nhập không đúng")
+        }
+    } while (!check);
 
     address = prompt('Nhập Vào Địa Chỉ ');
     typeCustomer = prompt('Nhập Vào Loại Customer (Diamond, Platinum, Gold, Silver, Member)');

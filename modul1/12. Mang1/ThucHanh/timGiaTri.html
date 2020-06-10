@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let value =  parseInt(prompt("Nhập vào số cần tìm "));
+    let x = [-3, 5, 1, 3, 2, 4];
+    let a = "";
+
+    for (let i = 0; i < x.length; i++) {
+
+        if (value == x[i]) {
+            a = "Value " + x[i] + " found " + i;
+            break;
+        } else{
+            a = "Không tìm thấy";
+        }
+    }
+    alert(a)
+</script>
+</body>
+</html>
