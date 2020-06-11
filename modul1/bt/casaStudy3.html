@@ -19,9 +19,22 @@
     let typeRoom;
     check = false;
 
-
-    nameCustomer = prompt('Nhập Vào Họ Và Tên');
     //Nhập tên
+    let tempname = "";
+    nameCustomer = prompt('Nhập Vào Họ Và Tên');
+    nameCustomer = nameCustomer.trim().toLocaleLowerCase();
+    for (let i = 0; i < nameCustomer.length; i++) {
+        if (nameCustomer.charAt(i) === " " && nameCustomer.charAt(i + 1) === " ") {
+            continue;
+        }
+        if (i === 0 || nameCustomer.charAt(i-1)===" ") {
+            tempname += nameCustomer.charAt(i).toUpperCase()
+        }
+        tempname += nameCustomer.charAt(i);
+    }
+    nameCustomer = tempname;
+
+    //nhập cmnd
     do {
         cmnd = prompt('Nhập Vào Số CMND');
         if (!isNaN(cmnd)) {
@@ -39,9 +52,39 @@
     } while (!check);
 
     //Nhập bithday
-    birthDay = prompt('Nhập Vào Ngày Tháng Năm Sinh');
-    check=false;
-    //Nhập Email
+
+    let birthDay;
+    do {
+        birthDay = prompt('Nhập Vào Ngày Tháng Năm Sinh');
+        count = birthDay.length;
+        let num;
+        for (let i = 0; i < count; i++) {
+            num = birthDay.substring(i, i+1);
+            if (i == 2 || i == 5) {
+                if (num !== '/') {count--;}
+            } else {continue;}
+        }
+        let dd = parseInt(birthDay.substring(0, 2));
+        if (dd >= 32 || dd <= 0 || Number.isNaN(dd)) {count--;}
+        let mm = parseInt(birthDay.substring(3, 5));
+        if (mm >= 13 || mm <= 0 || Number.isNaN(mm)) {count--;}
+        if (mm == 2 && dd > 29) {count--;}
+        switch (mm) {
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                if (dd > 30) {count--;}
+                break;
+        }
+        let yyyy = parseInt(birthDay.substr(6, 4));
+        let currentYear = new Date().getFullYear();
+        if (yyyy >= (currentYear - 18) || yyyy <= (currentYear - 100)) {count--;}
+    } while (count !== 10);
+
+
+    //email
+    check = false;
     do {
         let countAt = 0;
         let countDoc = 0;
