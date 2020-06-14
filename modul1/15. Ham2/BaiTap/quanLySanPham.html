@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý sản phẩm</title>
+</head>
+<body>
+
+
+<h2>PRODUCT MANAGEMENT</h2>
+<label><b>Add new product</b></label><br><br>
+<input type="text" name="newProduct" id="addNew">
+<input type="button" name="addNewProduct" onclick="addNewProduct()" value="Add">
+
+<p><span><b>List of products:</b></span>&nbsp;&nbsp;<span id="total"></span>&nbsp;&nbsp;
+    <input type="button" name="butt" id='show' onclick="display()" value="Display All Products"></p>
+<p id="end"></p>
+<script>
+    let product = new Array("Sony", "Vsmart", "Samsung",
+        "Nokia", "Apple", "Oppo", "Huwei", "B-Phone", "Motorola");
+    let leng = product.length;
+
+    function addNewProduct() {
+        let newProduct = document.getElementById('addNew').value;
+        product.push(newProduct);
+        leng++;
+        display();
+        document.getElementById('addNew').value = '';
+    }
+
+    function deleteProduct(x) {
+        let choose = confirm("Bạn có muốn xóa sản phẩm này ???");
+        if (choose) {
+            product.splice(x, 1);
+            leng--;
+            display();
+        }
+    }
+
+    function editProduct(x) {
+        let selectedProduct = prompt("Bạn muốn thay đổi sản phẩm: " + product[x]);
+        product[x] = selectedProduct;
+        display();
+    }
+
+    function display() {
+        let productString = "";
+        let productTable = new Array(leng);
+        productString += '<table border="2" style="border-collapse:collapse">';
+        productString += '<tr>\n' +
+            '        <th>No.</th>\n' +
+            '        <th>Product Description</th>\n' +
+            '        <th colspan="2">Option</th>\n' +
+            '    </tr>';
+        for (let i = 0; i < leng; i++) {
+            productString += '<tr>';
+            for (let j = 0; j < 4; j++) {
+                if (j == 0) {
+                    productString += '<td width="50" height="50">' + '<b>' + (i + 1) + '</b>' + '</td>';
+                } else if (j == 1) {
+                    productString += '<td width="250" height="50">' + product[i] + '</td>';
+                } else if (j == 2) {
+                    productString += '<td width="150" height="50">' +
+                        '<button onclick="editProduct(' + i + ')">Edit</button>' + '</td>';
+                } else {
+                    productString += '<td width="150" height="50">' +
+                        '<button onclick="deleteProduct(' + i + ')">Delete</button>' + '</td>';
+                }
+            }
+            productString += '</tr>';
+        }
+        productString += '</table>';
+        document.getElementById('end').innerHTML = productString;
+        document.getElementById('total').innerHTML = leng + " products.";
+    }
+
+</script>
+</body>
+</html>

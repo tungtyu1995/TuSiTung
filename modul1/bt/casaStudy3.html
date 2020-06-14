@@ -27,7 +27,7 @@
         if (nameCustomer.charAt(i) === " " && nameCustomer.charAt(i + 1) === " ") {
             continue;
         }
-        if (i === 0 || nameCustomer.charAt(i-1)===" ") {
+        if (i === 0 || nameCustomer.charAt(i - 1) === " ") {
             tempname += nameCustomer.charAt(i).toUpperCase()
         }
         tempname += nameCustomer.charAt(i);
@@ -52,34 +52,46 @@
     } while (!check);
 
     //Nhập bithday
-
-    let birthDay;
     do {
-        birthDay = prompt('Nhập Vào Ngày Tháng Năm Sinh');
+        birthDay = prompt("Nhập vào ngày/tháng/năm sinh: (DD/MM/YYYY): ");
         count = birthDay.length;
         let num;
         for (let i = 0; i < count; i++) {
-            num = birthDay.substring(i, i+1);
+            num = birthDay.substring(i, i + 1);
             if (i == 2 || i == 5) {
-                if (num !== '/') {count--;}
-            } else {continue;}
+                if (num !== '/') {
+                    count--;
+                }
+            } else {
+                continue;
+            }
         }
         let dd = parseInt(birthDay.substring(0, 2));
-        if (dd >= 32 || dd <= 0 || Number.isNaN(dd)) {count--;}
+        if (dd >= 32 || dd <= 0 || Number.isNaN(dd)) {
+            count--;
+        }
         let mm = parseInt(birthDay.substring(3, 5));
-        if (mm >= 13 || mm <= 0 || Number.isNaN(mm)) {count--;}
-        if (mm == 2 && dd > 29) {count--;}
+        if (mm >= 13 || mm <= 0 || Number.isNaN(mm)) {
+            count--;
+        }
+        if (mm == 2 && dd > 29) {
+            count--;
+        }
         switch (mm) {
             case 4:
             case 6:
             case 9:
             case 11:
-                if (dd > 30) {count--;}
+                if (dd > 30) {
+                    count--;
+                }
                 break;
         }
         let yyyy = parseInt(birthDay.substr(6, 4));
         let currentYear = new Date().getFullYear();
-        if (yyyy >= (currentYear - 18) || yyyy <= (currentYear - 100)) {count--;}
+        if (yyyy >= (currentYear - 18) || yyyy <= (currentYear - 100)) {
+            count--;
+        }
     } while (count !== 10);
 
 
@@ -112,12 +124,27 @@
         }
     } while (!check);
 
+    //Giảm giá
+    do {
+        discount = parseFloat(prompt("Nhập Vào Giảm Giá ( % )"));
+    } while (discount <= 0 || !Number.isInteger(discount));
+
+    //Số người đi cùng
+    do {
+        people = parseFloat(prompt("Nhập Vào Số Người đi cùng"));
+    } while (people <= 0 || !Number.isInteger(people));
+
+    //Số ngày thuê
+    do {
+        rentDays = parseFloat(prompt("Nhập Vào Số Ngày Thuê "));
+    } while (rentDays <= 0 || !Number.isInteger(rentDays));
+
+
+
     address = prompt('Nhập Vào Địa Chỉ ');
     typeCustomer = prompt('Nhập Vào Loại Customer (Diamond, Platinum, Gold, Silver, Member)');
-    discount = prompt('Nhập Vào Giảm Giá ( % ) ');
-    people = prompt('Nhập Vào Số Người ');
-    rentDays = prompt('Nhập Vào Số Ngày Thuê ');
     typeService = prompt('Nhập Vào Loại Dịch Vụ(Villa, House, Room) ');
+
     typeRoom = prompt('Nhập Vào Loại Phòng Thuê (Vip, Business,  Normal)');
 
 

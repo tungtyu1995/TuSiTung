@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let str = prompt("Nhập vào từ muốn kiểm tra: ");
+    alert( str + " Là chuổi palindrome : " + checkPalindrome(str));
+    function checkPalindrome(arr) {
+        let count = arr.length;
+        for (let i = 0; i <= count/2; i++) {
+            if (arr.charAt(i) !== arr.charAt(count-1-i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+</script>
+</body>
+</html>
