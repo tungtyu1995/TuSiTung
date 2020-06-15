@@ -22,16 +22,18 @@
     //Nhập tên
     let tempname = "";
     nameCustomer = prompt('Nhập Vào Họ Và Tên');
-    nameCustomer = nameCustomer.trim().toLocaleLowerCase();
+    nameCustomer = nameCustomer.trim().toLowerCase();
     for (let i = 0; i < nameCustomer.length; i++) {
         if (nameCustomer.charAt(i) === " " && nameCustomer.charAt(i + 1) === " ") {
             continue;
         }
         if (i === 0 || nameCustomer.charAt(i - 1) === " ") {
             tempname += nameCustomer.charAt(i).toUpperCase()
+            continue;
         }
         tempname += nameCustomer.charAt(i);
     }
+
     nameCustomer = tempname;
 
     //nhập cmnd
