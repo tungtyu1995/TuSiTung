@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let number;
+    do {
+        number = parseInt(prompt("Nhập số cần kiểm tra"));
+    } while (isNaN(number) || number === "");
+
+    let sum = 0;
+
+    function kiemTra() {
+        for (let i = 1; i < number; i++) {
+            if (number % i == 0) {
+                sum += i;
+            }
+        }
+        if (sum === number) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    alert(number + " Là số hoàn hảo: " + kiemTra())
+</script>
+</body>
+</html>

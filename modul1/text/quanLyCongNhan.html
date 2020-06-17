@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>requirement 5</title>
+</head>
+<body>
+<style>
+    table {
+        border: 1px solid blue;
+        border-collapse: collapse;
+    }
+
+    td, th {
+        border: 1px solid lightgrey;
+        width: 120px;
+        height: 35px;
+        text-align: center;
+    }
+
+    input, label {
+        font-size: 20px;
+        color: #ff4861;
+
+    }
+</style>
+<label>Thêm công nhân -</label>
+<input type="button" onclick="themCongNhan()" value="ADD">
+<br><br>
+<p id="result"></p>
+
+<script>
+    let customerList = [
+        ["tung1", '20/04/1995', 'đà nẵng', '10k', 'Công nhân'],
+        ["tung1", '20/04/1995', 'đà nẵng', '10k', 'Công nhân']
+    ];
+    display();
+
+    function display() {
+        let tableString = '';
+        tableString += '<table>\n' +
+            '    <caption>Quản Lý Công Nhân</caption>\n' +
+            '    <tr>\n' +
+            '        <th>No.</th>\n' +
+            '        <th>Họ Và Tên</th>\n' +
+            '        <th>Ngày Tháng Năm Sinh</th>\n' +
+            '        <th>Địa Chỉ</th>\n' +
+            '        <th>Lương</th>\n' +
+            '        <th>Chức Vụ</th>\n' +
+            '        <th>Edit Info</th>\n' +
+            '        <th>Delete Info</th>\n' +
+            '    </tr>';
+        for (let i = 0; i < customerList.length; i++) {
+            tableString += '<tr>';
+            tableString += '<td>' + (i + 1) + '</td>';
+            for (let j = 0; j < customerList[i].length; j++) {
+                tableString += '<td>' + customerList[i][j] + '</td>';
+            }
+            tableString += '<td><button onclick="editCustomer(' + i + ')">Edit</button></td>' +
+                           '<td><button onclick="deleteCustomer(' + i + ')">Delete</button></td>';
+            tableString += '</tr>';
+        }
+        tableString += '</table>';
+        document.getElementById('result').innerHTML = tableString;
+    }
+
+    function themCongNhan() {
+        let num = prompt('Bạn muốn thêm bao nhiêu customer ?');
+        for (let i = 0; i < num; i++) {
+            let newCustomer = [];
+            let msg = '';
+            for (let j = 0; j < 5; j++) {
+                switch (j) {
+                    case 0:
+                        msg = 'tên';
+                        break;
+                    case 1:
+                        msg = 'ngày tháng năm sinh';
+                        break;
+                    case 2:
+                        msg = 'Địa chỉ';
+                        break;
+                    case 3:
+                        msg = 'Lương';
+                        break;
+                    case 4:
+                        msg = 'Chức vụ';
+                        break;
+
+
+                }
+                newCustomer[j] = prompt("Person " + (i + 1) + "_" + msg + ":");
+            }
+            customerList.push(newCustomer);
+        }
+        display();
+    }
+
+    function editCustomer(num) {
+        let string = '';
+        for (let j = 0; j < 5; j++) {
+            string += (j + 1) + '. ' + customerList[num][j] + '\n';
+        }
+        let choose = prompt("\n" + "Chọn thứ bạn cần chỉnh sửa: " + '\n' + string);
+        let msg = '';
+        switch (choose - 1) {
+            case 0:
+                msg = 'tên';
+                break;
+            case 1:
+                msg = 'ngày tháng năm sinh';
+                break;
+            case 2:
+                msg = 'Địa chỉ';
+                break;
+            case 3:
+                msg = 'Lương';
+                break;
+            case 4:
+                msg = 'Chức vụ';
+                break;
+
+
+        }
+        customerList[num][choose - 1] = prompt('Enter ' + msg + ":");
+        display();
+    }
+
+    function deleteCustomer(num) {
+        let choose = confirm('Bạn có thực sự muốn xóa ' + customerList[num][0] + '?');
+        if (choose) {
+            customerList.splice(num, 1);
+        } else {
+            alert('Bạn không muốn xóa.');
+        }
+        display();
+    }
+</script>
+</body>
+</html>
