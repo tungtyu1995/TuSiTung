@@ -22,7 +22,8 @@
     //Nhập tên
     let tempname = "";
     nameCustomer = prompt('Nhập Vào Họ Và Tên');
-    nameCustomer = nameCustomer.trim().toLowerCase();
+    nameCustomer = nameCustomer.trim();
+    nameCustomer = nameCustomer.toLowerCase();
     for (let i = 0; i < nameCustomer.length; i++) {
         if (nameCustomer.charAt(i) === " " && nameCustomer.charAt(i + 1) === " ") {
             continue;
@@ -111,18 +112,18 @@
                         countDoc++;
                     }
                 }
-                }
+            }
         }
         if (countAt != 1 || countDoc < 1) {
-            alert("Email bạn nhập không đúng")
-        } else {
-            check = true;
-        }
-        if (email.charAt(0) !== "@") {
-            check = true;
-        } else {
             check = false;
-            alert("Email bạn nhập không đúng")
+            alert("Email bạn nhập không đúng1")
+        } else {
+            if (email.charAt(0) !== "@") {
+                check = true;
+            } else {
+                check = false;
+                alert("Email bạn nhập không đúng")
+            }
         }
     } while (!check);
 
@@ -142,11 +143,9 @@
     } while (rentDays <= 0 || !Number.isInteger(rentDays));
 
 
-
     address = prompt('Nhập Vào Địa Chỉ ');
     typeCustomer = prompt('Nhập Vào Loại Customer (Diamond, Platinum, Gold, Silver, Member)');
     typeService = prompt('Nhập Vào Loại Dịch Vụ(Villa, House, Room) ');
-
     typeRoom = prompt('Nhập Vào Loại Phòng Thuê (Vip, Business,  Normal)');
 
 

@@ -66,15 +66,12 @@
         let current = new Date().getFullYear();
         let birthday1 = new Date(birthDay).getFullYear();
         let ageCustomer = current - birthday1;
-
         if (ageCustomer >= 30 && address === 'Đà Nẵng') {
             teamp += 2;
         } else if (ageCustomer >= 20 && address === 'Đà Nẵng') {
             teamp += 1;
         }
-
         moneyPerDay = money * rentDays - teamp;
-
         alert('Tổng số tiền phải thanh toán: ' + moneyPerDay)
     }
 
