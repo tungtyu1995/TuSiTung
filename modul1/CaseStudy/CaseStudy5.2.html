@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Furama</title>
+</head>
+<body>
+
+<script>
+    let customerList = [
+        ['tung1', 12345678, '20/04/1995', 'tung@1.com', 'Đà Nẵng', 'Platinum',
+            25, 1, 7, 'Villa', 'Business'],
+        ['tung2', 12345678, '10/09/1994', 'tung@2.com', 'Đà Nẵng', 'Diamond',
+            25, 2, 6, 'House', 'Normal'],
+        ['tung3', 12345678, '22/06/1993', 'tung@3.com', 'Huế', 'Silver',
+            10, 3, 9, 'Room', 'Business'],
+        ['tung4', 12345678, '20/04/1991', 'tung@4.com', 'Quảng Trị', 'Platinum',
+            20, 3, 7, 'Villa', 'Vip'],
+        ['tung5', 12345678, '10/09/1990', 'tung@5.com', 'Đà Nẵng', 'Diamond',
+            35, 4, 6, 'House', 'Normal'],
+    ];
+    mainMenu();
+    function display() {
+        let string = 'CUSTOMERS LIST:' + '\n';
+        for(let i = 0; i < customerList.length; i++) {
+            for(let j = 0; j < customerList[i].length; j++) {
+                string += (i + 1) +'.' + (j + 1) + ' : ' + customerList[i][j] + " ; ";
+            }
+            string += "\n";
+        }
+        alert(string);
+    }
+    function addCustomer() {
+        let num = prompt("Bạn muốn thêm bao nhiêu người");
+
+        for(let i = 0; i < num; i++) {
+            let newCustomer = new Array();
+            for(let j = 0; j < 11; j++) {
+                newCustomer[j] = prompt("Nhập vào thông tin khách hàng thứ: " + j);
+            }
+            customerList.push(newCustomer);
+            //display();
+        }
+        display();
+    }
+
+    function editCustomer() {
+        let string = 'CUSTOMERS LIST:' + '\n';
+        for(let i = 0; i < customerList.length; i++) {
+            for(let j = 0; j < customerList[i].length; j++) {
+                string += (i + 1) +'.' + (j + 1) + ' ' + customerList[i][j] + "  ";
+            }
+            string += "\n";
+        }
+        let choose = prompt('Bạn muốn chỉnh sữa khách hàng thứ mấy' + '\n' +
+            string);
+        let newEditCustomer = new Array();
+        for(let j = 0; j < 11; j++) {
+            let prop;
+            if(j === 0) {prop = 'Customer Name';}
+            else {prop = 'Customer Address';}
+            newEditCustomer[j] = prompt("Enter new " + prop);
+        }
+        customerList[choose-1] = newEditCustomer;
+        display();
+        mainMenu();
+    }
+
+    function deleteCustomer() {
+        let string = 'CUSTOMERS LIST:' + '\n';
+        for(let i = 0; i < customerList.length; i++) {
+            for(let j = 0; j < customerList[i].length; j++) {
+                string += (i + 1) +'.' + (j + 1) + ' ' + customerList[i][j] + "  ";
+            }
+            string += "\n";
+        }
+        let opt = prompt('Bạn muốn xóa khách hàng thứ mấy' + '\n' +
+            string);
+        if(opt > 0) {
+            let choose = confirm('Bạn có thực sự muốn xóa: ' + customerList[opt-1] +'?');
+            if(choose) {
+                customerList.splice(opt-1, 1);
+            } else {
+                alert("Bạn không muốn xóa");
+            }
+        } else {
+            alert("Bạn không xóa bất kì khách hàng nào");
+        }
+
+        display();
+
+    }
+    function mainMenu() {
+        let opt = prompt("MAIN MENU" +"\n" +
+            "1. Add new customer" + "\n" +
+            "2. Edit customer" + "\n" +
+            "3. Delete customer" + "\n" +
+            "4. Display all customer" + "\n" +
+            "5. Cancel the main menu" + "\n" +
+            "");
+        switch (opt) {
+            case '1':
+                addCustomer();
+                break;
+            case '2':
+                editCustomer();
+                break;
+            case '3':
+                deleteCustomer();
+                break;
+            case '4':
+                display();
+                break;
+            case '5':
+            default:
+                alert("Thoát khỏi menu chính");
+                break;
+
+        }
+    }
+</script>
+</body>
+</html>
