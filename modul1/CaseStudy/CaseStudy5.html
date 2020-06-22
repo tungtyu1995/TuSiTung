@@ -23,8 +23,6 @@
             case 4:
                 deleteCustomer();
                 break;
-            case 5:
-                exit();
             default:
                 alert('Failed');
         }
@@ -33,7 +31,7 @@
 
     function addNewCustomer() {
         let cusInfo = [];
-        let nameCustomer = prompt('Nhập Vào Họ Và Tên');
+        let name = prompt('Nhập Vào Họ Và Tên');
         let cmnd = prompt('Nhập Vào Số CMND');
         let birthDay = prompt('Nhập Vào Ngày Tháng Năm Sinh');
         let email = prompt('Nhập Vào Địa Chỉ email');
@@ -45,7 +43,7 @@
         let typeService = prompt('Nhập Vào Loại Dịch Vụ(Villa, House, Room) ');
         let typeRoom = prompt('Nhập Vào Loại Phòng Thuê (Vip, Business,  Normal)');
 
-        cusInfo.push(nameCustomer);
+        cusInfo.push(name);
         cusInfo.push(cmnd);
         cusInfo.push(birthDay);
         cusInfo.push(email);
@@ -59,6 +57,7 @@
 
         arrListCustomer.push(cusInfo);
         alert("Bạn đã thêm thành công");
+
         displayMainMenu()
     }
 
@@ -141,21 +140,23 @@
         }
         displayMainMenu()
     }
-function  deleteCustomer() {
-    let temp = "";
-    for (let i = 0; i < arrListCustomer.length; i++) {
-        temp += i + " Name: " + arrListCustomer[i][0] + "\n"
+
+    function deleteCustomer() {
+        let temp = "";
+        for (let i = 0; i < arrListCustomer.length; i++) {
+            temp += i + " Name: " + arrListCustomer[i][0] + "\n"
+        }
+        let chooseDelete = parseInt(prompt(temp));
+        let check = parseInt(prompt("Bạn có thực sự muốn xóa?? " + "\n 1.Yes 2.No "));
+        if (check === 1) {
+            arrListCustomer.splice(chooseDelete, 1);
+            alert("Bạn đã xóa thành công")
+        } else {
+            alert("Canel")
+        }
+        displayMainMenu()
     }
-    let chooseDelete = parseInt(prompt(temp));
-    let check = parseInt(prompt("Bạn có thực sự muốn xóa?? "+"\n 1.Yes 2.No " ));
-    if (check === 1){
-    arrListCustomer.splice(chooseDelete,1)
-        alert("Bạn đã xóa thành công")
-    }else {
-        alert("Canel")
-    }
-    displayMainMenu()
-}
+
     displayMainMenu()
 </script>
 </body>
