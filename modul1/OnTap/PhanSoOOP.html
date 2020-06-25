@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class PhanSo {
+        constructor(tuSo, mauSo) {
+            this.tuSo = tuSo;
+            this.mauSo = mauSo;
+        }
+        setTuSo(tuSo){
+            this.tuSo = tuSo;
+        }
+        getTuSo(){
+            return this.tuSo;
+        }
+        setMauSo(mauSo){
+            this.mauSo = mauSo;
+        }
+        getMauSo(){
+            return this.mauSo;
+        }
+
+        getGiaTri(){
+            return this.getTuSo() / this.getMauSo();
+        }
+        cong(PhanSo){
+            return this.getGiaTri() + PhanSo.getGiaTri();
+        }
+        tru(PhanSo){
+            return this.getGiaTri() - PhanSo.getGiaTri();
+        }
+        nhan(PhanSo){
+            return this.getGiaTri() * PhanSo.getGiaTri();
+        }
+        chia(PhanSo){
+            return this.getGiaTri() / PhanSo.getGiaTri();
+        }
+    }
+    let ps1 = new PhanSo();
+    let ps2 = new PhanSo();
+    let ts1 = parseInt(prompt('Nhập tử số của ps1:'));
+    let ms1 = parseInt(prompt('Nhập mẫu số của ps1:'));
+    let ts2 = parseInt(prompt('Nhập tử số của ps2:'));
+    let ms2 = parseInt(prompt('Nhập mẫu số của ps2:'));
+    ps1.setTuSo(ts1);
+    ps1.setMauSo(ms1);
+    ps2.setTuSo(ts2);
+    ps2.setMauSo(ms2);
+    alert('Kết quả cộng 2 phân số: ' + ps1.cong(ps2));
+    alert('Kết quả trừ 2 phân số: ' + ps1.tru(ps2));
+    alert('Kết quả nhân 2 phân số:: ' + ps1.nhan(ps2));
+    alert('Kết quả chia 2 phân số:: ' + ps1.chia(ps2));
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let date;
+    do {
+        date = prompt("Nhập vào tháng và năm (MM/yyy)");
+        let datePat = /^\d{2}[./-]\d{4}$/;
+        check = datePat.test(date);
+    } while (!check);
+
+    let month = parseInt(date.substr(0, 2));
+    let year = parseInt(date.substr(3, 4));
+
+    alert(" Tháng: " + month + " Năm: " + year + " Có: " + tinhNgayTrongThang(month) + " Ngày ");
+
+    function kiemTraNamNhuan(year) {
+        let isLeapYear = false;
+        if (year % 4 == 0) {
+            if (year % 100 == 0) {
+                if (year % 400 == 0) {
+                    isLeapYear = true;
+                }
+            } else {
+                isLeapYear = true;
+            }
+        }
+        if (isLeapYear) {
+            return isLeapYear;
+        } else {
+            return isLeapYear;
+        }
+    }
+
+    function tinhNgayTrongThang(month) {
+        let ngayTrongThang = 0;
+        switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                ngayTrongThang = 31;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                ngayTrongThang = 30;
+                break;
+            case 2:
+                if (kiemTraNamNhuan(year)) {
+                    ngayTrongThang = 29;
+                } else {
+                    ngayTrongThang = 28;
+                }
+        }
+        return ngayTrongThang;
+    }
+
+
+</script>
+</body>
+</html>

@@ -26,9 +26,9 @@
             }
         }
         if (isLeapYear) {
-            return isLeapYear
+            return true
         } else {
-            return isLeapYear
+            return false
         }
     }
 
@@ -55,11 +55,12 @@
     }
 
     function ngayTrongNam(date) {
-        date = new Date(date);
 
+        date = new Date(date);
         let day = date.getDate();
         let month = date.getMonth() + 1;
         let year = date.getFullYear();
+
         let days = day;
         for (let i = 1; i < month; i++) {
             days += ngayTrongThang(i)

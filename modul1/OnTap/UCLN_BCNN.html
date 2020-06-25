@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let number1 = parseInt(prompt("Nhập vào sô thứ nhất"));
+    let number2 = parseInt(prompt("nhập vào số thứ hai"));
+
+    alert(timUCLLvsBCNN(number1, number2));
+
+    function timUCLLvsBCNN(number1, number2) {
+        let UCLN;
+        let BCNN;
+        let min;
+        if (number1 % number2 === 0) {
+            UCLN = number2;
+            BCNN = number1;
+            return "UCLN: " + UCLN + " BCNN: " + BCNN
+        } else if (number2 % number1 === 0) {
+            UCLN = number1;
+            BCNN = number2;
+            return "UCLN: " + UCLN + " BCNN: " + BCNN
+        } else {
+            min = (number1 < number2) ? number1 : number2;
+            for (let i = 1; i < min; i++) {
+                if (number1 % i === 0 && number2 % i === 0) {
+                    UCLN = i
+                }
+            }
+            BCNN = number1 * number2;
+            return "UCLN: " + UCLN + " BCNN: " + BCNN
+        }
+    }
+
+</script>
+</body>
+</html>

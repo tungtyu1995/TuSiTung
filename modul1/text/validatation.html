@@ -19,21 +19,29 @@
     // alert(day)
 
 
-    //điều kiện email
-    // let check=true;
-    // do {
-    //     let email = prompt("nhap email");
-    //     let patEmail=/^(\w{3,}@\w+\.\w+)$/;
-    //     check=patEmail.test(email);
-    // }while (!check);
+    //email
+    let check = true;
+    do {
+        let email = prompt("Input email:");
+        let emailPatt = /^(\w{3,}@\w+\.\w+)$/;
+        check = emailPatt.test(email);
+    } while (!check);
 
-//điều kiện date
+    //date
+    do {
+        let date = prompt("Input date dd/MM/yyyy:");
+        let datePatt = /^(([0][1-9]|[1-2]\d|[3][0-1])\/(0[1-9]|1[0-2])\/(19\d{2}|(20[0-2]\d)))$/;
+        check = datePatt.test(date);
+    } while (!check);
 
-    // do {
-    //     let ngay = prompt("nhap ngay dd/MM/yyyy");
-    //     let patNgay=/^((0[1-9]|1[0-2])\/([0][1-9]|[1-2]\d|[3][0-1])\/(19\d{2}|(20[0-2]\d)))$/;
-    //     check=patNgay.test(ngay);
-    // }while (!check)
+    //cmnd
+    do {
+        let id = prompt('Input ID:');
+        let idPatt = /^([1-9]\d{8})$/;
+        check = idPatt.test(id);
+    } while (!check);
+
+
 
 </script>
 </body>

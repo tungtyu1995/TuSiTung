@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Candidate with marks</title>
+</head>
+<body>
+<script>
+    class Candidate {
+        constructor(name, code, birthday, math, literary, english) {
+            this.name = name;
+            this.code = code;
+            this.birthday = birthday;
+            this.math = math;
+            this.literary = literary;
+            this.english = english;
+        }
+
+        setName(name) {
+            this.name = name;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        setCode(code) {
+            this.code = code;
+        }
+
+        getCode() {
+            return this.code;
+        }
+
+        setBirthday(birthday) {
+            this.birthday = birthday;
+        }
+
+        getBirthday() {
+            return this.birthday;
+        }
+
+        setMath(math) {
+            this.math = math;
+        }
+
+        getMath() {
+            return this.math;
+        }
+
+        setLiterary(literary) {
+            this.literary = literary;
+        }
+
+        getLiterary() {
+            return this.literary;
+        }
+
+        setEnglish(english) {
+            this.english = english;
+        }
+
+        getEnglish() {
+            return this.english;
+        }
+
+        getToTalMark() {
+            return this.getMath() + this.getLiterary() + this.getEnglish();
+        }
+    }
+
+    numberOfCandidates = parseInt(prompt('Nhập số lượng thí sinh:'));
+    let listCandidate = "";
+    for (let i = 0; i < numberOfCandidates; i++) {
+        let candidate = new Candidate();
+        let name = prompt('Nhập vào tên: ' + (i + 1));
+        let code = prompt('Nhập vào mã số của: ' + name);
+        let birthday = prompt('Nhập vào ngày sinh của: ' + name);
+        let math = parseFloat(prompt('Nhập vào điểm môn toán:'));
+        let literary = parseFloat(prompt('Nhập vào điểm môn văn:'));
+        let english = parseFloat(prompt('Nhập vào điểm môn tiếng anh:'));
+        candidate.setName(name);
+        candidate.setCode(code);
+        candidate.setBirthday(birthday);
+        candidate.setMath(math);
+        candidate.setLiterary(literary);
+        candidate.setEnglish(english);
+        if (candidate.getToTalMark() > 15) {
+            listCandidate += "Tên: ";
+            listCandidate += candidate.getName() + " - Mã số: ";
+            listCandidate += candidate.getCode() + " - Ngày sinh: ";
+            listCandidate += candidate.getBirthday() + " - Toán: ";
+            listCandidate += candidate.getMath() + " - Văn: ";
+            listCandidate += candidate.getLiterary() + " - Anh: ";
+            listCandidate += candidate.getEnglish() + " - Tổng điểm: ";
+            listCandidate += candidate.getToTalMark() ;
+            listCandidate += '\n'
+        }
+    }
+    alert('Danh sách thí sinh có tổng điểm lớn hơn 15: ' + '\n' + listCandidate);
+</script>
+</body>
+</html>

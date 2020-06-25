@@ -10,7 +10,6 @@
     do {
         n = parseInt(prompt("Nhập vào số phần tử của mảng số nguyên: (không quá 50 phần tử)"));
     } while (isNaN(n) || n > 50 || n === "");
-
     let arr = [];
     let count = 0;
     let sum = 0;
@@ -25,7 +24,7 @@
                 sum += arr[i];
             }
         }
-        return "Trung bình cộng: " + (sum / count);
+        return "Trung bình cộng các số trong mảng chia hết cho 3 : " + (sum / count);
     }
 
     alert(tinhTrungBinhCong())
