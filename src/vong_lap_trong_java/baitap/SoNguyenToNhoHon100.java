@@ -1,10 +1,9 @@
 package vong_lap_trong_java.baitap;
 
-import java.util.Scanner;
-
 public class SoNguyenToNhoHon100 {
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+
         int number =2;
         String stringNumber = "";
 
