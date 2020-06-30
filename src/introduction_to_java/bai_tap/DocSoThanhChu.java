@@ -163,6 +163,7 @@ public class DocSoThanhChu {
                     nameNumber += " chính trăm";
                     break;
             }
+            if(surplus !=0)
             switch (surplus / 10) {
                 case 0:
                     nameNumber += " lẻ";
