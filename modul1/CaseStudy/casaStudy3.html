@@ -20,7 +20,7 @@
     check = false;
 
     //Nhập tên
-    let tempname = "";
+    let tempName = "";
     nameCustomer = prompt('Nhập Vào Họ Và Tên');
     nameCustomer = nameCustomer.trim();
     nameCustomer = nameCustomer.toLowerCase();
@@ -29,13 +29,13 @@
             continue;
         }
         if (i === 0 || nameCustomer.charAt(i - 1) === " ") {
-            tempname += nameCustomer.charAt(i).toUpperCase();
+            tempName += nameCustomer.charAt(i).toUpperCase();
             continue;
         }
-        tempname += nameCustomer.charAt(i);
+        tempName += nameCustomer.charAt(i);
     }
 
-    nameCustomer = tempname;
+    nameCustomer = tempName;
 
     //nhập cmnd
     do {
@@ -48,7 +48,7 @@
             continue;
         }
         if (cmnd < 10000000 || cmnd > 999999999) {
-            alert("CMND không đúng")
+            alert("CMND không đúng");
             continue;
         }
         check = true
@@ -61,7 +61,7 @@
         let num;
         for (let i = 0; i < count; i++) {
             num = birthDay.substring(i, i + 1);
-            if (i == 2 || i == 5) {
+            if (i === 2 || i === 5) {
                 if (num !== '/') {
                     count--;
                 }
@@ -77,7 +77,7 @@
         if (mm >= 13 || mm <= 0 || Number.isNaN(mm)) {
             count--;
         }
-        if (mm == 2 && dd > 29) {
+        if (mm === 2 && dd > 29) {
             count--;
         }
         switch (mm) {

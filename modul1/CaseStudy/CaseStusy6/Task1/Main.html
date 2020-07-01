@@ -8,18 +8,18 @@
 <body>
 <script>
     let regexEmail = /\S+@\S+\.\S+/;
-
+    let regexBirthDay =  /^(([0][1-9]|[1-2]\d|[3][0-1])\/(0[1-9]|1[0-2])\/(19\d{2}|(20[0-2]\d)))$/;
     let regexCmnd = /^[\d]{8,8}$/;
     let listCustomes = [];
 
     function displayMainMenu() {
-        let choose = parseInt(prompt("1.Add New Customer. \n 2.Display Information Customer." +
-            " \n 3. DisplayTotaPays \n 4.Delete Customer. \n 5.Dis play total pays Customer"));
+        let choose = parseInt(prompt("1.Add New Customer." +
+            "\n 2.Dis play total pays Customer"));
         switch (choose) {
             case 1:
                 addNewCustomer();
                 break;
-            case 3:
+            case 2:
                 displayTotaPays();
                 break;
             default:

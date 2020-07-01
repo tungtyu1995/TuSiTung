@@ -5,22 +5,21 @@
     <title>FURAMA</title>
 </head>
 <body>
-<h3>FURAMA MANAGEMENT</h3>
+<h3>Quản Lý Khách Hàng FURAMA</h3>
 <label><b>Add new customer: </b></label>
-<input type="button" name="buttAdd" onclick="addNewCustomer()" value="Add New Customer">
+<input type="button" name="buttAdd" onclick="addNewCustomer()" value="Thêm Mới Khách Hàng">
 <br><br>
 <lable><b>Display customers: </b></lable>
-<input type="button" name="buttDisplay" onclick="displayCustomer()" value="Display All Customers">
+<input type="button" name="buttDisplay" onclick="displayCustomer()" value="Hiển Thị Khách Hàng">
 <br><br>
 <lable><b>Delete customer: </b></lable>
-<input type="button" name="buttDelete" onclick="deleteCustomer()" value="Delete Customer">
+<input type="button" name="buttDelete" onclick="deleteCustomer()" value="Xóa Khách Hàng">
 <br><br>
 <p id="show"></p>
 
 <script>
-    let customerList = new Array('Tung', 'Ha', 'Tuyet', 'Thuy', 'Tien',
-        'Minh', 'Thu', 'Phuong', 'Dat', 'Uyen');
-    let len = customerList.length;
+    let customerList = new Array('Tung', 'Ha', 'Pheo', 'No');
+    let length = customerList.length;
 
     // Add a new customer
     function addNewCustomer() {
@@ -29,14 +28,14 @@
             let inputName = prompt("Nhập vào tên khách hàng thứ: " + (i + 1) + ":");
             customerList.push(inputName);
         }
-        len += num;
+        length += num;
         displayCustomer();
     }
 
     // Delete a customer
     function deleteCustomer() {
-        let customerString = "CUSTOMERS LIST" + "\n";
-        for (let i = 0; i < len; i++) {
+        let customerString = "Danh Sách Tên Khách Hàng" + "\n";
+        for (let i = 0; i < length; i++) {
             customerString += (i + 1) + ". " + customerList[i] + "\n";
         }
         let choose = parseInt(prompt("Nhập vào số thứ tự của khách hàng cần xóa" + "\n" + customerString));
@@ -44,7 +43,7 @@
         let agree = confirm("Bạn có thực sự muốn xóa khách hàng: " + customerList[choose-1] + "?");
         if (agree) {
             customerList.splice(choose-1, 1);
-            len--;
+            length--;
         }
         displayCustomer();
     }
@@ -58,9 +57,9 @@
             if (x < y) {return -1;}
             return 0;
         } );
-        let customerString = "<b>Customers List</b>" + "<br>";
-        for (let i = 0; i < len; i++) {
-            customerString += (i + 1) + " " + customerList[i] + "<br>";
+        let customerString = "<b>Danh Sách Tên Khách Hàng</b>" + "<br>";
+        for (let i = 0; i < length; i++) {
+            customerString += (i + 1) + ". " + customerList[i] + "<br>";
         }
         document.getElementById('show').innerHTML = customerString;
     }
