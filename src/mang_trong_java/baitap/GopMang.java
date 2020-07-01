@@ -1,6 +1,6 @@
 package mang_trong_java.baitap;
 
-import java.lang.reflect.Array;
+
 import java.util.Scanner;
 
 public class GopMang {
@@ -25,8 +25,15 @@ public class GopMang {
             System.out.print("Nhập phần tử thứ " + (i + 1) + ":");
             array2[i] = scanner.nextInt();
         }
-        System.arraycopy(array1, 0, array3, 0, size1);
-        System.arraycopy(array2, 0, array3, size1, size2);
+        for(int i = 0; i<size1; i++){
+            array3[i] = array1[i];
+        }
+        int count = 0;
+        for (int i = size1; i < size1+size2; i++){
+            array3[i] = array2[count++];
+        }
+//        System.arraycopy(array1, 0, array3, 0, size1);
+//        System.arraycopy(array2, 0, array3, size1, size2);
         System.out.println("Mảng sau khi gộp");
 
         for (int i = 0; i < (size1+size2); i++){
