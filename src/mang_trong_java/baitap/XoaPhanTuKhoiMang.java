@@ -8,7 +8,7 @@ public class XoaPhanTuKhoiMang {
         System.out.println("Nhập vào số phần tử của mảng:");
         int n = scanner.nextInt();
         int[] array;
-        array = new int[69];
+        array = new int[n];
         for (int i = 0 ; i  < n ; i++) {
             System.out.print("Nhập phần tử thứ "+(i+1)+":");
             array[i] = scanner.nextInt();
@@ -22,15 +22,15 @@ public class XoaPhanTuKhoiMang {
         int x = scanner.nextInt();
         for (int i = 0 ; i < n ; i++) {
             if (array[i] == x) {
-                array[i] = 0;
-                for(int j = i ; j < n ; j++) {
+//                array[i] = 0;
+                for(int j = i ; j < n - 1  ; j++) {
                     array[j] = array[j + 1];
                 }
-                n--;i--;
             }
         }
+//        array[array.length-1] = 0;
         System.out.print("Mảng sau khi xóa:");
-        for (int i = 0 ; i < n ; i++) {
+        for (int i = 0 ; i < n - 1 ; i++) {
             System.out.print(array[i]+" ");
         }
     }

@@ -12,7 +12,7 @@ public class GiaTriLonNhatMang2Chieu {
         int[][] array = new int[row][col];
 //        --------------------------------------
         int max = 0;
-        int goad1 = 0,goad2 = 0;
+        int goal1 = 0,goal2 = 0;
         for (int i = 0; i <row ; i++) {
             for (int j = 0; j <col ; j++) {
                 System.out.print("Nhập vào phần tử thứ ("+(i+1)+","+(j+1)+"):");
@@ -21,7 +21,7 @@ public class GiaTriLonNhatMang2Chieu {
                     max = array[i][j];
                 } else if(array[i][j]>max) {
                     max = array[i][j];
-                    goad1 = i;goad2 = j;
+                    goal1 = i;goal2 = j;
                 }
             }
         }
@@ -33,6 +33,6 @@ public class GiaTriLonNhatMang2Chieu {
             }
             System.out.println();
         }
-        System.out.println("Phần tử lớn nhất trong mảng:"+max+" ở vị trí ("+(goad1+1)+","+(goad2+1)+")");
+        System.out.println("Phần tử lớn nhất trong mảng:"+max+" ở vị trí ("+(goal1+1)+","+(goal2+1)+")");
     }
 }
