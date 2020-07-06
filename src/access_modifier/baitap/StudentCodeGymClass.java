@@ -55,14 +55,13 @@ public class StudentCodeGymClass {
         System.out.printf("%-5s%-5s%-15s%s", "", "Id", "Name", "Date of Birth");
         System.out.println();
         for (int i = 0; i < count; i++) {
-            System.out.printf("%-5d%-5d%-15s%s", i + 1, listStudent[i].getId(), listStudent[i].getName(), listStudent[i].getDateOfBirth());
+            System.out.printf("%-5d%-5d%-15s%s", i+1, listStudent[i].getId(), listStudent[i].getName(), listStudent[i].getDateOfBirth());
             System.out.println();
         }
     }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        boolean isExist;
         StudentCodeGym student1 = new StudentCodeGym(69, "Kha Banh", "dd/MM/19xx");
         StudentCodeGym student2 = new StudentCodeGym(96, "Huan Hoa Hong", "dd/MM/19xx");
         StudentCodeGym student3 = new StudentCodeGym(6969, "Chi Pheo", "dd/MM/19xx");
@@ -97,13 +96,13 @@ public class StudentCodeGymClass {
                 case 2:
                     System.out.println("Nhap id hoc vien bạn muon xoa: ");
                     int deleteId = scanner.nextInt();
-                    char confirm;
+                    int confirm;
                     int index = 0;
                     System.out.println("Ban thuc su muon xoa hoc vien nay!!!");
                     System.out.println(listStudent.getIdStudent(index) + " " + listStudent.getNameStudent(index) + " " + listStudent.getDateOfBirthStudent(index));
-                    System.out.print("Yes or No: ");
-                    confirm = scanner.next().charAt(0);
-                    if (confirm == 'y' || confirm == 'Y') {
+                    System.out.print("1.Yes or 2.No: ");
+                    confirm = scanner.nextInt();
+                    if (confirm == 1) {
                         listStudent.graduate(deleteId);
                         break;
                     } else {
@@ -116,7 +115,7 @@ public class StudentCodeGymClass {
                 case 0:
                     System.exit(0);
                 default:
-                    System.out.println("Lua chon cua ban khong co!");
+                    System.out.println("Lua chon cua ban khong ton tai!");
             }
         }
     }
