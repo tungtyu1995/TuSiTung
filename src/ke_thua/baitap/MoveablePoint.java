@@ -59,6 +59,7 @@ public class MoveablePoint extends Point {
         MoveablePoint moveablePoint = new MoveablePoint();
         System.out.println(moveablePoint);
         moveablePoint.move();
+        System.out.println(moveablePoint.toString());
 
         MoveablePoint moveablePoint1 = new MoveablePoint();
         moveablePoint1 = new MoveablePoint(1, 3, 5, 7);

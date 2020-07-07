@@ -1,49 +1,49 @@
 package ke_thua.baitap;
 
 public class Point2D {
-    float X = 0.0f;
-    float Y = 0.0f;
+    float x = 0.0f;
+    float y = 0.0f;
 
     public Point2D() {
 
     }
 
     public Point2D(float x, float y) {
-        this.X = x;
-        this.Y = y;
+        this.x = x;
+        this.y = y;
     }
 
     public float getX() {
-        return X;
+        return x;
     }
 
     public void setX(float x) {
-        this.X = x;
+        this.x = x;
     }
 
     public void setY(float y) {
-        this.Y = y;
+        this.y = y;
     }
 
     public float getY() {
-        return Y;
+        return y;
     }
 
     public float[] getXY() {
-        float[] arr = {X, Y};
+        float[] arr = {x, y};
         return arr;
     }
 
     public void setXY(float x, float y) {
-        this.X = x;
-        this.Y = y;
+        this.x = x;
+        this.y = y;
     }
 
     @Override
     public String toString() {
         return "Point2D{" +
-                "X=" + X +
-                ", Y=" + Y +
+                "X=" + x +
+                ", Y=" + y +
                 '}';
     }
 
