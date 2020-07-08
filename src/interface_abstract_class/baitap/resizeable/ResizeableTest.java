@@ -6,9 +6,9 @@ public class ResizeableTest {
         arr[0] = new Circle(10);
         arr[1] = new Rectangle(10,20);
         arr[2] = new Square (20);
+        System.out.println("-Before-");
         for (Shape shape:arr) {
             shape.getSize();
-            System.out.println("-Before-");
             System.out.println(shape.toString());
         }
         System.out.println("-After-");
