@@ -36,13 +36,16 @@ public class StudentCodeGymClass {
             count++;
         }
     }
+
 //Xoa hoc vien tot nghiep
     public void graduate(int id) {
         for (int i = 0; i < listStudent.length - 1; i++) {
             if (listStudent[i].getId() == id) {
                 System.out.println("Chuc mung " + listStudent[i].getName() + " Ban da tot nghiep!!!");
-                for (int j = i; j < listStudent.length - 1; j++) {
+                int j = i;
+                while (j < listStudent.length - 1) {
                     listStudent[j] = listStudent[j + 1];
+                    j++;
                 }
                 break;
             }
@@ -52,10 +55,10 @@ public class StudentCodeGymClass {
     }
 //Hien thi danh sach hoc vien
     public void displayListStudent() {
-        System.out.printf("%-5s%-5s%-15s%s", "", "Id", "Name", "Date of Birth");
+        System.out.printf("%-5s%-7s%-15s%s", "", "Id", "Name", "Date of Birth");
         System.out.println();
         for (int i = 0; i < count; i++) {
-            System.out.printf("%-5d%-5d%-15s%s", i+1, listStudent[i].getId(), listStudent[i].getName(), listStudent[i].getDateOfBirth());
+            System.out.printf("%-5d%-7d%-15s%s", i+1, listStudent[i].getId(), listStudent[i].getName(), listStudent[i].getDateOfBirth());
             System.out.println();
         }
     }
@@ -86,7 +89,7 @@ public class StudentCodeGymClass {
                     System.out.print("Nhap vao id cua hoc vien: ");
                     addId = scanner.nextInt();
                     System.out.print("Nhap vao ten hoc vien: ");
-                    String addName = scanner.nextLine();
+                    String addName  = scanner.nextLine();
                     addName = scanner.nextLine();
                     System.out.print("Nhap vao ngay sinh cua  hoc vien: ");
                     String addDate = scanner.nextLine();

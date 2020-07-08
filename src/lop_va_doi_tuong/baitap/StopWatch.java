@@ -6,9 +6,7 @@ import java.util.Scanner;
 public class StopWatch {
   Date satartTime;
   Date endTime;
-  public StopWatch(){
 
-  }
   public void start(){
       Date date = new Date();
       this.satartTime = date;
