@@ -7,22 +7,22 @@ public class TennisGame {
     public static final int THIRTY = 2;
     public static final int FORTY = 3;
 
-    public static String getScore(String player1Name, String player2Name, int m_score1, int m_score2) {
+    public static String getScore(String player1Name, String player2Name, int player1Score, int palyer2Score) {
         String score = "";
         int tempScore = 0;
-        if (m_score1 == m_score2) {
-            score = checkResult(m_score1);
-        } else if (m_score1 >= 4 || m_score2 >= 4) {
-            score = checkWin(m_score1, m_score2);
+        if (player1Score == palyer2Score) {
+            score = checkResult(player1Score);
+        } else if (player1Score >= 4 || palyer2Score >= 4) {
+            score = checkWin(player1Score, palyer2Score);
         } else {
-            score = checkScore(m_score1, m_score2, score);
+            score = checkScore(player1Score, palyer2Score, score);
         }
         return score;
     }
 
-    private static String checkResult(int m_score1) {
+    private static String checkResult(int player1Score) {
         String score;
-        switch (m_score1) {
+        switch (player1Score) {
             case LOVE:
                 score = "Love-All";
                 break;
@@ -42,13 +42,13 @@ public class TennisGame {
         return score;
     }
 
-    private static String checkScore(int m_score1, int m_score2, String score) {
+    private static String checkScore(int player1Score, int player2Score, String score) {
         int tempScore;
         for (int i = 1; i < 3; i++) {
-            if (i == 1) tempScore = m_score1;
+            if (i == 1) tempScore = player1Score;
             else {
                 score += "-";
-                tempScore = m_score2;
+                tempScore = player2Score;
             }
             switch (tempScore) {
                 case 0:
@@ -68,9 +68,9 @@ public class TennisGame {
         return score;
     }
 
-    private static String checkWin(int m_score1, int m_score2) {
+    private static String checkWin(int player1Score, int player2Score) {
         String score;
-        int minusResult = m_score1 - m_score2;
+        int minusResult = player1Score - player2Score;
         boolean checkAdvantagePlayer1 = minusResult == 1;
         boolean checkAdvantagePlayer2 = minusResult == -1;
         boolean checkWinPlayer1 = minusResult >= 2;
