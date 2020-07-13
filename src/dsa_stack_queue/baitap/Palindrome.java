@@ -19,11 +19,22 @@ public class Palindrome {
             stack.push(charArray[i]);
             queue.offer(charArray[i]);
         }
-        boolean check = stack == queue;
-        if(check){
-            System.out.println(inputString + " la chuoi Palindrome ");
+        boolean check = false;
+        for (int i = 0; i < stack.size(); i++) {
+            Character a = stack.pop();
+            Character b = queue.poll();
+
+            if (a == b) {
+                check = true;
+            } else {
+               check = false;
+            }
+            break;
+        }
+        if (check){
+            System.out.println(inputString +" la chuoi Palindrome ");
         }else {
-            System.out.println(inputString + " khong phai la chuoi Palindrome");
+            System.out.println(inputString+ " khong phai la chuoi Palindrome");
         }
     }
 }
