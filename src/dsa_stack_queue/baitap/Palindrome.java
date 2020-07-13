@@ -13,8 +13,6 @@ public class Palindrome {
         Stack<Character> stack = new Stack<>();
         Queue<Character> queue = new LinkedList<>();
         char[] charArray = inputString.toCharArray();
-//        System.out.println(charArray);
-
         for (int i = 0; i < charArray.length; i++) {
             stack.push(charArray[i]);
             queue.offer(charArray[i]);
@@ -27,14 +25,15 @@ public class Palindrome {
             if (a == b) {
                 check = true;
             } else {
-               check = false;
+                check = false;
+                break;
             }
-            break;
+
         }
-        if (check){
-            System.out.println(inputString +" la chuoi Palindrome ");
-        }else {
-            System.out.println(inputString+ " khong phai la chuoi Palindrome");
+        if (check) {
+            System.out.println(inputString + " la chuoi Palindrome ");
+        } else {
+            System.out.println(inputString + " khong phai la chuoi Palindrome");
         }
     }
 }
