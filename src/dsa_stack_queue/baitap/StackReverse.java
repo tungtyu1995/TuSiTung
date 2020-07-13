@@ -64,7 +64,7 @@ public class StackReverse<E> {
         System.out.println("dao nguoc chuoi:");
         StackReverse<String> wStack= new StackReverse<>();
 
-        for (int i = 0; i < words.length ; i++) {
+        for (int i = 0; i < inputText.length() ; i++) {
             wStack.push(words[i]);
         }
         for (int i = 0; i < words.length ; i++) {
@@ -72,7 +72,7 @@ public class StackReverse<E> {
         }
         for (String x:words
         ) {
-            System.out.println(x);
+            System.out.print(x+" ");
         }
     }
 
