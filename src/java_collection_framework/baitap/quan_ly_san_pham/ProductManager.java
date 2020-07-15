@@ -2,6 +2,7 @@ package java_collection_framework.baitap.quan_ly_san_pham;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class ProductManager {
@@ -96,14 +97,31 @@ public class ProductManager {
         }
     }
 
-    //sap xep gia tang dan
+    //sap xep theo gia
     public static void sortByPrice(ArrayList<Product> productArrayList) {
-        ProductSortByPrice sortByPrice = new ProductSortByPrice();
-        Collections.sort(productArrayList, sortByPrice);
-        System.out.println("Danh sach san pham theo thu tu gia tang dan:");
-        for (int i = 0; i < productArrayList.size(); i++) {
-            System.out.println(productArrayList.get(i));
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+        System.out.println(" 1.Sap xep theo thu tu gia tang dan " +
+                " \n " + " 2.Sap xep theo thu tu gia giam dan");
+        choice = scanner.nextInt();
+//        sâp xep gia tang dan
+        if (choice == 1) {
+            ProductSortByPriceIncrease sortByPriceIncrease = new ProductSortByPriceIncrease();
+            Collections.sort(productArrayList, sortByPriceIncrease);
+            System.out.println("Danh sach san pham theo thu tu gia tang dan:");
+            for (int i = 0; i < productArrayList.size(); i++) {
+                System.out.println(productArrayList.get(i));
+            }
+//            sap xep gia giam dan
+        } else if (choice == 2) {
+            ProductSortByPriceReduction sortByPriceReduction = new ProductSortByPriceReduction();
+            Collections.sort(productArrayList, sortByPriceReduction);
+            System.out.println("Danh sach san pham theo thu tu gia giam dan:");
+            for (Product product : productArrayList) {
+                System.out.println(product);
+            }
         }
+
     }
 
     public static void main(String[] args) {
