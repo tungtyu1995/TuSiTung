@@ -2,14 +2,13 @@ package java_collection_framework.baitap.quan_ly_san_pham;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Scanner;
 
 public class ProductManager {
     //xoa san pham
     public static void deleteProduct(ArrayList<Product> productArrayList) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Nhap id san pham:");
+        System.out.print("Nhap id san pham can xoa: ");
         int deleteID = scanner.nextInt();
         Product temp = null;
         boolean isExist = false;
@@ -24,7 +23,7 @@ public class ProductManager {
             productArrayList.remove(temp);
             System.out.print("Xoa thanh cong!!!");
         } else {
-            System.out.print("Id san pham khong ton tai !!!");
+            System.out.println("Id san pham khong ton tai !!!");
         }
         displayProduct(productArrayList);
     }
@@ -32,7 +31,7 @@ public class ProductManager {
     //sua san pham
     public static void editProduct(ArrayList<Product> productArrayList) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Nhap id san pham:");
+        System.out.print("Nhap id san pham can sua: ");
         int editID = scanner.nextInt();
 
         boolean isExist = false;
@@ -57,8 +56,26 @@ public class ProductManager {
     //them san pham
     public static void addProduct(ArrayList<Product> productArrayList) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("nhap vao id san pham: ");
-        int id = scanner.nextInt();
+        int id;
+        boolean checkID = true;
+        do {
+            System.out.print("nhap vao id san pham: ");
+            id = scanner.nextInt();
+            for (Product product : productArrayList) {
+                if (id == product.getId()) {
+                    System.out.println("ID ban nhap da ton tai !!!");
+                    checkID = false;
+                    break;
+                } else if (id < 0 ) {
+                    System.out.println("Id bạn nhap bi sai");
+                    checkID = false;
+                    break;
+                } else {
+                    checkID = true;
+                }
+            }
+        }while (!checkID);
+
         scanner.nextLine();
         System.out.print("nhap vao ten san pham: ");
         String name = scanner.nextLine();
@@ -72,9 +89,15 @@ public class ProductManager {
     //hien thi danh sach san pham
     public static void displayProduct(ArrayList<Product> productArrayList) {
         System.out.println("___Danh sach san pham___");
-        for (Product prd : productArrayList) {
-            System.out.println(prd);
+        if(productArrayList.isEmpty()){
+            System.out.println("Danh sach trong. Vui long nhap them san pham !!!");
+            addProduct(productArrayList);
+        }else {
+            for (Product prd : productArrayList) {
+                System.out.println(prd);
+            }
         }
+
 
     }
 
@@ -102,9 +125,9 @@ public class ProductManager {
         Scanner scanner = new Scanner(System.in);
         int choice;
         System.out.println(" 1.Sap xep theo thu tu gia tang dan " +
-                " \n " + " 2.Sap xep theo thu tu gia giam dan");
+                " \n " + "2.Sap xep theo thu tu gia giam dan");
         choice = scanner.nextInt();
-//        sâp xep gia tang dan
+//        sap xep gia tang dan
         if (choice == 1) {
             ProductSortByPriceIncrease sortByPriceIncrease = new ProductSortByPriceIncrease();
             Collections.sort(productArrayList, sortByPriceIncrease);
@@ -131,10 +154,10 @@ public class ProductManager {
         productArrayList.add(new Product(3, "Noi Com Dien", 100000));
         productArrayList.add(new Product(4, "Quat May", 150000));
         productArrayList.add(new Product(5, "May Bom", 200000));
-
-        int choice = -1;
+//Menu
+        int choice ;
         Scanner scanner = new Scanner(System.in);
-        while (choice != 0) {
+        while (true) {
             System.out.println("________MENU_________");
             System.out.println("1.Them san phan" +
                     "\n" + "2.Sua san pham" +
@@ -142,16 +165,18 @@ public class ProductManager {
                     "\n" + "4.Hien thi" +
                     "\n" + "5.Tim kiem san pham" +
                     "\n" + "6.Sap xep" +
-                    "\n" + "0. Thoat");
+                    "\n" + "0. Thoat Menu");
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
                     addProduct(productArrayList);
                     break;
                 case 2:
+                    displayProduct(productArrayList);
                     editProduct(productArrayList);
                     break;
                 case 3:
+                    displayProduct(productArrayList);
                     deleteProduct(productArrayList);
                     break;
                 case 4:
