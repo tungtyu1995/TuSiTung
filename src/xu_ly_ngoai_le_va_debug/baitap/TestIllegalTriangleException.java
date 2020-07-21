@@ -1,8 +1,5 @@
 package xu_ly_ngoai_le_va_debug.baitap;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class TestIllegalTriangleException extends Exception {
     public TestIllegalTriangleException(String message) {
         super(message);
@@ -15,28 +12,6 @@ public class TestIllegalTriangleException extends Exception {
         }
         if (c1 + c2 <= c3 || c1 + c3 <= c2 || c2 + c3 <= c1) {
             throw new TestIllegalTriangleException("Tong 2 canh phai lon hon canh con lai");
-        }
-        int p = c1 + c2 + c3;
-        System.out.println("chu vi hinh tam giac: " + p);
-    }
-
-    public static void main(String[] args){
-
-        try {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Nhap vao canh thu nhat: ");
-            int c1 = scanner.nextInt();
-            System.out.print("Nhap vao canh thu hai: ");
-            int c2 = scanner.nextInt();
-            System.out.print("Nhap vao canh thu ba: ");
-            int c3 = scanner.nextInt();
-            checkTheTriangle(c1,c2,c3);
-        }
-        catch (InputMismatchException e){
-            System.out.println("Phai nhap vao so");
-        }
-        catch ( TestIllegalTriangleException e){
-            System.out.println(e.getMessage());
         }
 
     }
