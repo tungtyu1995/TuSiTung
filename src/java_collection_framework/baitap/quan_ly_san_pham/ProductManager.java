@@ -11,17 +11,17 @@ public class ProductManager {
         System.out.print("Nhap id san pham can xoa: ");
         int deleteID = scanner.nextInt();
         Product temp = null;
-        boolean isExist = false;
+        boolean check = false;
         for (Product product : productArrayList) {
             if (product.getId() == deleteID) {
                 temp = product;
-                isExist = true;
+                check = true;
                 break;
             }
         }
-        if (isExist) {
+        if (check) {
             productArrayList.remove(temp);
-            System.out.print("Xoa thanh cong!!!");
+            System.out.println("Xoa thanh cong!!!");
         } else {
             System.out.println("Id san pham khong ton tai !!!");
         }
@@ -34,7 +34,7 @@ public class ProductManager {
         System.out.print("Nhap id san pham can sua: ");
         int editID = scanner.nextInt();
 
-        boolean isExist = false;
+        boolean check = false;
         for (Product product : productArrayList) {
             if (product.getId() == editID) {
                 System.out.println(product);
@@ -42,12 +42,12 @@ public class ProductManager {
                 product.setName(scanner.nextLine());
                 product.setName(scanner.nextLine());
                 System.out.print("nhap vao gia san pham: ");
-                product.setPrice(scanner.nextInt());
-                isExist = true;
+                product.setPrice(scanner.nextDouble());
+                check = true;
                 break;
             }
         }
-        if (!isExist) {
+        if (!check) {
             System.out.println("ID khong ton tai!!!");
         }
         displayProduct(productArrayList);
@@ -80,7 +80,7 @@ public class ProductManager {
         System.out.print("nhap vao ten san pham: ");
         String name = scanner.nextLine();
         System.out.print("nhap vao gia san pham: ");
-        int price = scanner.nextInt();
+        double price = scanner.nextDouble();
         Product product = new Product(id, name, price);
         productArrayList.add(product);
         displayProduct(productArrayList);
@@ -107,15 +107,15 @@ public class ProductManager {
         System.out.print("Nhap ten san pham:");
         String nameSearch = scanner.nextLine();
 
-        boolean isExist = false;
+        boolean check = false;
         for (Product product : productArrayList) {
             if (nameSearch.equals(product.getName())) {
                 System.out.println(product.toString());
-                isExist = true;
+                check = true;
                 break;
             }
         }
-        if (!isExist) {
+        if (!check) {
             System.out.println("Ten san pham khong ton tai!!!");
         }
     }
@@ -149,11 +149,11 @@ public class ProductManager {
 
     public static void main(String[] args) {
         ArrayList<Product> productArrayList = new ArrayList<>();
-        productArrayList.add(new Product(1, "Tivi", 300000));
-        productArrayList.add(new Product(2, "Tu Lanh", 500000));
-        productArrayList.add(new Product(3, "Noi Com Dien", 100000));
-        productArrayList.add(new Product(4, "Quat May", 150000));
-        productArrayList.add(new Product(5, "May Bom", 200000));
+        productArrayList.add(new Product(1, "Tivi", 150.5));
+        productArrayList.add(new Product(2, "Tu Lanh", 200.3));
+        productArrayList.add(new Product(3, "Noi Com Dien", 30.3));
+        productArrayList.add(new Product(4, "Quat May", 30.2));
+        productArrayList.add(new Product(5, "May Bom", 100.2));
 //Menu
         int choice ;
         Scanner scanner = new Scanner(System.in);

@@ -11,7 +11,7 @@ public class Exercise_22_02 {
         // Prompt the user to enter a string
         System.out.print("Enter a string: ");
         String string = input.nextLine();
-
+        ;
         LinkedList<Character> max = new LinkedList<>();
 
         // Find the maximum increasingly ordered subsequence

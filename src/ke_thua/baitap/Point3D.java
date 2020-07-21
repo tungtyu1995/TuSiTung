@@ -1,7 +1,7 @@
 package ke_thua.baitap;
 
 public class Point3D extends Point2D {
-    float z = 0.0f;
+    float z;
     public Point3D(){
     }
     public Point3D(float x, float y, float z){

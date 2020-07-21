@@ -1,8 +1,8 @@
 package ke_thua.baitap;
 
 public class Point2D {
-    float x = 0.0f;
-    float y = 0.0f;
+    float x ;
+    float y ;
 
     public Point2D() {
 

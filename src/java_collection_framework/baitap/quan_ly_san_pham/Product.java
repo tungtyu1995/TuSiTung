@@ -4,12 +4,12 @@ package java_collection_framework.baitap.quan_ly_san_pham;
 public class Product {
     public int id;
     public String name;
-    public int price;
+    public double price;
 
     public Product() {
     }
 
-    public Product(int idProduct, String nameProduct, int priceProduct) {
+    public Product(int idProduct, String nameProduct, double priceProduct) {
         this.id = idProduct;
         this.name = nameProduct;
         this.price = priceProduct;
@@ -35,7 +35,7 @@ public class Product {
         this.name = name;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
