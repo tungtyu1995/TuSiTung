@@ -4,25 +4,32 @@ import java.io.*;
 
 public class CopyFile {
     public static void main(String[] args) {
-        try {
-            FileReader fileReader = new FileReader("src/io_text_file/baitap/TextFile.txt");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+        File file = new File("src/io_text_file/baitap/TextFile.txt");
+        if(file.isFile()){
+            try {
 
-            FileWriter fileWriter = new FileWriter("src/io_text_file/baitap/textCopy.txt");
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                FileReader fileReader = new FileReader("src/io_text_file/baitap/TextFile.txt");
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            String line ;
-            while ((line = bufferedReader.readLine()) != null){
-                bufferedWriter.write(line);
-                bufferedWriter.write(System.lineSeparator());
+                FileWriter fileWriter = new FileWriter("src/io_text_file/baitap/textCopy.txt");
+                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+                String line ;
+                while ((line = bufferedReader.readLine()) != null){
+                    bufferedWriter.write(line);
+                    bufferedWriter.write(System.lineSeparator());
+                }
+
+                bufferedReader.close();
+                bufferedWriter.close();
+                fileReader.close();
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
-            bufferedReader.close();
-            bufferedWriter.close();
-            fileReader.close();
-            fileWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        }else {
+            System.out.println("File khong ton tai");
         }
+
     }
 }
