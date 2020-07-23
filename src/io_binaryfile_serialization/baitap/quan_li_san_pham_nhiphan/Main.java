@@ -25,8 +25,8 @@ public class Main {
                     ProductManage.seachProduct();
                     break;
                 case 4:
-                    ProductManage.writeFile();
-                    ProductManage.readFile();
+//                    ProductManage.writeFile();
+//                    ProductManage.readFile();
                     System.exit(0);
                 default:
                     System.out.println("Invalid value !!!");
