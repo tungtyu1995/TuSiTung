@@ -4,9 +4,23 @@ package case_study.models;
 public class Room extends Services {
     private String freeService;
 
-    public Room(String id, String servicesName, double usedArea, double rentAmount, int maxPerson, String renOfType, String freeService) {
-        super(id, servicesName, usedArea, rentAmount, maxPerson, renOfType);
-        this.freeService = freeService;
+    public Room() {
+    }
+
+    public Room(String typeService, double area, double priceRents, int maxNumberOfCustomer, String typeRents, String freeService) {
+        super(typeService, area, priceRents, maxNumberOfCustomer, typeRents);
+    }
+
+    @Override
+    public String showInfor() {
+        return "Room{" +
+                ", typeSerivce='" + typeService + '\'' +
+                ", area=" + area +
+                ", priceRents=" + priceRents +
+                ", maxNumberOfCustomer=" + maxNumberOfCustomer +
+                ", typeRents='" + typeRents + '\'' +
+                "freeService='" + freeService + '\'' +
+                '}';
     }
 
     public String getFreeService() {
@@ -15,17 +29,5 @@ public class Room extends Services {
 
     public void setFreeService(String freeService) {
         this.freeService = freeService;
-    }
-
-    @Override
-    public String toString() {
-        return "Room{" +
-                "freeService='" + freeService + '\'' +
-                '}';
-    }
-
-    @Override
-    public void showInfor() {
-        System.out.println(this.toString());
     }
 }

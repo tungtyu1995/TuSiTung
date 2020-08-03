@@ -2,52 +2,56 @@ package case_study.models;
 
 //Tiêu chuẩn phòng, Mô tả tiện nghi khác, Số tầng.
 public class House extends Services {
-    private String roomStandard;
-    private String otherFacilities;
-    private int numberOfFloors;
+    private String standardRoom;
+    private String convenience;
+    private int numberFloor;
 
-    public House(String id, String servicesName, double usedArea, double rentAmount, int maxPerson, String renOfType, String roomStandard, String otherFacilities, int numberOfFloors) {
-        super(id, servicesName, usedArea, rentAmount, maxPerson, renOfType);
-        this.roomStandard = roomStandard;
-        this.otherFacilities = otherFacilities;
-        this.numberOfFloors = numberOfFloors;
+
+    public House() {
     }
 
-    public String getRoomStandard() {
-        return roomStandard;
+    public House(String typeSerivce, double area, double priceRents, int maxNumberOfCustomer, String typeRents, String standardRoom, String convenience, int numberFloor) {
+        super(typeSerivce, area, priceRents, maxNumberOfCustomer, typeRents);
+        this.standardRoom = standardRoom;
+        this.convenience = convenience;
+        this.numberFloor = numberFloor;
     }
 
-    public void setRoomStandard(String roomStandard) {
-        this.roomStandard = roomStandard;
+    public String getStandardRoom() {
+        return standardRoom;
     }
 
-    public String getOtherFacilities() {
-        return otherFacilities;
+    public void setStandardRoom(String standardRoom) {
+        this.standardRoom = standardRoom;
     }
 
-    public void setOtherFacilities(String otherFacilities) {
-        this.otherFacilities = otherFacilities;
+    public String getConvenience() {
+        return convenience;
     }
 
-    public int getNumberOfFloors() {
-        return numberOfFloors;
+    public void setConvenience(String convenience) {
+        this.convenience = convenience;
     }
 
-    public void setNumberOfFloors(int numberOfFloors) {
-        this.numberOfFloors = numberOfFloors;
+    public int getNumberFloor() {
+        return numberFloor;
+    }
+
+    public void setNumberFloor(int numberFloor) {
+        this.numberFloor = numberFloor;
     }
 
     @Override
-    public String toString() {
+    public String showInfor() {
         return "House{" +
-                "roomStandard='" + roomStandard + '\'' +
-                ", otherFacilities='" + otherFacilities + '\'' +
-                ", numberOfFloors=" + numberOfFloors +
+                "standardRoom='" + standardRoom + '\'' +
+                ", convenience='" + convenience + '\'' +
+                ", numberFloor=" + numberFloor +
+                ", typeSerivce='" + typeService + '\'' +
+                ", area=" + area +
+                ", priceRents=" + priceRents +
+                ", maxNumberOfCustomer=" + maxNumberOfCustomer +
+                ", typeRents='" + typeRents + '\'' +
                 '}';
-    }
-
-    @Override
-    public void showInfor() {
-        System.out.println(this.toString());
     }
 }
