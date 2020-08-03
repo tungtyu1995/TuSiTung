@@ -4,6 +4,7 @@ import case_study.controllers.CheckValueDateCustomer;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,9 +24,9 @@ public class FileCustomerUtils {
         System.out.print("Enter gender customer : ");
         String genderCustomer = CheckValueDateCustomer.checkGender();
         System.out.print("Enter id customer : ");
-        int idCustomer = CheckValueDateCustomer.checkIdCustomer();
+        String idCustomer = CheckValueDateCustomer.checkIdCustomer();
         System.out.print("Enter phone number customer : ");
-        int phoneCustomer = scanner.nextInt();
+        String phoneCustomer = scanner.nextLine();
         System.out.print("Enter email customer : ");
         String emailCustomer = CheckValueDateCustomer.checkEmailCustomer();
         scanner.nextLine();
@@ -40,29 +41,29 @@ public class FileCustomerUtils {
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
-            fileWriter = new FileWriter(file, false);
+            StringBuilder stringBuilder = new StringBuilder();
+            fileWriter = new FileWriter(file, true);
             bufferedWriter = new BufferedWriter(fileWriter);
             for (Customer customer : listCustomers) {
-                bufferedWriter.append(customer.getNameCustomer());
-                bufferedWriter.append(COMMA_DELIMITER);
-                bufferedWriter.append(customer.getDayOfBirth());
-                bufferedWriter.append(COMMA_DELIMITER);
-                bufferedWriter.append(customer.getGender());
-                bufferedWriter.append(COMMA_DELIMITER);
-                bufferedWriter.append(String.valueOf(customer.getIdCustomer()));
-                bufferedWriter.append(COMMA_DELIMITER);
-                bufferedWriter.append(String.valueOf(customer.getIdCustomer()));
-                bufferedWriter.append(COMMA_DELIMITER);
-                bufferedWriter.append(customer.getEmail());
-                bufferedWriter.append(COMMA_DELIMITER);
-                bufferedWriter.append(customer.getTypeOfCustomer());
-                bufferedWriter.append(COMMA_DELIMITER);
-                bufferedWriter.append(customer.getAddressCustomer());
-                bufferedWriter.append(NEW_LINE_SEPARATOR);
-
-                System.out.println("CSV file was created successfully !!!");
-
+                stringBuilder.append(customer.getNameCustomer());
+                stringBuilder.append(COMMA_DELIMITER);
+                stringBuilder.append(customer.getDayOfBirth());
+                stringBuilder.append(COMMA_DELIMITER);
+                stringBuilder.append(customer.getGender());
+                stringBuilder.append(COMMA_DELIMITER);
+                stringBuilder.append((customer.getIdCustomer()));
+                stringBuilder.append(COMMA_DELIMITER);
+                stringBuilder.append((customer.getIdCustomer()));
+                stringBuilder.append(COMMA_DELIMITER);
+                stringBuilder.append(customer.getEmail());
+                stringBuilder.append(COMMA_DELIMITER);
+                stringBuilder.append(customer.getTypeOfCustomer());
+                stringBuilder.append(COMMA_DELIMITER);
+                stringBuilder.append(customer.getAddressCustomer());
+                stringBuilder.append(NEW_LINE_SEPARATOR);
             }
+            bufferedWriter.append(stringBuilder);
+            System.out.println("CSV file was created successfully !!!");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,9 +80,13 @@ public class FileCustomerUtils {
     }
 
     public static void showInformationCustomers() {
+        List<Customer>list=new ArrayList<>();
         File file = new File(FILE_BATH);
         String[] arr;
-        String str = null;
+        StringBuilder str = new StringBuilder(String.format("%s%20s%20s%20s%20s%20s%20s%20s", "Name Customer", "Birthday",
+                "Gender", "Id Customer", "Phone Number", "Email", "Type Customer"));
+        str.append(System.lineSeparator());
+
         try {
             if (!file.exists()) {
                 throw new FileNotFoundException("File not exist");
@@ -91,14 +96,26 @@ public class FileCustomerUtils {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 arr = line.split(",");
-                str += String.format("%s%20s%20s%20s%20s%20s%20s%20s", arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7]);
+                Customer customer = new Customer(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7]);
+                list.add(customer);
             }
+            Collections.sort(list,new SortCustomer());
+            for (Customer customer : list){
+                str.append(customer.showInfor());
+                str.append(System.lineSeparator());
+            }
+            System.out.println(str);
+            bufferedReader.close();
+            fileReader.close();
         } catch (FileNotFoundException e) {
             System.out.println(e);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(str);
+//        System.out.println(str);
+    }
+    public static void addNewBooking()  {
+
     }
 }

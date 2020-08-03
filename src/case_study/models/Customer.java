@@ -4,8 +4,8 @@ public class Customer {
     private String nameCustomer;
     private String dayOfBirth;
     private String gender;
-    private int idCustomer;
-    private int phoneNumberCustomer;
+    private String idCustomer;
+    private String phoneNumberCustomer;
     private String typeOfCustomer;
     private String addressCustomer;
     private String email;
@@ -19,7 +19,7 @@ public class Customer {
         this.email = email;
     }
 
-    public Customer(String nameCustomer, String dayOfBirth, String gender, int idCustomer, int phoneNumberCustomer, String email, String typeOfCustomer, String addressCustomer) {
+    public Customer(String nameCustomer, String dayOfBirth, String gender, String idCustomer, String phoneNumberCustomer, String email, String typeOfCustomer, String addressCustomer) {
         this.nameCustomer = nameCustomer;
         this.dayOfBirth = dayOfBirth;
         this.gender = gender;
@@ -57,19 +57,19 @@ public class Customer {
         this.gender = gender;
     }
 
-    public int getIdCustomer() {
+    public String getIdCustomer() {
         return idCustomer;
     }
 
-    public void setIdCustomer(int idCustomer) {
+    public void setIdCustomer(String idCustomer) {
         this.idCustomer = idCustomer;
     }
 
-    public int getPhoneNumberCustomer() {
+    public String getPhoneNumberCustomer() {
         return phoneNumberCustomer;
     }
 
-    public void setPhoneNumberCustomer(int phoneNumberCustomer) {
+    public void setPhoneNumberCustomer(String phoneNumberCustomer) {
         this.phoneNumberCustomer = phoneNumberCustomer;
     }
 
