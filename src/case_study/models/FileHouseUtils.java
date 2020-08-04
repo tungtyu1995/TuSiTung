@@ -17,7 +17,7 @@ public class FileHouseUtils {
 
     public static void showAllHouse() {
         System.out.println("________show all room_______");
-        String string = String.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s%", "Type Service", "Area Room",
+        String string = String.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s", "Type Service", "Area Room",
                 "Prince Rents", "Maximum Customer", "Type Rents", "Standard Room", "Convenience", "Number Floor");
         string += System.lineSeparator();
         for (Services house : ReadWriteFile.readFile(FILE_HOUSE)) {

@@ -93,12 +93,12 @@ public class Customer {
 
 
     public String showInfor() {
-        return String.format("%-20s%-20s%-20s-%20s-%20s-%20s-%20s-%20s", "Name Customer", "Birthday",
-                "Gender", "Id Customer", "Phone Number", "Email", "Type Customer", "Address Customer");
+        return String.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s", nameCustomer, dayOfBirth,
+                gender, idCustomer, phoneNumberCustomer, email, typeOfCustomer, addressCustomer);
     }
     public String showInforWithIndex(){
-        return String.format("%-20s%-20s%-20s-%20s-%20s-%20s-%20s-%20s", "Name Customer", "Birthday",
-                "Gender", "Id Customer", "Phone Number", "Email", "Type Customer", "Address Customer");
+        return String.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s", nameCustomer, dayOfBirth,
+                gender, idCustomer, phoneNumberCustomer, email, typeOfCustomer, addressCustomer);
     }
     public static String getServices(){
         return services.showInfor();

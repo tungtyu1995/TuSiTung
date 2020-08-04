@@ -18,7 +18,7 @@ public class FileVillaUtils {
     public static void showAllVilla() {
         System.out.println("_______Add New Service Villa______");
         String string;
-        string = String.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s%","Type Service", "Area Room",
+        string = String.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s","Type Service", "Area Room",
                 "Prince Rents", "Maximum Customer", "Type Rents", "Standard Room", "Convenience","Area Swimming","Number Floor");
         string += System.lineSeparator();
         for (Services villa : ReadWriteFile.readFile(FILE_VILLA)) {

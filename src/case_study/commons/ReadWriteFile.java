@@ -9,52 +9,72 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ReadWriteFile {
-    private static final String NEW_LINE_SEPARATOT = "\n";
+    private static final String NEW_LINE_SEPARATOR = "\n";
     private static final String COMMA_DELIMITER = ",";
 
     public static void writeFile(Scanner scanner, String FILE_BATH) {
         ArrayList<Room> roomArrayList = new ArrayList<>();
         ArrayList<Villa> villaArrayList = new ArrayList<>();
         ArrayList<House> houseArrayList = new ArrayList<>();
+
         File file = new File(FILE_BATH);
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
-        System.out.println("Enter name service(SVXX_YYYY): ");
+        scanner.nextLine();
+        System.out.println("Enter name service(SVXX-YYYY): ");
         String nameService = scanner.nextLine();
         CheckValuedate.checkNameService(nameService);
+
         System.out.println("Enter area room: ");
         double areaRoom = CheckValuedate.checkArea();
+
         System.out.println("Enter cost rent: ");
         double cost = CheckValuedate.checkCost();
+
         System.out.println("Enter number customer:  ");
         int numberCustomer = CheckValuedate.maxCustomer();
+
         System.out.println("Enter type rent: (hours, day, month) ");
         String typeRent = scanner.nextLine();
+
 //        Room
+
         if (FILE_BATH.equals(FileRoomUtils.FILE_ROOM)) {
             System.out.println("Free Service");
+
             String freeService = scanner.nextLine();
             roomArrayList.add(new Room(nameService, areaRoom, cost, numberCustomer, typeRent, freeService));
+
 //        House
+
         } else if (FILE_BATH.equals(FileHouseUtils.FILE_HOUSE)) {
             System.out.println("Enter standard room: ");
             String standardRoom = scanner.nextLine();
+
             System.out.println("Enter describe convenience: ");
             String convenience = scanner.nextLine();
+
             System.out.println("Enter number floor: ");
             int numberFloor = CheckValuedate.checkFloor();
+
             houseArrayList.add(new House(nameService, areaRoom, cost, numberCustomer, typeRent, standardRoom, convenience, numberFloor));
         }
+
 //        Villa
+
         else if (FILE_BATH.equals(FileVillaUtils.FILE_VILLA)) {
             System.out.println("Enter describe convenience: ");
             String convenience = scanner.nextLine();
+
             System.out.println("Enter standard room: ");
             String standardRoom = scanner.nextLine();
+
             System.out.println("Enter area swimming: ");
+            double areaSwimming = CheckValuedate.checkArea();
+
             System.out.println("Enter number floor: ");
             int numberFloor = CheckValuedate.checkFloor();
-            double areaSwimming = CheckValuedate.checkArea();
+
             villaArrayList.add(new Villa(nameService, areaRoom, cost, numberCustomer, typeRent,
                     standardRoom, convenience, areaSwimming, numberFloor));
         }
@@ -66,7 +86,7 @@ public class ReadWriteFile {
                 for (Room room : roomArrayList) {
                     serviceGeneral(stringBuilder, room.getArea(), room.getPriceRents(), room.getMaxNumberOfCustomer(),
                             room.getTypeRents(), room.getTypeService());
-                    stringBuilder.append(NEW_LINE_SEPARATOT);
+                    stringBuilder.append(NEW_LINE_SEPARATOR);
                 }
             } else if (FILE_BATH.equals(FileHouseUtils.FILE_HOUSE)) {
                 for (House house : houseArrayList) {
@@ -77,7 +97,7 @@ public class ReadWriteFile {
                     stringBuilder.append(house.getConvenience());
                     stringBuilder.append(COMMA_DELIMITER);
                     stringBuilder.append(house.getNumberFloor());
-                    stringBuilder.append(NEW_LINE_SEPARATOT);
+                    stringBuilder.append(NEW_LINE_SEPARATOR);
                 }
             } else if (FILE_BATH.equals(FileVillaUtils.FILE_VILLA)) {
                 for (Villa villa : villaArrayList) {
@@ -90,7 +110,7 @@ public class ReadWriteFile {
                     stringBuilder.append(villa.getAreaSwimming());
                     stringBuilder.append(COMMA_DELIMITER);
                     stringBuilder.append(villa.getNumberFloor());
-                    stringBuilder.append(NEW_LINE_SEPARATOT);
+                    stringBuilder.append(NEW_LINE_SEPARATOR);
                 }
             }
             bufferedWriter.append(stringBuilder);
@@ -122,7 +142,7 @@ public class ReadWriteFile {
     }
 
     public static List<Services> readFile(String FILE_BATH) {
-        List<Services> list =new ArrayList<>();
+        List<Services> list = new ArrayList<>();
 
         File file = new File(FILE_BATH);
         String[] arr;

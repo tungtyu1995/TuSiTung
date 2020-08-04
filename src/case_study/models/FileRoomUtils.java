@@ -18,7 +18,7 @@ public class FileRoomUtils {
     public static void showAllRoom() {
         System.out.println("_______Add New Service Room______");
         String string;
-        string = String.format("%-20s%-20s%-20s%-20s%-20s%-20s%","Type Service", "Area Room",
+        string = String.format("%-20s%-20s%-20s%-20s%-20s%-20s","Type Service", "Area Room",
                 "Prince Rents", "Maximum Customer", "Type Rents","FreeService");
         string += System.lineSeparator();
         for (Services room : ReadWriteFile.readFile(FILE_ROOM)){

@@ -1,37 +1,43 @@
 package case_study.models;
 
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.*;
 
 public class CinemaCustomer {
-public final int CAPACITY = 20;
-private Deque<String> deque = new LinkedList<>();
-private int available = CAPACITY;
+    static Scanner scanner = new Scanner(System.in);
+    static Queue myQueue = new LinkedList();
 
-    public int getCAPACITY() {
-        return CAPACITY;
+    public static void sellTicket(){
+        FileCustomerUtils.showInformationCustomers();
+
+        List<Customer> listCustomerTicket = FileCustomerUtils.readCustomer();
+        Collections.sort(listCustomerTicket, new SortCustomer());
+
+        String idTicket;
+        boolean checkStatus = false;
+        do {
+            System.out.println("Enter 'id customer' or 'name customer': to buy ticket  or 'Exit': to back menu. ");
+            idTicket = scanner.nextLine();
+
+            if (idTicket.equals("Exit")){
+                checkStatus = true;
+            }
+            else {
+                for (int i = 0; i < listCustomerTicket.size(); i++ ){
+                    if (listCustomerTicket.get(i).getIdCustomer().equals(idTicket) || listCustomerTicket.get(i).getNameCustomer().equals(idTicket)){
+                        myQueue.offer(listCustomerTicket.get(i).getNameCustomer() + " Id: " + listCustomerTicket.get(i).getIdCustomer());
+                        System.out.println("Succession");
+                        checkStatus = false;
+                    }
+                }
+            }
+        }
+        while (!checkStatus);
     }
-
-    public Deque<String> getDeque() {
-        return deque;
-    }
-
-    public void setDeque(Deque<String> deque) {
-        this.deque = deque;
-    }
-
-    public int getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(int available) {
-        this.available = available;
-    }
-    public void buyTicket(String name, int numberOfTicket){
-        if (available > numberOfTicket){
-            deque.add(name);
-            System.out.println(" Tickets have been bought ");
-
+    public static void getCustomer(){
+        int i = 1;
+        while (!myQueue.isEmpty()){
+            System.out.println(i+" Name: " + myQueue.poll());
+            i++;
         }
     }
 }

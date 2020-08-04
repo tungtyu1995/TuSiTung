@@ -25,7 +25,8 @@ public class MainController {
                     "5.\tAdd New Booking\n" +
                     "6.\tShow Information of Employee\n" +
                     "7.\tSearch Information of Employee\n" +
-                    "8.\tExit\n" +
+                    "8.\tService Cinema Customer\n" +
+                    "9.\tExit\n" +
                     "Enter the number : ");
 
 
@@ -53,6 +54,9 @@ public class MainController {
                     CabinetDocument.searchEmployee();
                     break;
                 case 8:
+                    CinemaCustomer(scanner);
+                    break;
+                case 9:
                     System.exit(0);
                 default:
                     System.out.println("Error number");
@@ -143,6 +147,35 @@ public class MainController {
 
             }
         } while (inputMenu != -1);
-
     }
+
+    public static void CinemaCustomer(Scanner scanner) {
+        int inputMenu;
+        System.out.println("______Cinema Customer_______");
+        do {
+            System.out.println("1.\tAdd new ticket\n" +
+                    "2.\tShow list ticket\n" +
+                    "3.\tExit to menu\n" +
+                    "4.\tExit\n" +
+                    "Enter nummber");
+            inputMenu = scanner.nextInt();
+            switch (inputMenu) {
+                case 1:
+                    CinemaCustomer.sellTicket();
+                    break;
+                case 2:
+                    CinemaCustomer.getCustomer();
+                    break;
+                case 3:
+                    displayMainMenu(scanner);
+                    break;
+                case 4:
+                    inputMenu = -1;
+                default:
+                    System.out.println("Error Input");
+            }
+        }while (inputMenu != -1);
+    }
+
+
 }

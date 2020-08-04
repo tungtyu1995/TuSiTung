@@ -58,15 +58,8 @@ public class Villa extends Services {
     @Override
     public String showInfor() {
 
-        return "Villa {" + "typeSerivce = " + typeService + '\'' +
-                ", area = " + area +
-                ", priceRents = " + priceRents +
-                ", maxNumberOfCustomer = " + maxNumberOfCustomer +
-                ", typeRents = " + typeRents + '\'' +
-                "standardRoom='" + standardRoom + '\'' +
-                ", convenience='" + convenience + '\'' +
-                ", areaSwimming=" + areaSwimming +
-                ", numberFloor=" + numberFloor +
-                '}';
+        return String.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s",typeService, area, priceRents, maxNumberOfCustomer,
+                typeRents, standardRoom, convenience, areaSwimming, numberFloor);
+
     }
 }

@@ -81,7 +81,7 @@ public class FileCustomerUtils {
     }
 
     public static List<Customer> readCustomer() {
-        List<Customer> customerList = new ArrayList<>();
+        List<Customer> listCustomers = new ArrayList<>();
         File file = new File(FILE_BATH);
         String[] arr;
         try {
@@ -91,7 +91,7 @@ public class FileCustomerUtils {
             while ((line = bufferedReader.readLine()) != null) {
                 arr = line.split(",");
                 Customer customer = new Customer(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7]);
-                customerList.add(customer);
+                listCustomers.add(customer);
             }
             bufferedReader.close();
             fileReader.close();
@@ -101,12 +101,12 @@ public class FileCustomerUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return customerList;
+        return listCustomers;
     }
 
     public static void showInformationCustomers() {
         System.out.println("_________Show all customer__________");
-        String string = String.format("%-20s%-20s%-20s-%20s-%20s-%20s-%20s-%20s", "Name Customer", "Birthday",
+        String string = String.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s", "Name Customer", "Birthday",
                 "Gender", "Id Customer", "Phone Number", "Email", "Type Customer", "Address Customer");
         string += System.lineSeparator();
         List<Customer> listTemp = readCustomer();

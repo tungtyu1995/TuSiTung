@@ -13,14 +13,8 @@ public class Room extends Services {
 
     @Override
     public String showInfor() {
-        return "Room{" +
-                ", typeSerivce='" + typeService + '\'' +
-                ", area=" + area +
-                ", priceRents=" + priceRents +
-                ", maxNumberOfCustomer=" + maxNumberOfCustomer +
-                ", typeRents='" + typeRents + '\'' +
-                "freeService='" + freeService + '\'' +
-                '}';
+        return String.format("%-20s%-20s%-20s%-20s%-20s%-20s", typeService, area, priceRents, maxNumberOfCustomer, typeRents, freeService);
+
     }
 
     public String getFreeService() {
