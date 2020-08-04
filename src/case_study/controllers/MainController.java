@@ -1,5 +1,6 @@
 package case_study.controllers;
 
+import case_study.libs.CabinetDocument;
 import case_study.models.*;
 
 import java.util.Scanner;
@@ -23,7 +24,8 @@ public class MainController {
                     "4.\tShow Information of Customer\n" +
                     "5.\tAdd New Booking\n" +
                     "6.\tShow Information of Employee\n" +
-                    "7.\tExit\n" +
+                    "7.\tSearch Information of Employee\n" +
+                    "8.\tExit\n" +
                     "Enter the number : ");
 
 
@@ -42,10 +44,15 @@ public class MainController {
                     FileCustomerUtils.showInformationCustomers();
                     break;
                 case 5:
+
                     break;
                 case 6:
+                    FileEmployeeUtils.showInformationEmployee();
                     break;
                 case 7:
+                    CabinetDocument.searchEmployee();
+                    break;
+                case 8:
                     System.exit(0);
                 default:
                     System.out.println("Error number");
