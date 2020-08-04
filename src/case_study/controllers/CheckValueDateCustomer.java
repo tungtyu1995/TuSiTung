@@ -45,10 +45,10 @@ public class CheckValueDateCustomer {
         return checkGender();
     }
 
-    public static int checkIdCustomer() {
+    public static String checkIdCustomer() {
         String idCustomer = scanner.nextLine();
         if (Pattern.compile(ID_CUSTOMER).matcher(idCustomer).matches()) {
-            return Integer.parseInt(idCustomer);
+            return idCustomer;
         } else {
             System.out.println("Wrong Id");
             return checkIdCustomer();

@@ -14,9 +14,10 @@ public class FileCustomerUtils {
     private static final String COMMA_DELIMITER = ",";
 
     static Scanner scanner = new Scanner(System.in);
-    static List<Customer> listCustomers = new ArrayList<>();
+
 
     public static void addNewCustomer() {
+        List<Customer> listCustomers = new ArrayList<>();
         System.out.print("Enter name customer : ");
         String nameCustomer = CheckValueDateCustomer.checkNameCustomer();
         System.out.print("Enter birthday customer : ");
@@ -79,43 +80,41 @@ public class FileCustomerUtils {
         }
     }
 
-    public static void showInformationCustomers() {
-        List<Customer>list=new ArrayList<>();
+    public static List<Customer> readCustomer() {
+        List<Customer> customerList = new ArrayList<>();
         File file = new File(FILE_BATH);
         String[] arr;
-        StringBuilder str = new StringBuilder(String.format("%s%20s%20s%20s%20s%20s%20s%20s", "Name Customer", "Birthday",
-                "Gender", "Id Customer", "Phone Number", "Email", "Type Customer"));
-        str.append(System.lineSeparator());
-
         try {
-            if (!file.exists()) {
-                throw new FileNotFoundException("File not exist");
-            }
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 arr = line.split(",");
                 Customer customer = new Customer(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7]);
-                list.add(customer);
+                customerList.add(customer);
             }
-            Collections.sort(list,new SortCustomer());
-            for (Customer customer : list){
-                str.append(customer.showInfor());
-                str.append(System.lineSeparator());
-            }
-            System.out.println(str);
             bufferedReader.close();
             fileReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println(e);
 
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
-//        System.out.println(str);
+        return customerList;
     }
-    public static void addNewBooking()  {
 
+    public static void showInformationCustomers() {
+        System.out.println("_________Show all customer__________");
+        String string = String.format("%-20s%-20s%-20s-%20s-%20s-%20s-%20s-%20s", "Name Customer", "Birthday",
+                "Gender", "Id Customer", "Phone Number", "Email", "Type Customer", "Address Customer");
+        string += System.lineSeparator();
+        List<Customer> listTemp = readCustomer();
+        Collections.sort(listTemp, new SortCustomer());
+        for (Customer customer : listTemp) {
+            string += customer.showInfor();
+            string += System.lineSeparator();
+        }
+        System.out.println(string);
     }
 }

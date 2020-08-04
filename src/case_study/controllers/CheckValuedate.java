@@ -14,8 +14,8 @@ public class CheckValuedate {
     //    private static final String  = "^[SV][VL|HO|RO][\\d]{4}$";
     static Scanner scanner = new Scanner(System.in);
 
-    public static String checkNameService() {
-        String nameService = scanner.nextLine();
+    public static String checkNameService(String nameService) {
+
         Pattern pattern = Pattern.compile(VALUE_NAME_SERVICE);
         Matcher matcher = pattern.matcher(nameService);
 
@@ -24,22 +24,11 @@ public class CheckValuedate {
         } else {
             System.out.println("Wrong name service");
             System.out.print("Enter name service again : ");
-            return checkNameService();
+            String name = scanner.nextLine();
+            return checkNameService(name);
         }
     }
 
-//    public static double checkArea() {
-//        String area = scanner.nextLine();
-//
-//        if (Pattern.compile(VALUE_AREA).matcher(area).matches()) {
-//            return Double.parseDouble(area);
-//        } else {
-//            System.out.println("Wrong area");
-//            System.out.print("Enter area again : ");
-//            return checkArea();
-//        }
-
-    //    }
     public static double checkArea() {
         String area = scanner.nextLine();
 

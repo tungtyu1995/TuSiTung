@@ -9,7 +9,7 @@ public class Customer {
     private String typeOfCustomer;
     private String addressCustomer;
     private String email;
-    Services services;
+   public static Services services;
 
     public String getEmail() {
         return email;
@@ -19,7 +19,8 @@ public class Customer {
         this.email = email;
     }
 
-    public Customer(String nameCustomer, String dayOfBirth, String gender, String idCustomer, String phoneNumberCustomer, String email, String typeOfCustomer, String addressCustomer) {
+    public Customer(String nameCustomer, String dayOfBirth, String gender, String idCustomer,
+                    String phoneNumberCustomer, String email, String typeOfCustomer, String addressCustomer) {
         this.nameCustomer = nameCustomer;
         this.dayOfBirth = dayOfBirth;
         this.gender = gender;
@@ -30,7 +31,8 @@ public class Customer {
         this.email = email;
     }
 
-    Customer() {
+    Customer(Services services) {
+        this.services = services;
     }
 
     public String getNameCustomer() {
@@ -89,16 +91,19 @@ public class Customer {
         this.addressCustomer = addressCustomer;
     }
 
+
     public String showInfor() {
-        return "Customer{" +
-                "nameCustomer= " + nameCustomer + '\'' +
-                ", dayOfBirth= " + dayOfBirth + '\'' +
-                ", gender= " + gender + '\'' +
-                ", idCustomer= " + idCustomer +
-                ", phoneNumberCustomer= " + phoneNumberCustomer +
-                ", typeOfCustomer= " + typeOfCustomer + '\'' +
-                ", addressCustomer= " + addressCustomer + '\'' +
-                ", services= " + services +
-                '}';
+        return String.format("%-20s%-20s%-20s-%20s-%20s-%20s-%20s-%20s", "Name Customer", "Birthday",
+                "Gender", "Id Customer", "Phone Number", "Email", "Type Customer", "Address Customer");
+    }
+    public String showInforWithIndex(){
+        return String.format("%-20s%-20s%-20s-%20s-%20s-%20s-%20s-%20s", "Name Customer", "Birthday",
+                "Gender", "Id Customer", "Phone Number", "Email", "Type Customer", "Address Customer");
+    }
+    public static String getServices(){
+        return services.showInfor();
+    }
+    public static void setServices(Services services){
+        Customer.services = services;
     }
 }
