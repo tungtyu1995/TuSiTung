@@ -49,9 +49,9 @@ public class Employee {
 
     @Override
     public String toString() {
-        return String.format("%-30s%-20s%-20s%",nameEmployee,ageEmployee,addressEmployee);
+        return String.format("%-20s%-20s%-20s%-20s","",nameEmployee,ageEmployee,addressEmployee);
     }
     public String toStringWithIndex(){
-        return String.format("%-30s%-20s%-20s%",nameEmployee,ageEmployee,addressEmployee);
+        return String.format("%-20s%-30s%-20s%-20s",nameEmployee,ageEmployee,addressEmployee);
     }
 }

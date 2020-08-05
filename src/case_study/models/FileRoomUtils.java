@@ -4,8 +4,7 @@ import case_study.commons.ReadWriteFile;
 import case_study.controllers.CheckValuedate;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class FileRoomUtils {
     public static final String FILE_ROOM = "D:\\\\C0520G1-Tung\\\\src\\\\case_study\\\\data\\\\Room.csv";
@@ -27,7 +26,16 @@ public class FileRoomUtils {
         }
         System.out.println(string);
     }
-
+    public static void showAllRoomNotDuplicate() {
+        List<Services> roomList = ReadWriteFile.readFile(FILE_ROOM);
+        TreeSet<Services> roomTreeSet = new TreeSet<>(Comparator.comparing(Services::getTypeService));
+        for (Services services : roomList){
+            roomTreeSet.add(services);
+        }
+        for (Services services : roomTreeSet){
+            System.out.println(services.showInfor());
+        }
+    }
 
 //    private static final String FILE_BATH = "D:\\C0520G1-Tung\\src\\case_study\\data\\Room.csv";
     //    private static final String NEW_LINE_SEPARATOR = "\n";

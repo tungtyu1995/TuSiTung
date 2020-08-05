@@ -18,19 +18,18 @@ public class FileCustomerUtils {
 
     public static void addNewCustomer() {
         List<Customer> listCustomers = new ArrayList<>();
-        System.out.print("Enter name customer : ");
+//        System.out.print("Enter name customer : ");
         String nameCustomer = CheckValueDateCustomer.checkNameCustomer();
-        System.out.print("Enter birthday customer : ");
+//        System.out.print("Enter birthday customer : ");
         String birthdayCustomer = CheckValueDateCustomer.checkDayOfBirthCustomer();
-        System.out.print("Enter gender customer : ");
+//        System.out.print("Enter gender customer : ");
         String genderCustomer = CheckValueDateCustomer.checkGender();
-        System.out.print("Enter id customer : ");
+//        System.out.print("Enter id customer : ");
         String idCustomer = CheckValueDateCustomer.checkIdCustomer();
         System.out.print("Enter phone number customer : ");
         String phoneCustomer = scanner.nextLine();
-        System.out.print("Enter email customer : ");
+//        System.out.print("Enter email customer : ");
         String emailCustomer = CheckValueDateCustomer.checkEmailCustomer();
-        scanner.nextLine();
         System.out.print("Enter type customer (Diamond,Gold,Sliver) :");
         String typeCustomer = scanner.nextLine();
         System.out.print("Enter address customer :");

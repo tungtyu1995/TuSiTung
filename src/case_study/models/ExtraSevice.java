@@ -1,22 +1,22 @@
 package case_study.models;
 //Dịch vụ đi kèm sẽ bao gồm các thông tin: Tên dịch vụ đi kèm, Đơn vị, Giá tiền
 public class ExtraSevice {
-    private String extraSeviceName;
+    private String extraServiceName;
     private String unit;
-    private double extraSevicePrice;
+    private double extraServicePrice;
 
-    public ExtraSevice(String extraSeviceName, String unit, double extraSevicePrice) {
-        this.extraSeviceName = extraSeviceName;
+    public ExtraSevice(String extraServiceName, String unit, double extraServicePrice) {
+        this.extraServiceName = extraServiceName;
         this.unit = unit;
-        this.extraSevicePrice = extraSevicePrice;
+        this.extraServicePrice = extraServicePrice;
     }
 
-    public String getExtraSeviceName() {
-        return extraSeviceName;
+    public String getExtraServiceName() {
+        return extraServiceName;
     }
 
-    public void setExtraSeviceName(String extraSeviceName) {
-        this.extraSeviceName = extraSeviceName;
+    public void setExtraServiceName(String extraServiceName) {
+        this.extraServiceName = extraServiceName;
     }
 
     public String getUnit() {
@@ -27,20 +27,20 @@ public class ExtraSevice {
         this.unit = unit;
     }
 
-    public double getExtraSevicePrice() {
-        return extraSevicePrice;
+    public double getExtraServicePrice() {
+        return extraServicePrice;
     }
 
-    public void setExtraSevicePrice(double extraSevicePrice) {
-        this.extraSevicePrice = extraSevicePrice;
+    public void setExtraServicePrice(double extraServicePrice) {
+        this.extraServicePrice = extraServicePrice;
     }
 
     @Override
     public String toString() {
         return "ExtraSevice{" +
-                "extraSeviceName='" + extraSeviceName + '\'' +
+                "extraSeviceName='" + extraServiceName + '\'' +
                 ", unit='" + unit + '\'' +
-                ", extraSevicePrice=" + extraSevicePrice +
+                ", extraSevicePrice=" + extraServicePrice +
                 '}';
     }
 }

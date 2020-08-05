@@ -43,11 +43,21 @@ public class House extends Services {
 
     @Override
     public String showInfor() {
+        return String.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s",standardRoom, convenience, numberFloor, typeService,
+                area, priceRents, maxNumberOfCustomer, typeRents);
+    }
+    public String showInforWithIndex(){
+        return String.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s","",standardRoom, convenience, numberFloor, typeService,
+                area, priceRents, maxNumberOfCustomer, typeRents);
+    }
+
+    @Override
+    public String toString() {
         return "House{" +
                 "standardRoom='" + standardRoom + '\'' +
                 ", convenience='" + convenience + '\'' +
                 ", numberFloor=" + numberFloor +
-                ", typeSerivce='" + typeService + '\'' +
+                ", typeService='" + typeService + '\'' +
                 ", area=" + area +
                 ", priceRents=" + priceRents +
                 ", maxNumberOfCustomer=" + maxNumberOfCustomer +

@@ -1,5 +1,6 @@
 package case_study.controllers;
 
+import case_study.libs.Booking;
 import case_study.libs.CabinetDocument;
 import case_study.models.*;
 
@@ -9,7 +10,6 @@ public class MainController {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        MainController mainController = new MainController();
         displayMainMenu(scanner);
     }
 
@@ -17,7 +17,7 @@ public class MainController {
 
         int inputMenu;
         do {
-            System.out.println("-------------- Display Main Menu ----------------");
+            System.out.println("_________ Display Main Menu___________ ");
             System.out.print("1.\tAdd New Services\n" +
                     "2.\tShow Services\n" +
                     "3.\tAdd New Customer\n" +
@@ -45,7 +45,7 @@ public class MainController {
                     FileCustomerUtils.showInformationCustomers();
                     break;
                 case 5:
-
+                    Booking.addNewBooking();
                     break;
                 case 6:
                     FileEmployeeUtils.showInformationEmployee();
@@ -70,7 +70,7 @@ public class MainController {
         int inputMenu;
 
         do {
-            System.out.println("------------ Add New Service --------------");
+            System.out.println("___________Add New Service___________");
             System.out.print("1.\tAdd New Villa\n" +
                     "2.\tAdd New House\n" +
                     "3.\tAdd New Room\n" +
@@ -102,10 +102,9 @@ public class MainController {
         displayMainMenu(scanner);
     }
 
-
     public static void showServices(Scanner scanner) {
 
-        System.out.println("---------- Show all service--------");
+        System.out.println("___________ Show all service___________");
         int inputMenu;
         do {
             System.out.print("1.\tShow all Villa\n" +
@@ -113,7 +112,7 @@ public class MainController {
                     "3.\tShow all Room\n" +
                     "4.\tShow All Name Villa Not Duplicate\n" +
                     "5.\tShow All Name House Not Duplicate\n" +
-                    "6.\tShow All Name Name Not Duplicate\n" +
+                    "6.\tShow All Name Room Not Duplicate\n" +
                     "7.\tBack to menu\n" +
                     "8.\tExit\n" +
                     "Enter the number : ");
@@ -131,10 +130,13 @@ public class MainController {
                     FileRoomUtils.showAllRoom();
                     break;
                 case 4:
+                    FileVillaUtils.showAllVillaNotDuplicate();
                     break;
                 case 5:
+                    FileHouseUtils.showAllHouseNotDuplicate();
                     break;
                 case 6:
+                    FileRoomUtils.showAllRoomNotDuplicate();
                     break;
                 case 7:
                     displayMainMenu(scanner);
@@ -174,8 +176,7 @@ public class MainController {
                 default:
                     System.out.println("Error Input");
             }
-        }while (inputMenu != -1);
+        }
+        while (inputMenu != -1);
     }
-
-
 }

@@ -2,10 +2,10 @@ package case_study.models;
 
 import case_study.commons.ReadWriteFile;
 import case_study.controllers.CheckValuedate;
+import java_collection_framework.baitap.Tree.Tree;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class FileVillaUtils {
     public static final String FILE_VILLA = "D:\\\\C0520G1-Tung\\\\src\\\\case_study\\\\data\\\\Villa.csv";
@@ -26,6 +26,16 @@ public class FileVillaUtils {
             string += System.lineSeparator();
         }
         System.out.println(string);
+    }
+    public static void showAllVillaNotDuplicate() {
+        List<Services> villaList = ReadWriteFile.readFile(FILE_VILLA);
+        TreeSet<Services> villaTreeSet = new TreeSet<>(Comparator.comparing(Services::getTypeService));
+        for (Services services : villaList){
+           villaTreeSet.add(services);
+        }
+        for (Services services : villaTreeSet){
+            System.out.println(services.showInfor());
+        }
     }
 
 

@@ -9,7 +9,7 @@ public class Villa extends Services {
     private String convenience;
     private double areaSwimming;
     private int numberFloor;
-    ArrayList<Villa> listVilla = new ArrayList<>();
+
 
     public Villa() {
     }
@@ -61,5 +61,26 @@ public class Villa extends Services {
         return String.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s",typeService, area, priceRents, maxNumberOfCustomer,
                 typeRents, standardRoom, convenience, areaSwimming, numberFloor);
 
+    }
+
+    public String showInforWithIndex(){
+        return String.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s","",typeService, area, priceRents, maxNumberOfCustomer,
+                typeRents, standardRoom, convenience, areaSwimming, numberFloor);
+
+    }
+
+    @Override
+    public String toString() {
+        return "Villa{" +
+                "standardRoom='" + standardRoom + '\'' +
+                ", convenience='" + convenience + '\'' +
+                ", areaSwimming=" + areaSwimming +
+                ", numberFloor=" + numberFloor +
+                ", typeService='" + typeService + '\'' +
+                ", area=" + area +
+                ", priceRents=" + priceRents +
+                ", maxNumberOfCustomer=" + maxNumberOfCustomer +
+                ", typeRents='" + typeRents + '\'' +
+                '}';
     }
 }

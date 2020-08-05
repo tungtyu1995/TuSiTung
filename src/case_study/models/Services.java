@@ -6,7 +6,7 @@ public abstract class Services {
     protected double priceRents;
     protected int maxNumberOfCustomer;
     protected String typeRents;
-
+    public abstract String showInforWithIndex();
     public abstract String showInfor();
 
     public Services() {

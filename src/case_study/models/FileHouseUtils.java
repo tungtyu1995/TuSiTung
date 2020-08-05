@@ -2,12 +2,11 @@ package case_study.models;
 
 import case_study.commons.ReadWriteFile;
 import case_study.controllers.CheckValuedate;
-
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class FileHouseUtils {
+
     public static final String FILE_HOUSE = "D:\\\\C0520G1-Tung\\\\src\\\\case_study\\\\data\\\\House.csv";
 
     public static void addNewServiceHouse(Scanner scanner) {
@@ -26,7 +25,16 @@ public class FileHouseUtils {
         }
         System.out.println(string);
     }
-
+    public static void showAllHouseNotDuplicate() {
+        List<Services> houseList = ReadWriteFile.readFile(FILE_HOUSE);
+        TreeSet<Services> houseTreeSet = new TreeSet<>(Comparator.comparing(Services::getTypeService));
+        for (Services services : houseList){
+            houseTreeSet.add(services);
+        }
+        for (Services services : houseTreeSet){
+            System.out.println(services.showInfor());
+        }
+    }
 
 //    private static final String FILE_BATH = "D:\\C0520G1-Tung\\src\\case_study\\data\\House.csv";
 //    private static final String NEW_LINE_SEPARATOR = "\n";

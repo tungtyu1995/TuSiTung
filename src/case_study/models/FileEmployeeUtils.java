@@ -35,7 +35,7 @@ public class FileEmployeeUtils {
     public static void showInformationEmployee() {
         System.out.println("_________show Information Employee__________");
 
-        String string = String.format("%-20s%-20s%-20s%-20s%", "Id Employee", "Name employee", "Age Employee", "Address");
+        String string = String.format("%-20s%-20s%-20s%-20s", "Id Employee", "Name employee", "Age Employee", "Address");
         string += System.lineSeparator();
         TreeMap<Integer, Employee> treeMap = readEmployee();
         Set<Integer> set = treeMap.keySet();

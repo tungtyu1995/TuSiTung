@@ -9,7 +9,7 @@ public class Customer {
     private String typeOfCustomer;
     private String addressCustomer;
     private String email;
-   public static Services services;
+    public static Services services;
 
     public String getEmail() {
         return email;
@@ -96,14 +96,17 @@ public class Customer {
         return String.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s", nameCustomer, dayOfBirth,
                 gender, idCustomer, phoneNumberCustomer, email, typeOfCustomer, addressCustomer);
     }
-    public String showInforWithIndex(){
-        return String.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s", nameCustomer, dayOfBirth,
+
+    public String showInforWithIndex() {
+        return String.format("%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s%-20s","", nameCustomer, dayOfBirth,
                 gender, idCustomer, phoneNumberCustomer, email, typeOfCustomer, addressCustomer);
     }
-    public static String getServices(){
+
+    public static String getServices() {
         return services.showInfor();
     }
-    public static void setServices(Services services){
+
+    public static void setServices(Services services) {
         Customer.services = services;
     }
 }
