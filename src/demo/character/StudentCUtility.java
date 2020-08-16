@@ -5,16 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentCUtility {
-    private static List<StudentC> studentCList = new ArrayList<>();
+    private static List<StudentC> studentList = new ArrayList<>();
     private static final String STUDENTC_FILE_PATH = "D:\\C0520G1-Tung\\src\\demo\\character\\StudentC.csv";
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_SEPARATOR = "\n";
-    private static final String FILE_HEADER = "Id, Name, Address, Age";
+    private static final String FILE_HEADER = "Id,Name,Address,Age";
 
     private static File file = new File(STUDENTC_FILE_PATH);
 
     public static List<StudentC> readStudentCFile() {
         try {
+            studentList.clear();
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String id;
@@ -29,28 +30,29 @@ public class StudentCUtility {
                 if ("Id".compareTo(studentCStringArray[0]) == 0) {
                     continue;
                 }
+                System.out.println("hghjg");
                 id = studentCStringArray[0];
+                System.out.println(id);
                 name = studentCStringArray[1];
                 address = studentCStringArray[2];
                 age = Integer.parseInt(studentCStringArray[3]);
                 studentC = new StudentC(id, name, address, age);
-                studentCList.add(studentC);
+                studentList.add(studentC);
             }
             fileReader.close();
             bufferedReader.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e);
+
         }
-        return readStudentCFile();
+        return studentList;
     }
 
     public static void writeStudentCFile(List<StudentC> studentCList) {
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
-            fileWriter = new FileWriter(file);
+            fileWriter = new FileWriter(file.getAbsoluteFile());
             bufferedWriter = new BufferedWriter(fileWriter);
 
             if (!studentCList.isEmpty()) {

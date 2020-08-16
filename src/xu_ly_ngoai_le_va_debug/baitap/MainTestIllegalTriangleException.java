@@ -1,6 +1,5 @@
 package xu_ly_ngoai_le_va_debug.baitap;
 
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,6 +8,7 @@ public class MainTestIllegalTriangleException {
         int p = c1 + c2 + c3;
         System.out.println("chu vi hinh tam giac: " + p);
     }
+
     public static void main(String[] args) {
         try {
             Scanner scanner = new Scanner(System.in);

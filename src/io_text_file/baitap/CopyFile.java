@@ -7,7 +7,6 @@ public class CopyFile {
         File file = new File("src/io_text_file/baitap/TextFile.txt");
         if(file.isFile()){
             try {
-
                 FileReader fileReader = new FileReader("src/io_text_file/baitap/TextFile.txt");
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
 
@@ -30,6 +29,5 @@ public class CopyFile {
         }else {
             System.out.println("File khong ton tai");
         }
-
     }
 }

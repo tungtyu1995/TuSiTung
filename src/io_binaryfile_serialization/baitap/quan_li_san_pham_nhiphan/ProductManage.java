@@ -16,9 +16,9 @@ public class ProductManage {
         scanner.nextLine();
         System.out.print("Nhap ten san pham: ");
         String productName = scanner.nextLine();
-        System.out.println("Nhap hang san xuat: ");
+        System.out.print("Nhap hang san xuat: ");
         String manufacturer = scanner.nextLine();
-        System.out.println("Nhap gia san pham: ");
+        System.out.print("Nhap gia san pham: ");
         Double productPrince = scanner.nextDouble();
         Product product = new Product(productCode,productName,manufacturer,productPrince);
         productList.add(product);
@@ -97,6 +97,5 @@ public class ProductManage {
                 e.printStackTrace();
             }
         }
-
     }
 }

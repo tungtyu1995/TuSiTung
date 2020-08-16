@@ -6,15 +6,11 @@ import java.io.IOException;
 
 public class Text {
     public static void main(String[] args) throws IOException {
-        File file = new File("D:\\C0520G1-Tung\\TextFile.txt");
-        file.createNewFile();
-        FileWriter f = new FileWriter(file,false);
-        f.append("dfgdfgdfgdfgdfgd");
-//        xuong dong
-        f.append(System.lineSeparator());
-//
-        f.append("123456");
-        f.close();
-
+        try {
+            File file = new File("src/io_text_file/thuchanh/Book\\tung.txt");
+            file.createNewFile();
+                    } catch (IOException e) {
+            System.out.println("chua co file");
+        }
     }
 }
