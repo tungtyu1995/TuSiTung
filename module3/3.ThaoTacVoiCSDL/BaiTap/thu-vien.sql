@@ -32,7 +32,7 @@ create table student(
 
 -- thẻ thư viện
 create table library_card(
-	library_card_number  varchar(50) primary key,
+	library_card_number varchar(50) primary key,
     `name` varchar(50) not null,
     image varchar(50) not null,
 	start_day date not null,
@@ -53,29 +53,17 @@ create table employee(
 -- mượn sách
 create table borrow_books(
 	`code` varchar(50) primary key,
-	library_card_number varchar(50) not null,
+	library_card_number varchar(50) not null unique,
     book_number varchar(50) not null unique,
 	employee_number varchar(50) not null,
 	day_borrow_books date not null,
+    day_return date,
     FOREIGN	KEY	(employee_number) REFERENCES employee(employee_number),
-	FOREIGN	KEY	(library_card_number) REFERENCES library_card(library_card_number)
-    
-);
-create table book_has_borrow_books(
-	book_book_number varchar(50),
-	FOREIGN	KEY	(book_book_number) REFERENCES book(book_number),
-	borrow_books_book_number varchar(50),
-	FOREIGN	KEY	(borrow_books_book_number) REFERENCES borrow_books(book_number)
+	FOREIGN	KEY	(library_card_number) REFERENCES library_card(library_card_number),
+    FOREIGN	KEY	(book_number) REFERENCES book(book_number)
 );
 
--- trả sách
-create table give_book_back(
-	`code` varchar(50) primary key,
-	pay_day date not null,
-	check_pay int not null,
-	note varchar(50),
-    FOREIGN	KEY	(`code`) REFERENCES borrow_books(`code`)
-);
+
 INSERT INTO `library_database`.`category` (`category_number`, `category`) VALUES 
 ('th', 'toán học'),
 ('vh', 'văn học'),
@@ -86,7 +74,7 @@ INSERT INTO `library_database`.`category` (`category_number`, `category`) VALUES
 INSERT INTO `library_database`.`book` (`book_number`, `name_book`, `prince_book`, `author_book`, `category_number`, `publishing_year`, `publisher_code`) VALUES 
 ('t-l1', 'toán lớp 1', '25000', 'tst', 'th', '1995', 'NXB-GG'),
 ('v_l1', 'văn lớp 1', '23000', 'tst', 'vh', '1993', 'NXB-GG'),
-('tb-cc', 'tầm bậy cao c ấp', '50000', 'tst', 'tb', '2010', 'NXB-TB'),
+('tb-cc', 'tầm bậy cao cấp', '50000', 'tst', 'tb', '2010', 'NXB-TB'),
 ('sh-l3', 'sinh học lớp 3', '22000', 'tst', 'sh', '1994', 'NXB-GG'),
 ('hh-l8', 'hóa học lớp 8', '34000', 'tst', 'hh', '1992', 'NXB-GG');
 
@@ -95,12 +83,29 @@ INSERT INTO `library_database`.`student` (`student_number`, `student_name`, `add
  ('cc-02', 'huấn hoa hồng', 'đà nẵng', 'huan@gmail.com', 'xyz'),
  ('cc-03', 'thị nở', 'đà nẵng', 'nơ@gmail.com', 'kml'),
  ('cc-04', 'chí phèo', 'đà nẵng', 'pheo@gmail.com', 'uml'),
- ('cc05', 'nguyễn thị dậu', 'đà nẵng', 'dau@gmaiil.com', 'ddd');
+ ('cc-05', 'nguyễn thị dậu', 'đà nẵng', 'dau@gmaiil.com', 'ddd');
+
+INSERT INTO `library_database`.`library_card` (`library_card_number`, `name`, `image`, `start_day`, `expiration_date`, `note`, `student_number`) VALUES 
+('123', 'Khá Bảnh', 'abc', '2012/12/12', '2015/12/12', '...', 'cc-01'),
+('121', 'huấn hoa hồng', 'xyz', '2012/12/12', '2015/12/12', '...', 'cc-02'),
+('120', 'thị nở', 'kml', '2012/12/12', '2015/12/12', '...', 'cc-03'),
+('124', 'chí phèo', 'uml', '2012/12/12', '2015/12/12', '...', 'cc-04'),
+('125', 'nguyễn thị dậu', 'ddd', '2012/12/12', '2015/12/12', '...', 'cc-05');
+
+INSERT INTO `library_database`.`employee` (`employee_number`, `employee_name`, `employee_date_of_birth`, `employee_number_phone`) VALUES 
+('a', 'abc', '1995/12/12', '0123456778'),
+('b', 'bac', '1995/12/12', '0123456788'),
+('c', 'cba', '1995/12/12', '0123456777');
+
+-- INSERT INTO `library_database`.`borrow_books` (`code`, `library_card_number`, `book_number`, `employee_number`, `day_borrow_books`, `day_return`) VALUES 
+-- ('01', '123', 't-l1', 'a', '2020/05/12', '2020/05/27'),
+-- ('02', '121', 'v-l1', 'b', '2020/05/11','2020/05/12'),
+-- ('03', '124', 'tb-cc', 'c', '2020/05/09', '2020/05/12');
 
 select*from category;
 select*from book;
 select*from student;
 select*from library_card;
 select*from employee;
-select*from borrow_books;
-select*from give_book_back;
+select*from borrow_books
+where day_return is null;
