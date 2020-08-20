@@ -37,7 +37,7 @@ create table nhan_vien(
 
 create table loai_khach_hang(
 	id_loai_khach_hang int primary key,
-	loai_khch_hang varchar(50) not null
+	loai_khach_hang varchar(50) not null
 );
 
 create table khach_hang(
@@ -67,8 +67,8 @@ create table dich_vu(
 	ten_dich_vu varchar(50) not null,
 	dien_tich int not null,
 	so_tang int not null,
-	so_nguoi_toi_da varchar(50) not null,
-	chi_phi_thue varchar(50) not null,
+	so_nguoi_toi_da int not null,
+	chi_phi_thue int not null,
 	id_kieu_thue int not null,
 	id_loai_dich_vu int not null,
 	trang_thai varchar(50) not null,
@@ -105,31 +105,184 @@ create table hop_dong_chi_tiet(
 	FOREIGN	KEY	(id_hop_dong) REFERENCES hop_dong(id_hop_dong),
 	FOREIGN	KEY	(id_dich_vu_di_kem) REFERENCES dich_vu_di_kem(id_dich_vu_di_kem)
 );
+-- 1. thêm data
+-- vị trí
+INSERT INTO `casa_study_database`.`vi_tri` (`id_vi_tri`, `ten_vi_tri`) VALUES ('1', 'giám đốc'),
+('2', 'quản lý'),
+('3', 'nhân viên');
+--  bộ phận
+INSERT INTO `casa_study_database`.`bo_phan` (`id_bo_phan`, `ten_bo_phan`) VALUES 
+('1', 'kinh doanh'),
+('2', 'nhân sự'),
+('3', 'lễ tân'),
+('4', 'phục vụ'),
+('5', 'bảo vệ');
+-- trình độ
+INSERT INTO `casa_study_database`.`trinh_do` (`id_trinh_do`, `trinh_do`) VALUES 
+('1', 'thạc sỹ'),
+('2', 'đại học'),
+('3', 'cao đẵng'),
+('4', 'phổ thông');
+-- nhân viên
+INSERT INTO `casa_study_database`.`nhan_vien` (`id_nhan_vien`, `ho_ten_nhan_vien`, `id_vi_tri`, `id_trinh_do`, `id_bo_phan`, `ngay_sinh`, `so_cmnd`, `luong`, `sdt`, `email`, `dia_chi`) VALUES 
+('1', 'chương', '1', '1', '1', '1995-12-12', '123', '1000', '12345', 'abc@gmail.com', 'đà nẵng'),
+('2', 'tùng', '2', '2', '2', '1995-12-12', '234', '800', '123456', 'dff@gmail.com', 'đà nẵng'),
+('3', 'hải', '3', '3', '3', '1995-12-12', '567', '500', '12344', 'hhg@gmail.com', 'đà nẵng'),
+('4', 'khánh', '1', '4', '4', '1995-12-12', '454', '1000', '12346', 'dgh@gmail.com', 'đà nẵng'),
+('5', 'hà', '2', '1', '5', '1995-12-12', '0887', '800', '12367', 'tff@gmail.com', 'đà nẵng'),
+('6', 'khá', '3', '2', '1', '1995-12-12', '4343', '500', '12349', 'fghh@gmail.com', 'đà nẵng'),
+('7', 'toàn', '1', '3', '2', '1995-12-12', '34667', '1000', '12987', 'fgd@gmail.com', 'đà nẵng'),
+('8', 'ánh', '2', '4', '3', '1995-12-12', '096', '800', '12340', 'fggs@gmail.com', 'đà nẵng'),
+('9', 'my', '3', '1', '4', '1995-12-12', '3578', '500', '45667', 'dhfthh@gmail.com', 'đà nẵng'),
+('10', 'nguyệt', '1', '2', '5', '1995-12-12', '6797', '1000', '35787', 'ghggh@gmail.com', 'đà nẵng');
+-- loại khách hàng
+INSERT INTO `casa_study_database`.`loai_khach_hang` (`id_loai_khach_hang`, `loai_khach_hang`) VALUES 
+('1', 'diamond'),
+('2', 'platinum'),
+('3', 'gold'),
+('4', 'silver'),
+('5', 'copper');
+-- khách hàng
+INSERT INTO `casa_study_database`.`khach_hang` (`id_khach_hang`, `id_loai_khach_hang`, `ho_ten`, `ngay_sinh`, `so_cmnd`, `sdt`, `email`, `dia_chi`) VALUES 
+('1', '1', 'từ sĩ tùng', '1995-12-12', '1234', '1234', 'qwe@gmai.com', 'quảng bình'),
+('2', '1', 'hoàng kim văn chương', '2010-12-12', '2345', '2345', 'ád@gmai.com', 'đà nẵng'),
+('3', '1', 'lê toàn', '1910-12-12', '3456', '3456', 'hgf@gmai.com', 'quảng trị'),
+('4', '2', 'lê nhật', '1992-12-12', '4567', '4567', 'hgh@gmai.com', 'huế'),
+('5', '3', 'phan quốc khánh', '2015-12-12', '5678', '5678', 'gfđ@gmai.com', 'đà nẵng'),
+('6', '2', 'trần thanh hoàng', '1993-12-12', '7890', '6789', 'vcfg@gmai.com', 'quảng trị'),
+('7', '3', 'nguyễn tiến hải', '1991-12-12', '0123', '7890', 'gggjj@gmai.com', 'huế'),
+('8', '4', 'lê văn hoạt', '1212-12-12', '1203', '1245', 'ggjh@gmai.com', 'quảng nam'),
+('9', '5', 'nguyễn hữu quang', '1996-12-12', '1256', '3478', 'jhghh@gmai.com', 'quảng trị'),
+('10', '1', 'trần hữu hiên', '1996-12-12', '3478', '2378', 'rfg@gmai.com', 'đà nẵng');
+-- loại dịch vụ
+INSERT INTO `casa_study_database`.`loai_dich_vu` (`id_loai_dich_vu`, `ten_loai_dich_vu`) VALUES 
+('1', 'villa'),
+('2', 'house'),
+('3', 'room');
+-- kiểu thuê
+INSERT INTO `casa_study_database`.`kieu_thue` (`id_kieu_thue`, `ten_kieu_thue`, `gia`) 
+VALUES 
+('1', 'cặp đôi', '3000'),
+('2', 'gia đình', '2000'),
+('3', 'theo đoàn', '1000');
+-- dịch vụ đi kèm
+INSERT INTO `casa_study_database`.`dich_vu_di_kem` (`id_dich_vu_di_kem`, `ten_dich_vu_di_kem`, `gia`, `don_vi`, `trang_thai_kha_dung`) 
+VALUES 
+('1', 'massage', '300', '1', 'khả dụng'),
+('2', 'karaoke ', '250', '1', 'khả dụng'),
+('3', 'đồ ăn', '100', '1', 'khả dụng'),
+('4', 'nước uống', '75', '1', 'khả dụng'),
+('5', 'xe', '500', '1', 'khả dụng');
+-- dịch vụ
+INSERT INTO `casa_study_database`.`dich_vu` (`id_dich_vu`, `ten_dich_vu`, `dien_tich`, `so_tang`, `so_nguoi_toi_da`, `chi_phi_thue`, `id_kieu_thue`, `id_loai_dich_vu`, `trang_thai`) 
+VALUES 
+('1', 'mer viila', '200', '3', '5', '100000', '1', '1', 'còn phòng'),
+('2', 'king villa', '180', '3', '5', '90000', '2', '1', 'còn phòng'),
+('3', 'beautifuly villa', '160', '3', '5', '80000', '3', '1', 'còn phòng'),
+('4', 'luxury villa', '140', '3', '5', '70000', '2', '2', 'còn phòng'),
+('5', 'fleur house', '120', '3', '5', '60000', '1', '2', 'còn phòng'),
+('6', 'jhon house', '100', '3', '5', '50000', '2', '2', 'còn phòng'),
+('7', 'ocean house', '80', '3', '5', '40000', '3', '3', 'còn phòng'),
+('8', '301 room', '60', '3', '5', '30000', '1', '3', 'còn phòng'),
+('9', '302 room', '55', '3', '5', '20000', '2', '3', 'còn phòng'),
+('10', '303 room', '50', '3', '5', '10000', '3', '1', 'còn phòng'),
+('11', '304 room', '50', '3', '5', '10000', '3', '1', 'còn phòng');
+-- hợp đồng
+INSERT INTO `casa_study_database`.`hop_dong` (`id_hop_dong`, `id_nhan_vien`, `id_khach_hang`, `id_dich_vu`, `ngay_lam_hop_dong`, `ngay_ket_thuc`, `tien_dat_coc`, `tong_tien`) 
+VALUES 
+('1', '1', '6', '1', '2020-12-12', '2020-12-30', '1000', '10000'),
+('2', '1', '4', '1', '2020-12-12', '2020-12-30', '1000', '10000'),
+('3', '1', '3', '1', '2018-12-12', '2020-12-30', '1000', '10000'),
+('4', '6', '2', '1', '2019-12-12', '2020-12-30', '1000', '10000'),
+('5', '6', '1', '2', '2020-12-12', '2020-12-30', '1000', '10000'),
+('6', '6', '2', '2', '2020-12-12', '2020-12-30', '1000', '10000'),
+('7', '6', '1', '2', '2020-12-12', '2020-12-30', '1000', '10000'),
+('8', '1', '3', '3', '2018-12-12', '2020-12-30', '1000', '10000'),
+('9', '1', '4', '3', '2019-12-12', '2020-12-30', '1000', '10000'),
+('10', '1', '2', '3', '2020-12-12', '2020-12-30', '1000', '10000');
+
+-- hợp đồng chi tiết
+INSERT INTO `casa_study_database`.`hop_dong_chi_tiet` (`id_hop_dong_chi_tiet`, `id_hop_dong`, `id_dich_vu_di_kem`, `so_luong`) 
+VALUES 
+('1', '1', '1', '1'),
+('2', '2', '2', '2'),
+('3', '3', '3', '3'),
+('4', '4', '4', '1'),
+('5', '5', '5', '2'),
+('6', '6', '1', '3'),
+('7', '7', '2', '1'),
+('8', '8', '3', '2'),
+('9', '9', '4', '3'),
+('10', '10', '5', '1');
+
 
 -- 2. hiển thị nhân viên bắt đầu bằng h,t,k tối đa 15 ký tự
 select*from nhan_vien
-where ho_ten_nhan_vien LIKE 'h%' or 't%' or 'k%' 
-and 
-LENGTH(ho_ten_nhan_vien) >= 15;
+where ho_ten_nhan_vien LIKE ('k%') or ho_ten_nhan_vien LIKE ('h%') or ho_ten_nhan_vien LIKE ('t%') 
+and  LENGTH(ho_ten_nhan_vien) <= 15;
 
 -- 3.Hiển thị thông tin của tất cả khách hàng 
 -- có độ tuổi từ 18 đến 50 tuổi và có địa chỉ ở “Đà Nẵng” hoặc “Quảng Trị”.
 
 select*from khach_hang
-where DATEDIFF(CURDATE(), khach_hang.ngay_sinh) / 365 between 15 and 50 
+where DATEDIFF(CURDATE(), khach_hang.ngay_sinh) / 365 between 18 and 50 
 and 
-dia_chi = 'đà nẵng' or 'quảng trị';
+dia_chi in ('đà nẵng','quảng trị');
 
+-- 4.Đếm xem tương ứng với mỗi khách hàng đã từng đặt phòng bao nhiêu lần.
+--  Kết quả hiển thị được sắp xếp tăng dần theo số lần đặt phòng của khách hàng.
+--  Chỉ đếm những khách hàng nào có Tên loại khách hàng là “Diamond”.
 
-select*from vi_tri;
-select*from bo_phan;
-select*from bo_phan;
-select*from nhan_vien;
-select*from loai_khach_hang;
-select*from khach_hang;
-select*from kieu_thue;
-select*from loai_dich_vu;
-select*from dich_vu;
-select*from hop_dong;
-select*from dich_vu_di_kem;
-select*from hop_dong_chi_tiet;
+select khach_hang.ho_ten , count(hop_dong.id_hop_dong) as 'số lần đặt phòng'
+from  khach_hang
+right join hop_dong on khach_hang.id_khach_hang = hop_dong.id_khach_hang
+where khach_hang.id_loai_khach_hang = 1
+group by khach_hang.id_khach_hang;
+
+-- 5.Hiển thị IDKhachHang, HoTen, TenLoaiKhach, IDHopDong, TenDichVu, NgayLamHopDong, NgayKetThuc, TongTien 
+-- (Với TongTien được tính theo công thức như sau: ChiPhiThue + SoLuong*Gia, với SoLuong và Giá là từ bảng DichVuDiKem)
+--  cho tất cả các Khách hàng đã từng đặt phỏng. (Những Khách hàng nào chưa từng đặt phòng cũng phải hiển thị ra).
+
+select khach_hang.id_khach_hang, khach_hang.ho_ten, loai_khach_hang.loai_khach_hang, hop_dong.id_hop_dong,dich_vu.ten_dich_vu, hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc, dich_vu.chi_phi_thue + (dich_vu_di_kem.don_vi*dich_vu_di_kem.gia) as 'Tổng Tiền'
+from khach_hang
+left join hop_dong on khach_hang.id_khach_hang = hop_dong.id_khach_hang
+left join loai_khach_hang on loai_khach_hang.id_loai_khach_hang = khach_hang.id_loai_khach_hang
+left join dich_vu on dich_vu.id_dich_vu = hop_dong.id_dich_vu
+left join hop_dong_chi_tiet on hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong
+left join dich_vu_di_kem on dich_vu_di_kem.id_dich_vu_di_kem = hop_dong_chi_tiet.id_dich_vu_di_kem;
+
+-- 6.Hiển thị IDDichVu, TenDichVu, DienTich, ChiPhiThue, TenLoaiDichVu 
+-- của tất cả các loại Dịch vụ chưa từng được Khách hàng thực hiện đặt từ quý 1 của năm 2019 (Quý 1 là tháng 1, 2, 3).
+select dich_vu.id_dich_vu, dich_vu.ten_dich_vu, dich_vu.dien_tich, dich_vu.chi_phi_thue, loai_dich_vu.ten_loai_dich_vu, hop_dong.ngay_lam_hop_dong
+from dich_vu
+inner join loai_dich_vu on loai_dich_vu.id_loai_dich_vu = dich_vu.id_loai_dich_vu
+left join hop_dong on hop_dong.id_dich_vu = dich_vu.id_dich_vu
+where (datediff(hop_dong.ngay_lam_hop_dong, '2019-01-01')<0) or (datediff(hop_dong.ngay_lam_hop_dong, '2019-03-31')>0);
+
+-- 7.Hiển thị thông tin IDDichVu, TenDichVu, DienTich, SoNguoiToiDa, ChiPhiThue, TenLoaiDichVu 
+-- của tất cả các loại dịch vụ đã từng được Khách hàng đặt phòng trong năm 2018 
+-- nhưng chưa từng được Khách hàng đặt phòng  trong năm 2019.
+
+select dich_vu.id_dich_vu, dich_vu.ten_dich_vu, dich_vu.dien_tich, dich_vu.so_nguoi_toi_da, dich_vu.chi_phi_thue, loai_dich_vu.ten_loai_dich_vu
+from dich_vu
+left join loai_dich_vu on loai_dich_vu.id_loai_dich_vu = dich_vu.id_loai_dich_vu
+left join hop_dong on hop_dong.id_dich_vu = dich_vu.id_dich_vu
+where (hop_dong.ngay_lam_hop_dong between '2018-01-01' and '2018-12-31') and (hop_dong.ngay_lam_hop_dong not between '2019-01-01' and '2019-12-31');
+
+-- 8.Hiển thị thông tin HoTenKhachHang có trong hệ thống, với yêu cầu HoThenKhachHang không trùng nhau.
+-- Học viên sử dụng theo 3 cách khác nhau để thực hiện yêu cầu trên
+-- c1
+select distinct khach_hang.ho_ten
+from khach_hang;
+-- c2
+select khach_hang.ho_ten
+from khach_hang
+group by khach_hang.ho_ten
+having count(ho_ten)>=1;
+-- c3
+select khach_hang.ho_ten
+from khach_hang
+union
+select khach_hang.ho_ten
+from khach_hang;
+
