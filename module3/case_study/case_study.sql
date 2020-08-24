@@ -197,11 +197,11 @@ VALUES
 ('2', '1', '4', '1', '2020-12-12', '2020-12-30', '1000', '10000'),
 ('3', '1', '3', '1', '2018-12-12', '2020-12-30', '1000', '10000'),
 ('4', '6', '2', '1', '2019-12-12', '2020-12-30', '1000', '10000'),
-('5', '6', '1', '2', '2020-12-12', '2020-12-30', '1000', '10000'),
+('5', '6', '1', '2', '2018-12-12', '2020-12-30', '1000', '10000'),
 ('6', '6', '2', '2', '2020-12-12', '2020-12-30', '1000', '10000'),
 ('7', '6', '1', '2', '2020-12-12', '2020-12-30', '1000', '10000'),
 ('8', '1', '3', '3', '2018-12-12', '2020-12-30', '1000', '10000'),
-('9', '1', '4', '3', '2019-12-12', '2020-12-30', '1000', '10000'),
+('9', '1', '4', '4', '2018-12-12', '2020-12-30', '1000', '10000'),
 ('10', '1', '2', '3', '2020-12-12', '2020-12-30', '1000', '10000');
 
 -- hợp đồng chi tiết
@@ -270,7 +270,12 @@ select dich_vu.id_dich_vu, dich_vu.ten_dich_vu, dich_vu.dien_tich, dich_vu.so_ng
 from dich_vu
 	left join loai_dich_vu on loai_dich_vu.id_loai_dich_vu = dich_vu.id_loai_dich_vu
 	left join hop_dong on hop_dong.id_dich_vu = dich_vu.id_dich_vu
-where (hop_dong.ngay_lam_hop_dong between '2018-01-01' and '2018-12-31') and (hop_dong.ngay_lam_hop_dong not between '2019-01-01' and '2019-12-31');
+where (hop_dong.ngay_lam_hop_dong between '2018-01-01' and '2018-12-31') and hop_dong.id_dich_vu not in(
+select hop_dong.id_dich_vu 
+from hop_dong 
+where (hop_dong.ngay_lam_hop_dong between '2019-01-01' and '2019-12-31')
+);
+
 
 -- 8.Hiển thị thông tin HoTenKhachHang có trong hệ thống, với yêu cầu HoThenKhachHang không trùng nhau.
 -- Học viên sử dụng theo 3 cách khác nhau để thực hiện yêu cầu trên
