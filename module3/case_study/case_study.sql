@@ -193,8 +193,8 @@ VALUES
 -- hợp đồng
 INSERT INTO `casa_study_database`.`hop_dong` (`id_hop_dong`, `id_nhan_vien`, `id_khach_hang`, `id_dich_vu`, `ngay_lam_hop_dong`, `ngay_ket_thuc`, `tien_dat_coc`, `tong_tien`) 
 VALUES 
-('1', '1', '6', '1', '2020-12-12', '2020-12-30', '1000', '10000'),
-('2', '1', '4', '1', '2020-12-12', '2020-12-30', '1000', '10000'),
+('1', '1', '6', '1', '2019-01-12', '2020-12-30', '1000', '10000'),
+('2', '1', '4', '3', '2019-01-12', '2020-12-30', '1000', '10000'),
 ('3', '1', '3', '1', '2018-12-12', '2020-12-30', '1000', '10000'),
 ('4', '6', '2', '1', '2019-12-12', '2020-12-30', '1000', '10000'),
 ('5', '6', '1', '2', '2018-12-12', '2020-12-30', '1000', '10000'),
@@ -202,7 +202,7 @@ VALUES
 ('7', '6', '1', '2', '2020-12-12', '2020-12-30', '1000', '10000'),
 ('8', '1', '3', '3', '2018-12-12', '2020-12-30', '1000', '10000'),
 ('9', '1', '4', '4', '2018-12-12', '2020-12-30', '1000', '10000'),
-('10', '1', '2', '3', '2020-12-12', '2020-12-30', '1000', '10000');
+('10', '1', '2', '3', '2019-12-12', '2020-12-30', '1000', '10000');
 
 -- hợp đồng chi tiết
 INSERT INTO `casa_study_database`.`hop_dong_chi_tiet` (`id_hop_dong_chi_tiet`, `id_hop_dong`, `id_dich_vu_di_kem`, `so_luong`) 
@@ -211,11 +211,11 @@ VALUES
 ('2', '2', '2', '2'),
 ('3', '3', '3', '3'),
 ('4', '4', '4', '1'),
-('5', '5', '5', '2'),
+('5', '5', '3', '2'),
 ('6', '6', '1', '3'),
 ('7', '7', '2', '1'),
 ('8', '8', '3', '2'),
-('9', '9', '4', '3'),
+('9', '9', '1', '3'),
 ('10', '10', '5', '1');
 
 
@@ -308,7 +308,7 @@ group by hop_dong.id_khach_hang;
 
 select hop_dong.id_hop_dong, hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc, hop_dong.tien_dat_coc, count(hop_dong_chi_tiet.id_dich_vu_di_kem) as 'SoLuongDichVuDiKem'
 from hop_dong
-join hop_dong_chi_tiet on hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong
+	join hop_dong_chi_tiet on hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong
 group by hop_dong.id_hop_dong;
 
 -- 11.	Hiển thị thông tin các Dịch vụ đi kèm đã được sử dụng bởi những Khách hàng có TenLoaiKhachHang là “Diamond” 
@@ -316,10 +316,10 @@ group by hop_dong.id_hop_dong;
 
 select dich_vu_di_kem.id_dich_vu_di_kem, dich_vu_di_kem.ten_dich_vu_di_kem, dich_vu_di_kem.gia, dich_vu_di_kem.don_vi, dich_vu_di_kem.trang_thai_kha_dung, khach_hang.ho_ten
 from dich_vu_di_kem
-join hop_dong_chi_tiet on dich_vu_di_kem.id_dich_vu_di_kem = hop_dong_chi_tiet.id_dich_vu_di_kem
-join hop_dong on hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong
-join khach_hang on khach_hang.id_khach_hang = hop_dong.id_khach_hang
-join loai_khach_hang on loai_khach_hang.id_loai_khach_hang = khach_hang.id_loai_khach_hang
+	join hop_dong_chi_tiet on dich_vu_di_kem.id_dich_vu_di_kem = hop_dong_chi_tiet.id_dich_vu_di_kem
+	join hop_dong on hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong
+	join khach_hang on khach_hang.id_khach_hang = hop_dong.id_khach_hang
+	join loai_khach_hang on loai_khach_hang.id_loai_khach_hang = khach_hang.id_loai_khach_hang
 where loai_khach_hang.loai_khach_hang  = 'Diamond' and (khach_hang.dia_chi = 'vinh' or khach_hang.dia_chi = 'quảng ngãi') 
 group by khach_hang.ho_ten;
 
@@ -329,12 +329,78 @@ group by khach_hang.ho_ten;
 
 select hop_dong.id_hop_dong, nhan_vien.ho_ten_nhan_vien, khach_hang.ho_ten, khach_hang.sdt, dich_vu.ten_dich_vu, hop_dong.ngay_lam_hop_dong, count(hop_dong_chi_tiet.id_dich_vu_di_kem) as SoLuongDichVuDikem
 from hop_dong
-left join nhan_vien on nhan_vien.id_nhan_vien = hop_dong.id_nhan_vien
-left join khach_hang on khach_hang.id_khach_hang = hop_dong.id_khach_hang
-left join dich_vu on dich_vu.id_dich_vu = hop_dong.id_dich_vu
-left join hop_dong_chi_tiet on hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong
+	left join nhan_vien on nhan_vien.id_nhan_vien = hop_dong.id_nhan_vien
+	left join khach_hang on khach_hang.id_khach_hang = hop_dong.id_khach_hang
+	left join dich_vu on dich_vu.id_dich_vu = hop_dong.id_dich_vu
+	left join hop_dong_chi_tiet on hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong
 where (hop_dong.ngay_lam_hop_dong between '2019-10-01' and '2019-12-31') and (hop_dong.ngay_lam_hop_dong not between '2019-01-01' and '2019-06-31')
 group by hop_dong.id_hop_dong;
 
 -- 13.	Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng. 
 -- (Lưu ý là có thể có nhiều dịch vụ có số lần sử dụng nhiều như nhau).
+
+create view max
+as
+select dich_vu_di_kem.ten_dich_vu_di_kem, count(dich_vu_di_kem.id_dich_vu_di_kem) as 'so_luong_lon_nhat'
+from hop_dong
+left join hop_dong_chi_tiet on hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong
+left join dich_vu_di_kem on dich_vu_di_kem.id_dich_vu_di_kem = hop_dong_chi_tiet.id_dich_vu_di_kem
+group by dich_vu_di_kem.ten_dich_vu_di_kem
+having count(dich_vu_di_kem.id_dich_vu_di_kem)
+order by count(dich_vu_di_kem.id_dich_vu_di_kem) desc;
+
+select *
+from max
+group by ten_dich_vu_di_kem
+having so_luong_lon_nhat = (select max(so_luong_lon_nhat) from max);
+
+-- 14.	Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất.
+--  Thông tin hiển thị bao gồm IDHopDong, TenLoaiDichVu, TenDichVuDiKem, SoLanSuDung.
+
+select hop_dong.id_hop_dong, loai_dich_vu.ten_loai_dich_vu, dich_vu_di_kem.ten_dich_vu_di_kem, count(dich_vu_di_kem.ten_dich_vu_di_kem) as SoLuong
+from hop_dong 
+join dich_vu on dich_vu.id_dich_vu = hop_dong.id_dich_vu
+join loai_dich_vu on loai_dich_vu.id_loai_dich_vu = dich_vu.id_loai_dich_vu
+join hop_dong_chi_tiet on hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong
+join dich_vu_di_kem on dich_vu_di_kem.id_dich_vu_di_kem = hop_dong_chi_tiet.id_dich_vu_di_kem
+group by dich_vu_di_kem.ten_dich_vu_di_kem
+having count(dich_vu_di_kem.ten_dich_vu_di_kem) = 1;
+
+-- 15.	Hiển thi thông tin của tất cả nhân viên bao gồm 
+-- IDNhanVien, HoTen, TrinhDo, TenBoPhan, SoDienThoai, DiaChi 
+-- mới chỉ lập được tối đa 3 hợp đồng từ năm 2018 đến 2019.
+
+select nhan_vien.id_nhan_vien, nhan_vien.ho_ten_nhan_vien, bo_phan.ten_bo_phan, nhan_vien.sdt, nhan_vien.dia_chi, count(hop_dong.id_nhan_vien)
+from nhan_vien
+join trinh_do on trinh_do.id_trinh_do = nhan_vien.id_trinh_do
+join bo_phan on bo_phan.id_bo_phan = nhan_vien.id_bo_phan
+join hop_dong on hop_dong.id_nhan_vien = nhan_vien.id_nhan_vien
+where year(hop_dong.ngay_lam_hop_dong) in (2018, 2019)
+group by nhan_vien.id_nhan_vien
+having count(hop_dong.id_nhan_vien) <= 3;
+
+-- 16.	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2017 đến năm 2019.
+
+delete from nhan_vien
+where nhan_vien.id_nhan_vien not in (
+select nhan_vien.id_nhan_vien
+from (
+select nhan_vien.id_nhan_vien 
+from nhan_vien 
+join hop_dong on hop_dong.id_nhan_vien = nhan_vien.id_nhan_vien
+where year(hop_dong.ngay_lam_hop_dong) in (2017, 2019))
+);
+
+-- 17.	Cập nhật thông tin những khách hàng có TenLoaiKhachHang từ  Platinium lên Diamond,
+--  chỉ cập nhật những khách hàng đã từng đặt phòng với tổng Tiền thanh toán trong năm 2019 là lớn hơn 10.000.000 VNĐ.
+
+update khach_hang
+set khach_hang.id_loai_khach_hang = 1
+where khach_hang.id_loai_khach_hang in (
+select khach_hang.id_khach_hang 
+from (
+select khach_hang.id_khach_hang from khach_hang
+join hop_dong on hop_dong.id_khach_hang = khach_hang.id_khach_hang
+where year(hop_dong.ngay_lam_hop_dong) = 2019 and hop_dong.tong_tien > 10000000 and khach_hang.id_loai_khach_hang = 2
+group by khach_hang.ho_ten, khach_hang.id_loai_khach_hang)
+);
