@@ -112,7 +112,11 @@ FROM hop_dong
 	LEFT JOIN khach_hang ON khach_hang.id_khach_hang = hop_dong.id_khach_hang
 	LEFT JOIN dich_vu ON dich_vu.id_dich_vu = hop_dong.id_dich_vu
 	LEFT JOIN hop_dong_chi_tiet ON hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong
-WHERE (hop_dong.ngay_lam_hop_dong BETWEEN '2019-10-01' AND '2019-12-31') AND (hop_dong.ngay_lam_hop_dong NOT BETWEEN '2019-01-01' AND '2019-06-31')
+WHERE (hop_dong.ngay_lam_hop_dong BETWEEN '2019-10-01' AND '2019-12-31') AND hop_dong.id_dich_vu not in(
+	select hop_dong.id_dich_vu
+	from  hop_dong
+	where(hop_dong.ngay_lam_hop_dong between '2019-01-01' and '2019-06-30')
+)
 GROUP BY hop_dong.id_hop_dong;
 
 -- 13.	Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng. 
