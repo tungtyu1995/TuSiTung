@@ -17,11 +17,11 @@ public class CustomerServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Customer> customerList = new ArrayList<>();
-        customerList.add(new Customer("Mai Văn Hoàn","1983-08-20","Hà Nội"));
-        customerList.add(new Customer("Nguyễn Văn Nam","1983-08-21","Bắc Giang"));
-        customerList.add(new Customer("Nguyễn Thái Hòa","1983-08-22","Nam Định"));
-        customerList.add(new Customer("Trần Đăng Khoa","1983-08-17","Hà Tây"));
-        customerList.add(new Customer("Nguyễn Đình Thi","1983-08-19","Hà Nội"));
+        customerList.add(new Customer("Mai Văn Hoàn","1983-08-20","Hà Nội",".\\img\\img1.jpg"));
+        customerList.add(new Customer("Nguyễn Văn Nam","1983-08-21","Bắc Giang",".\\img\\img2.jpg"));
+        customerList.add(new Customer("Nguyễn Thái Hòa","1983-08-22","Nam Định",".\\img\\img3.jpg"));
+        customerList.add(new Customer("Trần Đăng Khoa","1983-08-17","Hà Tây",".\\img\\img4.jpg"));
+        customerList.add(new Customer("Nguyễn Đình Thi","1983-08-19","Hà Nội",".\\img\\img5.jpg"));
         request.setAttribute("CustomerListServlet",customerList);
         request.getRequestDispatcher("List.jsp").forward(request,response);
     }

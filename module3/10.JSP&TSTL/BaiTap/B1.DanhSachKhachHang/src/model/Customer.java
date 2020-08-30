@@ -4,11 +4,16 @@ public class Customer {
     private String name;
     private String date_of_birth;
     private String address;
+    private String imageURL;
 
-    public Customer(String name, String date_of_birth, String address) {
+    public Customer() {
+    }
+
+    public Customer(String name, String date_of_birth, String address, String imageURL) {
         this.name = name;
         this.date_of_birth = date_of_birth;
         this.address = address;
+        this.imageURL = imageURL;
     }
 
     public String getName() {
@@ -33,5 +38,13 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }

@@ -12,6 +12,6 @@
     <title>$Title$</title>
 </head>
 <body>
-<c:redirect url="CustomerServletPath"></c:redirect>
+<c:redirect url="/CustomerServletPath"></c:redirect>
 </body>
 </html>

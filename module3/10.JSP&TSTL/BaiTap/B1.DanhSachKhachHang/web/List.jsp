@@ -10,20 +10,46 @@
 <html>
 <head>
     <title>List</title>
+    <style>
+        table{
+            font-size: 30px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table,th,td{
+            border: 1px solid black;
+        }
+        th,td{
+            padding: 5px;
+        }
+        tr:nth-child(even){
+            background-color: aliceblue;
+            text-align: center;
+        }
+        th{
+            background-color: crimson;
+            color: white;
+        }
+        h2{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<h3 style="text-align: center">Danh Sách Khách Hàng</h3>
-<table border="1px" style="width: 100%">
-    <tr style="text-align: left">
+<h2>Danh Sách Khách Hàng</h2>
+<table>
+    <tr style="text-align: center">
         <th>Tên</th>
         <th>Ngày Sinh</th>
         <th>Địa Chỉ</th>
+        <th>Ảnh</th>
     </tr>
     <c:forEach var="customer" items="${CustomerListServlet}">
-        <tr>
+        <tr style="text-align: center">
             <td><c:out value="${customer.name}"></c:out></td>
             <td><c:out value="${customer.date_of_birth}"></c:out></td>
             <td><c:out value="${customer.address}"></c:out></td>
+            <td><img width="150px" height="150px" src="${customer.imageURL}"/></td>
         </tr>
     </c:forEach>
 </table>
