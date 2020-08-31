@@ -4,7 +4,7 @@ import model.Product;
 
 import java.util.List;
 
-public interface ProductService {
+public interface ProductDAO {
     List<Product> findAll();
 
     void save(Product product);

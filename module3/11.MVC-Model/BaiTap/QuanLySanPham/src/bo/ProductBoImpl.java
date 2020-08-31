@@ -1,41 +1,41 @@
 package bo;
 
-import dao.ProductService;
-import dao.ProductServiceImpl;
+import dao.ProductDAO;
+import dao.ProductDAOImpl;
 import model.Product;
 
 import java.util.List;
 
 public class ProductBoImpl implements ProductBO {
-    private ProductService productService = new ProductServiceImpl();
+    private ProductDAO productDAO = new ProductDAOImpl();
 
     @Override
     public List<Product> findAll() {
-        return productService.findAll();
+        return productDAO.findAll();
     }
 
     @Override
     public void save(Product product) {
-        productService.save(product);
+        productDAO.save(product);
     }
 
     @Override
     public Product findById(int id) {
-        return productService.findById(id);
+        return productDAO.findById(id);
     }
 
     @Override
     public List<Product> finByName(String productName) {
-        return productService.finByName(productName);
+        return productDAO.finByName(productName);
     }
 
     @Override
     public void update(int id, Product product) {
-        productService.update(id, product);
+        productDAO.update(id, product);
     }
 
     @Override
     public void remove(int id) {
-        productService.remove(id);
+        productDAO.remove(id);
     }
 }
