@@ -1,7 +1,7 @@
 package controller;
 
-import BO.ProductBO;
-import BO.ProductBoImpl;
+import bo.ProductBO;
+import bo.ProductBoImpl;
 import model.Product;
 
 

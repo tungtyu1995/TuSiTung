@@ -1,7 +1,7 @@
-package BO;
+package bo;
 
-import DAO.ProductService;
-import DAO.ProductServiceImpl;
+import dao.ProductService;
+import dao.ProductServiceImpl;
 import model.Product;
 
 import java.util.List;

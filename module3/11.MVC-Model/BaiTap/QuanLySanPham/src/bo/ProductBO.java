@@ -1,10 +1,10 @@
-package DAO;
+package bo;
 
 import model.Product;
 
 import java.util.List;
 
-public interface ProductService {
+public interface ProductBO {
     List<Product> findAll();
 
     void save(Product product);
