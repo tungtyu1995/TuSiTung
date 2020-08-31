@@ -13,7 +13,7 @@ public class ProductServiceImpl implements ProductService {
     static {
         products = new HashMap<>();
         products.put(1, new Product(1, "Iphone", "20000000", "Red", "Apple"));
-        products.put(2, new Product(2, "Iac Book", "30000000", "Red", "Apple"));
+        products.put(2, new Product(2, "Mac Book", "30000000", "Red", "Apple"));
         products.put(3, new Product(3, "Apple Watch", "10000000", "Red", "Apple"));
         products.put(4, new Product(4, "Apple AirPods", "5000000", "Red", "Apple"));
     }
@@ -44,7 +44,7 @@ public class ProductServiceImpl implements ProductService {
             } catch (NullPointerException e) {
                 e.printStackTrace();
             }
-            if (product.getProductName().contains(productName)) {
+            if ((product.getProductName().toLowerCase()).contains(productName)) {
                 productList.add(product);
             }
         }

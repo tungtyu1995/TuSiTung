@@ -43,8 +43,8 @@
     <a href="/product?action=create">Create new product</a>
 </h3>
 <form method="get" action="/findName">
-    <fieldset>
-        <p>Search name product</p>
+    <fieldset style="width: 25%">
+        <h3>Search name product</h3>
         <input type="text" name="productName" id="productName">
         <input type="submit" value="View product">
     </fieldset>
