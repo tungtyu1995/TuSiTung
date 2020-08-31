@@ -4,7 +4,6 @@ import bo.ProductBO;
 import bo.ProductBoImpl;
 import model.Product;
 
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

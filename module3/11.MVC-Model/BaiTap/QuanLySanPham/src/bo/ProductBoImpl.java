@@ -1,5 +1,7 @@
 package bo;
 
+
+
 import dao.ProductDAO;
 import dao.ProductDAOImpl;
 import model.Product;
