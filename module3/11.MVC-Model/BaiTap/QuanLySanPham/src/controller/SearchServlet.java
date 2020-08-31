@@ -1,8 +1,9 @@
 package controller;
 
+import BO.ProductBO;
+import BO.ProductBoImpl;
 import model.Product;
-import service.ProductService;
-import service.ProductServiceImpl;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @WebServlet(name = "SearchServlet", urlPatterns = "/findName")
 public class SearchServlet extends HttpServlet {
-    private ProductService productService = new ProductServiceImpl();
+    private ProductBO productBO = new ProductBoImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -24,7 +25,7 @@ public class SearchServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String productName = request.getParameter("productName");
-        List<Product> products = this.productService.finByName(productName);
+        List<Product> products = this.productBO.finByName(productName);
         RequestDispatcher dispatcher;
 
         request.setAttribute("products", products);

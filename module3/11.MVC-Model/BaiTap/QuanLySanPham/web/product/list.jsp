@@ -45,7 +45,7 @@
 <form method="get" action="/findName">
     <fieldset style="width: 25%">
         <h3>Search name product</h3>
-        <input type="text" name="productName" id="productName">
+        <input type="text" name="productName" id="productName"  placeholder="Enter Product Name">
         <input type="submit" value="View product">
     </fieldset>
 </form>
