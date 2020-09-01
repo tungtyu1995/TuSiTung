@@ -13,12 +13,12 @@
     <title>User Management Application</title>
 </head>
 <body>
-<center>
-    <h1>User Management</h1>
-    <h2>
-        <a href="/user">Back to list user</a>
-    </h2>
-</center>
+
+<h1>User Management</h1>
+<h2>
+    <a href="/user">Back to list user</a>
+</h2>
+
 <div align="center">
     <table border="1" cellpadding="5">
         <caption><h2>List of Users</h2></caption>

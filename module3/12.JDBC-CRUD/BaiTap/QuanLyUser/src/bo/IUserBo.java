@@ -17,4 +17,6 @@ public interface IUserBo {
 
     public boolean updateUser(User user) throws SQLException;
 
+
+
 }

@@ -17,7 +17,7 @@ public class UserBo implements IUserBo {
     public List<User> findUserByCountry(String country){
         List<User> users = new ArrayList<>();
         for (User user: userDao.selectAllUsers()) {
-            if(user.getCountry().contains(country))
+            if(user.getCountry().toLowerCase().contains(country))
                 users.add(user);
         }
         return users;

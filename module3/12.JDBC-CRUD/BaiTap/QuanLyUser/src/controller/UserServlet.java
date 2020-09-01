@@ -36,6 +36,9 @@ public class UserServlet extends HttpServlet {
                 case "edit":
                     updateUser(request, response);
                     break;
+                case "find":
+                    findUserCountry(request,response);
+                    break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
@@ -68,6 +71,15 @@ public class UserServlet extends HttpServlet {
             throw new ServletException(ex);
         }
     }
+
+    private void findUserCountry(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String country = request.getParameter("country");
+        List<User> users = this.userBO.findUserByCountry(country);
+        request.setAttribute("listFindCountry",users);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/view.jsp");
+        dispatcher.forward(request,response);
+    }
+
 
     private void listUser(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao implements IUserDao {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/demo";
     private String jdbcUsername = "root";
     private String jdbcPassword = "123456";
 
@@ -128,4 +128,5 @@ public class UserDao implements IUserDao {
         }
         return rowUpdated;
     }
+
 }
