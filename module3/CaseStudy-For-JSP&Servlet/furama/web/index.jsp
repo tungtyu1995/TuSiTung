@@ -5,71 +5,107 @@
   Time: 9:42 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>MAIN</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/font/css/all.css">
+    <title>Furama Resort</title>
 </head>
-<link rel="stylesheet" type="text/css" href="/bootstrap_4/bootstrap-4.5.2-dist/css/bootstrap.min.css">
-<script src="/bootstrap_4/bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
-<script src="/bootstrap_4/bootstrap-4.5.2-dist/js/jquery-3.5.1.js"></script>
 <body>
-<header class="row" style="height: 70px">
 
-    <div class="col-xl-9" style=" padding-left: 700px ;align-content: center; text-align: center;padding-top: 5px ">
-        <h4 style="color: red ;font-weight: bolder">Nguyen Van A</h4>
+
+<header>
+    <div class="row container-fluid">
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4" style="float:left">Furama</div>
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4" style="float:right">NGUYEN VAN A</div>
     </div>
 </header>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-weight: bolder;font-size: 20px">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Employee</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Customer</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Service</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Contract</a>
-            </li>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+<%--        <p class="navbar-brand" href="#">logo</p>--%>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Employee</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/customers">Customer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contract</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button class="btn btn-success" type="button">Search</button>
+            </span>
+            <input type="text" class="form-control" placeholder="search for...">
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="row container-fluid padding">
+    <div class="col-12 col-sm-3 col-md-3 col-lg-3">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="#">Item One</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Item Two</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Item Three</a></li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" style="padding-right: 20px">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="font-weight: bolder">Search
-            </button>
-        </form>
     </div>
+    <div class="col-12 col-sm-9 col-md-9 col-lg-9">
 
-<div class="container-fluid">
-    <div class="row" style="height: 400px">
-        <div class="col-xl-2" style="border: 1px solid darkblue">
-            <div>
-                <a href="#">Item one</a>
-            </div>
+        <div id="slides" class="carousel slide" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#slides" data-slide-to="0" class="active"></li>
+                <li data-target="#slides" data-slide-to="1"></li>
+                <li data-target="#slides" data-slide-to="2"></li>
+                <li data-target="#slides" data-slide-to="3"></li>
+            </ul>
 
-            <div>
-                <a href="#">Item two</a>
-            </div>
-            <div>
-                <a href="#">Item three</a>
-            </div>
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <div class="col-xl-10" style="border: 1px solid darkblue;text-align: center">
-            <h1>Body</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xl-12" style="border: 1px solid darkblue; text-align: center">
-            <h1>FOOTER</h1>
-        </div>
+
     </div>
 </div>
+<br>
+<hr class="my-4">
+
+
+<footer>
+    <div class="container-fluid padding">
+        <div class="row text-center col-12">
+            <p>FOOTER</p>
+        </div>
+    </div>
+</footer>
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
 </body>
 </html>
