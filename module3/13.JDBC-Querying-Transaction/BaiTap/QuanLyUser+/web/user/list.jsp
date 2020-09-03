@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Admin
-  Date: 8/31/2020
-  Time: 9:59 PM
+  Date: 9/1/2020
+  Time: 1:45 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -13,12 +13,19 @@
     <title>User Management Application</title>
 </head>
 <body>
-
-<h1>User Management</h1>
-<h2>
-    <a href="/user">Back to list user</a>
-</h2>
-
+<center>
+    <h1>User Management</h1>
+    <h2>
+        <a href="/user?action=create">Add New User</a>
+    </h2>
+</center>
+<div align="center">
+    <form method="post" action="/user" >
+        <input type="hidden" name="action" value="find">
+        <input type="text" name="country" id="country">
+        <input type="submit" value="search follow country">
+    </form>
+</div>
 <div align="center">
     <table border="1" cellpadding="5">
         <caption><h2>List of Users</h2></caption>
@@ -29,7 +36,7 @@
             <th>Country</th>
             <th>Actions</th>
         </tr>
-        <c:forEach var="user" items="${listFindCountry}">
+        <c:forEach var="user" items="${listUser}">
             <tr>
                 <td><c:out value="${user.id}"/></td>
                 <td><c:out value="${user.name}"/></td>
