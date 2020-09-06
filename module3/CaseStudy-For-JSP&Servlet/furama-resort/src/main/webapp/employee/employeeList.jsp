@@ -332,31 +332,31 @@
 
                     <div class="form-group">
                         <label>Birthday</label>
-                        <input name="birthday" class="form-control" required></input>
+                        <input name="birthday" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>ID Card Number</label>
-                        <input name="idCard" class="form-control" required></input>
+                        <input name="idCard"  class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Salary</label>
-                        <input name="salary" class="form-control" required></input>
+                        <input name="salary" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input name="phoneNumber" class="form-control" required></input>
+                        <input name="phoneNumber" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input name="email" class="form-control" required></input>
+                        <input name="email" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Address</label>
-                        <input name="address" class="form-control" required></input>
+                        <input name="address" class="form-control" required>
                     </div>
 
                     <div class="form-group">
