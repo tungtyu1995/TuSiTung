@@ -19,6 +19,20 @@
         <a href="/user?action=create">Add New User</a>
     </h2>
 </center>
+<%--<form method="get" action="/findName">--%>
+<%--    <fieldset style="width: 25%">--%>
+<%--        <h3>Search name product</h3>--%>
+<%--        <input type="text" name="nameFind" id="nameFind"  placeholder="Enter User Name">--%>
+<%--        <input type="submit" value="View product">--%>
+<%--    </fieldset>--%>
+<%--</form>--%>
+<div align="center">
+    <form method="post" action="/user" >
+        <input type="hidden" name="action" value="findName">
+        <input type="text" name="name" id="name">
+        <input type="submit" value="search follow name">
+    </form>
+</div>
 <div align="center">
     <form method="post" action="/user" >
         <input type="hidden" name="action" value="find">

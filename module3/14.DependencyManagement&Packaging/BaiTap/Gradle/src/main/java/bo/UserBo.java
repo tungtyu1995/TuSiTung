@@ -11,12 +11,21 @@ import java.util.List;
 public class UserBo implements IUserBo {
 
 
-    private IUserDao userDao =new UserDao();
+    private IUserDao userDao = new UserDao();
 
-    public List<User> findUserByCountry(String country){
+    public List<User> findUserByCountry(String country) {
         List<User> users = new ArrayList<>();
-        for (User user: userDao.selectAllUsers()) {
-            if(user.getCountry().toLowerCase().contains(country))
+        for (User user : userDao.selectAllUsers()) {
+            if (user.getCountry().toLowerCase().contains(country))
+                users.add(user);
+        }
+        return users;
+    }
+
+    public List<User> findUserByName(String name) {
+        List<User> users = new ArrayList<>();
+        for (User user : userDao.selectAllUsers()) {
+            if (user.getName().toLowerCase().contains(name))
                 users.add(user);
         }
         return users;
@@ -29,7 +38,7 @@ public class UserBo implements IUserBo {
 
     @Override
     public User selectUser(int id) {
-        return  this.userDao.selectUser(id);
+        return this.userDao.selectUser(id);
     }
 
     @Override
@@ -46,4 +55,5 @@ public class UserBo implements IUserBo {
     public boolean updateUser(User user) throws SQLException {
         return this.userDao.updateUser(user);
     }
+
 }

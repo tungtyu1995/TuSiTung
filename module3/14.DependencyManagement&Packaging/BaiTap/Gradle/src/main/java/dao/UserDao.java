@@ -5,6 +5,7 @@ import model.User;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class UserDao implements IUserDao {
     private String jdbcURL = "jdbc:mysql://localhost:3306/demo";
@@ -17,6 +18,7 @@ public class UserDao implements IUserDao {
     private static final String SELECT_ALL_USERS = "select * from users order by `name`";
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
     private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =? where id = ?;";
+
 
     public UserDao() {
     }
@@ -127,5 +129,4 @@ public class UserDao implements IUserDao {
         }
         return rowUpdated;
     }
-
 }
