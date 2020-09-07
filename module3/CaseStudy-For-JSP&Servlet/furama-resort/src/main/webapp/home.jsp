@@ -183,7 +183,7 @@
     }
 </style>
 </head>
-<body style="background-image: url('https://www.travelvietnam.com/images/photos/asia/vietnam-danang-furama-resort-danang-3.jpg?t=1594914357')">
+<body style="background-image: url('https://www.travelvietnam.com/images/photos/asia/vietnam-danang-furama-resort-danang-9.jpg?t=1599447082')">
 <div class="header">
     <div class="container-fluid">
         <div class="row" >

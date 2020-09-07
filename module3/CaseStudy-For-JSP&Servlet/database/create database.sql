@@ -21,21 +21,21 @@ truncate table positions;
 
 -- Tạo bảng user, role, user_role
 create table user(
-username varchar(255) primary key,
-password varchar(255)
+	username varchar(255) primary key,
+	password varchar(255)
 );
 
 create table role(
-id int primary key auto_increment,
-role_name varchar(255)
+	id int primary key auto_increment,
+	role_name varchar(255)
 );
 
 create table user_role(
-user_role_id int primary key auto_increment,
-role_id int,
-username varchar(255),
-foreign key (role_id) references role(id),
-foreign key (username) references user(username)
+	user_role_id int primary key auto_increment,
+	role_id int,
+	username varchar(255),
+	foreign key (role_id) references role(id),
+	foreign key (username) references user(username)
 );
 -- 2. Tạo bảng Trình độ
 
@@ -87,16 +87,14 @@ create table departments(
     
 
 	
-INSERT INTO `furama_resort_management`.`employees` (`name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Vu Le Tuong', '2000-12-12', '123654987', '9000$', '0903736122', 'tuongvule@gmai.com', 'Quang Nam', '1', '1', '1');
-INSERT INTO `furama_resort_management`.`employees` (`name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Nguyen Van Huy', '1999-11-24', '111222333', '4567$', '0900876456', 'nguyenvanhuy@gmai.com', 'Quang Binh', '2', '2', '3');
-INSERT INTO `furama_resort_management`.`employees` (`name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Vo Duc Viet', '1998-9-24', '222333444', '9875$', '0789123765', 'voducviet@gmai.com', 'Quang Binh', '1', '2', '4');
-INSERT INTO `furama_resort_management`.`employees` (`name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Duong Nhat Huy', '1997-4-13', '999888555', '4563$', '2347765123', 'duongnhathuy@gmail.com', 'DaNang', '2', '1', '4');
-INSERT INTO `furama_resort_management`.`employees` ( `name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Pham Vu', '1996-8-31', '222777444', '1235$', '0123987643', 'phamvu@gmai.com', 'Binh Thuan', '3', '3', '1');
-INSERT INTO `furama_resort_management`.`employees` (`name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Huynh Van Thinh', '2000-3-22', '765893164', '2345$', '0909080706', 'huynhvanthinh@gmai.com', 'Quang Ngai', '6', '3', '2');
-INSERT INTO `furama_resort_management`.`employees` (`name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Nguyen Van Hieu', '2003-6-18', '123666887', '9876$', '0134765876', 'nguyenvanhieu@gmail.com', 'Ben Tre', '5', '4', '3');
-INSERT INTO `furama_resort_management`.`employees` (`name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Nguyen Hai Dang', '2004-9-26', '987654321', '7653$', '0902878654', 'nguyenhaidang@gmail.com', 'Hau Giang', '4', '2', '3');
-INSERT INTO `furama_resort_management`.`employees` (`name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Vo Dai Ka', '1996-2-18', '276489104', '3987', '0987542781', 'vodaika@gmail.com', 'Bac Lieu', '1', '1', '2');
-INSERT INTO `furama_resort_management`.`employees` (`name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Vu Thanh Quang', '1992-4-6', '129384762', '8000', '0897654125', 'vuthanhquang@gmail.com', 'Thanh Hoa', '3', '3', '1');
+INSERT INTO `furama_resort_management`.`employees` (`name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Van Chuong', '2000-12-12', '123654987', '9000$', '0903736122', 'tuongvule@gmai.com', 'Quang Nam', '1', '1', '1');
+INSERT INTO `furama_resort_management`.`employees` (`name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Le Nhat', '1999-11-24', '111222333', '4567$', '0900876456', 'nguyenvanhuy@gmai.com', 'Quang Binh', '2', '2', '3');
+INSERT INTO `furama_resort_management`.`employees` (`name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Le Toan', '1998-9-24', '222333444', '9875$', '0789123765', 'voducviet@gmai.com', 'Quang Binh', '1', '2', '4');
+INSERT INTO `furama_resort_management`.`employees` (`name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Tien Hai', '1997-4-13', '999888555', '4563$', '2347765123', 'duongnhathuy@gmail.com', 'DaNang', '2', '1', '4');
+INSERT INTO `furama_resort_management`.`employees` ( `name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Son Tra', '1996-8-31', '222777444', '1235$', '0123987643', 'phamvu@gmai.com', 'Binh Thuan', '3', '3', '1');
+INSERT INTO `furama_resort_management`.`employees` (`name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Tu Si Tung', '2000-3-22', '765893164', '2345$', '0909080706', 'huynhvanthinh@gmai.com', 'Quang Ngai', '6', '3', '2');
+INSERT INTO `furama_resort_management`.`employees` (`name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Phan Quoc Khanh', '2003-6-18', '123666887', '9876$', '0134765876', 'nguyenvanhieu@gmail.com', 'Ben Tre', '5', '4', '3');
+INSERT INTO `furama_resort_management`.`employees` (`name`, `birthday`, `id_card`, `salary`, `phone_number`, `email`, `address`, `id_position`, `id_degree`, `id_department`) VALUES ('Le Van Hoat', '2004-9-26', '987654321', '7653$', '0902878654', 'nguyenhaidang@gmail.com', 'Hau Giang', '4', '2', '3');
 
 -- 5. Tạo bảng loại khách
 
@@ -128,11 +126,11 @@ create table customers(
 INSERT INTO `furama_resort_management`.`customers` (`name`, `birthday`, `id_card`, `phone_number`, `email`, `address`, `id_type_of_customer`) VALUES ('Nguyen Van B', '2008-09-8', '123456090', '0976431234', 'nguyenvana@gmai.com', 'DakLak', '1');
 INSERT INTO `furama_resort_management`.`customers` (`name`, `birthday`, `id_card`, `phone_number`, `email`, `address`, `id_type_of_customer`) VALUES ('Tran Thi C', '1994-7-9', '287698234', '0345768921', 'tranthic@gmai.com', 'Gia Lai', '2');
 INSERT INTO `furama_resort_management`.`customers` (`name`, `birthday`, `id_card`, `phone_number`, `email`, `address`, `id_type_of_customer`) VALUES ('Bui Thi C', '1995-3-5', '2098763421', '0977345128', 'buithic@gmail.com', 'Quang Ngai', '3');
-INSERT INTO `furama_resort_management`.`customers` (`name`, `birthday`, `id_card`, `phone_number`, `email`, `address`, `id_type_of_customer`) VALUES ('Nguyen Dong', '1997-6-7', '209865482', '0987654321', 'nguyendong@gmail.com', 'Quang Nam', '4');
-INSERT INTO `furama_resort_management`.`customers` (`name`, `birthday`, `id_card`, `phone_number`, `email`, `address`, `id_type_of_customer`) VALUES ('Do Van', '1996-10-29', '145237459', '0999888777', 'dovan@gmail.com', 'Ha Giang', '4');
-INSERT INTO `furama_resort_management`.`customers` (`name`, `birthday`, `id_card`, `phone_number`, `email`, `address`, `id_type_of_customer`) VALUES ('Tran Van Thang', '1973-6-21', '208765986', '0900000765', 'tranvanthang@gmai.co,', 'Da Nang', '1');
-INSERT INTO `furama_resort_management`.`customers` (`name`, `birthday`, `id_card`, `phone_number`, `email`, `address`, `id_type_of_customer`) VALUES ('Nguyen Tien Quoc', '1940-2-4', '237548918', '0907645286', 'nguyentienquoc@gmai.com', 'Da Nang', '1');
-INSERT INTO `furama_resort_management`.`customers` (`name`, `birthday`, `id_card`, `phone_number`, `email`, `address`, `id_type_of_customer`) VALUES ('Tran Trung Quan', '2001-3-19', '275982875', '0123485671', 'trantrungquan@gmail.com', 'Quang Tri', '2');
+INSERT INTO `furama_resort_management`.`customers` (`name`, `birthday`, `id_card`, `phone_number`, `email`, `address`, `id_type_of_customer`) VALUES ('Huan Hoa Hong', '1997-6-7', '209865482', '0987654321', 'nguyendong@gmail.com', 'Quang Nam', '4');
+INSERT INTO `furama_resort_management`.`customers` (`name`, `birthday`, `id_card`, `phone_number`, `email`, `address`, `id_type_of_customer`) VALUES ('Do Van Buom', '1996-10-29', '145237459', '0999888777', 'dovan@gmail.com', 'Ha Giang', '4');
+INSERT INTO `furama_resort_management`.`customers` (`name`, `birthday`, `id_card`, `phone_number`, `email`, `address`, `id_type_of_customer`) VALUES ('Chi Pheo', '1973-6-21', '208765986', '0900000765', 'tranvanthang@gmai.co,', 'Da Nang', '1');
+INSERT INTO `furama_resort_management`.`customers` (`name`, `birthday`, `id_card`, `phone_number`, `email`, `address`, `id_type_of_customer`) VALUES ('Kha Banh', '1940-2-4', '237548918', '0907645286', 'nguyentienquoc@gmai.com', 'Da Nang', '1');
+INSERT INTO `furama_resort_management`.`customers` (`name`, `birthday`, `id_card`, `phone_number`, `email`, `address`, `id_type_of_customer`) VALUES ('Thi No', '2001-3-19', '275982875', '0123485671', 'trantrungquan@gmail.com', 'Quang Tri', '2');
 
 
 	
