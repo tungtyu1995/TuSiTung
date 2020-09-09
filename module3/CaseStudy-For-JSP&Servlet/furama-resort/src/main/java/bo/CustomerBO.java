@@ -9,4 +9,5 @@ public interface CustomerBO {
     void add(Customer customer);
     void edit(Customer customer);
     void delete(int id);
+    List<Customer> findByName(String name);
 }

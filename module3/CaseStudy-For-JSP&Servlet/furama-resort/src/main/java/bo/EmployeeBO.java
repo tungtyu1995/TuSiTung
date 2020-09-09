@@ -23,4 +23,6 @@ public interface EmployeeBO {
     void edit(Employee emloyee);
 
     void delete(int id);
+
+    List<Employee> findByName(String name);
 }

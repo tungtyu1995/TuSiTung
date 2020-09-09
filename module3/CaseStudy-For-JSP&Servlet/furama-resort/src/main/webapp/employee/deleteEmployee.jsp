@@ -141,7 +141,7 @@
                     <p class="text-warning"><small>This action cannot be undone.</small></p>
                 </div>
                 <div class="modal-footer">
-                    <a href="/customerServlet"><input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"></a>
+                    <a href="/employeeServlet"><input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"></a>
                     <input type="submit" class="btn btn-danger" value="Delete">
                 </div>
             </form>

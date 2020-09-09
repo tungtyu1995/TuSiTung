@@ -239,21 +239,21 @@
 
                     <div class="form-group">
                         <label>Area</label>
-                        <input name="area" class="form-control" required>
+                        <input type="number" min="1" step="any" name="area" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Floor</label>
-                        <input name="floor" class="form-control" required>
+                        <input type="number" min="1" step="any" name="floor" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Number of People</label>
-                        <input name="numberOfPeople" class="form-control" required>
+                        <input type="number" min="1" name="numberOfPeople" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Cost</label>
-                        <input name="cost" class="form-control" required>
+                        <input type="number" min="1" step="any" name="cost" class="form-control" required>
                     </div>
 
                     <div class="form-group">
@@ -281,7 +281,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <a href="home.jsp"></a><input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <a href="home.jsp"><input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"></a>
                     <input type="submit" class="btn btn-success" value="Add">
                 </div>
             </form>

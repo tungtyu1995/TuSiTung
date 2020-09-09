@@ -5,10 +5,7 @@ import model.Department;
 import model.Employee;
 import model.Position;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +21,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     private static final String EDIT_EMPLOYEE = "update employees set `name`=?,birthday=?,id_card=?,salary=?,phone_number=?," +
             "email=?,address=?,id_position=?,id_degree = ?,id_department =? where id_employee = ?;";
     private static final String DELETE_EMPLOYEE = "delete from employees where id_employee = ?;";
+    private static final String SELECT_BY_NAME = "select * from employees where `name` like ?";
     @Override
     public List<Employee> findAllEmployee() {
         List<Employee> employeeList = new ArrayList<>();
@@ -196,5 +194,41 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         }catch(SQLException e){
             e.printStackTrace();
         }
+    }
+    @Override
+    public List<Employee> findByName(String name) {
+        Connection connection = baseDAO.getConnection();
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<Employee> employeeList = new ArrayList<>();
+        Employee employee1 = null;
+
+        if (connection != null) {
+            try {
+                statement = connection.prepareStatement(SELECT_BY_NAME);
+                statement.setString(1, "%" + name + "%");
+                resultSet = statement.executeQuery();
+
+                while (resultSet.next()) {
+                    employee1 = new Employee();
+                    employee1.setId(resultSet.getInt("id_employee"));
+                    employee1.setName(resultSet.getString("name"));
+                    employee1.setBirthday(resultSet.getString("birthday"));
+                    employee1.setIdCard(resultSet.getString("id_card"));
+                    employee1.setSalary(resultSet.getString("salary"));
+                    employee1.setPhoneNumber(resultSet.getString("phone_number"));
+                    employee1.setEmail(resultSet.getString("email"));
+                    employee1.setAddress(resultSet.getString("address"));
+                    employee1.setIdPosition(resultSet.getInt("id_position"));
+                    employee1.setIdDegree(resultSet.getInt("id_degree"));
+                    employee1.setIdDepartment(resultSet.getInt("id_department"));
+
+                    employeeList.add(employee1);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return employeeList;
     }
 }

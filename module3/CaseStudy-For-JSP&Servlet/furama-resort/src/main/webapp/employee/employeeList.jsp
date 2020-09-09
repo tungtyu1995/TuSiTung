@@ -239,9 +239,17 @@
                     <li><a href="/customerServlet">Customer</a></li>
                     <li><a href="/serviceServlet">Service</a></li>
                     <li><a href="/contractServlet">Contract</a></li>
-                    <li class="input-group" style="margin: -6px">
-                        <input type="text" id="search" class="form-control" placeholder="Search by Name">
-                    </li>
+                    <div class="row">
+                        <form method="post" action="/employeeServlet" >
+                            <input type="hidden" name="action" value="search">
+                            <input type="text" name="name" id="name">
+                            <input type="submit" value="Search">
+                        </form>
+                    </div>
+
+<%--                    <li class="input-group" style="margin: -6px">--%>
+<%--                        <input type="text" id="search" class="form-control" placeholder="Search by Name">--%>
+<%--                    </li>--%>
                     <!--                <li><input type="submit" value="Search"></li>-->
                 </ul>
             </div>
@@ -289,24 +297,24 @@
                                 <th scope="row"><c:out value="${employee.id}"/></th>
                                 <td><c:out value="${employee.name}"/></td>
                                 <td><c:out value="${employee.birthday}"/></td>
-                                <td><c:out value="${employee.idCard}"/></td>
+                                <td style="word-wrap: break-word"><c:out value="${employee.idCard}"/></td>
                                 <td><c:out value="${employee.salary}"/></td>
-                                <td><c:out value="${employee.phoneNumber}"/></td>
-                                <td><c:out value="${employee.email}"/></td>
-                                <td><c:out value="${employee.address}"/></td>
+                                <td style="word-wrap: break-word"><c:out value="${employee.phoneNumber}"/></td>
+                                <td style="word-wrap: break-word"><c:out value="${employee.email}"/></td>
+                                <td ><c:out value="${employee.address}"/></td>
                                 <c:forEach var="position" items="${positionList}">
                                     <c:if test="${employee.idPosition == position.id}">
-                                        <td><c:out value="${position.namePosition}"/></td>
+                                        <td style="word-wrap: break-word"><c:out value="${position.namePosition}"/></td>
                                     </c:if>
                                 </c:forEach>
                                 <c:forEach var="degree" items="${degreeList}">
                                     <c:if test="${employee.idDegree == degree.id}">
-                                        <td><c:out value="${degree.nameDegree}"/></td>
+                                        <td style="word-wrap: break-word"><c:out value="${degree.nameDegree}"/></td>
                                     </c:if>
                                 </c:forEach>
                                 <c:forEach var="department" items="${departmentList}">
                                     <c:if test="${employee.idDepartment == department.id}">
-                                        <td><c:out value="${department.nameDepartment}"/></td>
+                                        <td style="word-wrap: break-word"><c:out value="${department.nameDepartment}"/></td>
                                     </c:if>
                                 </c:forEach>
 
@@ -351,36 +359,36 @@
 
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" name="name" required>
+                        <input type="text" title="Nhập vào họ và tên" class="form-control" name="name" required>
                     </div>
 
                     <div class="form-group">
                         <label>Birthday</label>
-                        <input type="date" name="birthday" class="form-control" required>
+                        <input type="date" title="Nhập vào năm-tháng-ngày" name="birthday" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>ID Card Number</label>
-                        <input name="idCard" class="form-control" required>
+                        <input type="number" min="100000000" max="999999999" title="Nhập số CMNN gồm 9 số" name="idCard" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Salary</label>
-                        <input name="salary" class="form-control" required>
+                        <input type="number" step="any" min="1.0" name="salary" title="Nhập vào tiền lương" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input name="phoneNumber" class="form-control" required>
+                        <input type="text" pattern="(09|01[2|6|8|9])+([0-9]{8})\b"  name="phoneNumber" title="Nhập đúng số điện thoại" name="phoneNumber" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input name="email" class="form-control" required>
+                        <input  type="email" title="Nhập vào email đúng định dạng" name="email" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Address</label>
-                        <input name="address" class="form-control" required>
+                        <input title="Nhập vào địa chỉ" name="address" class="form-control" required>
                     </div>
 
                     <div class="form-group">

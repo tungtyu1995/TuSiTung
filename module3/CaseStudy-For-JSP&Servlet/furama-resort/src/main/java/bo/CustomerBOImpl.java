@@ -27,4 +27,9 @@ public class CustomerBOImpl implements CustomerBO {
     public void delete(int id) {
         this.customerDAO.delete(id);
     }
+
+    @Override
+    public List<Customer> findByName(String name) {
+       return this.customerDAO.findByName(name);
+    }
 }

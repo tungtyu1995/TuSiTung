@@ -58,7 +58,7 @@
                 if (n >= pageSize * (page - 1) && n < pageSize * page)
                     $(this).show();
             });
-        }
+        };
         showPage(1);
         ///** Cần truyền giá trị vào đây **///
         var totalRows = ${count}; // Tổng số sản phẩm hiển thị
@@ -239,10 +239,17 @@
                     <li><a href="/customerServlet">Customer</a></li>
                     <li><a href="/serviceServlet">Service</a></li>
                     <li><a href="/contractServlet">Contract</a></li>
-                    <li class="input-group" style="margin: -6px">
-                        <input type="text" id="search" class="form-control" placeholder="Search by Name">
-                    </li>
-                    <!--                <li><input type="submit" value="Search"></li>-->
+                    <div class="row">
+                    <form method="post" action="/customerServlet" >
+                        <input type="hidden" name="action" value="search">
+                        <input type="text" name="name" id="name">
+                        <input type="submit" value="Search">
+                    </form>
+                    </div>
+<%--                    <li class="input-group" style="margin: -6px">--%>
+<%--                        <input type="text" id="search" name="name" class="form-control" placeholder="Search by Name">--%>
+<%--                    </li>--%>
+<%--                               <li><input type="submit" value="Search"></li>--%>
                 </ul>
             </div>
         </div>
@@ -286,8 +293,8 @@
                                 <td><c:out value="${customer.name}"/></td>
                                 <td><c:out value="${customer.birthday}"/></td>
                                 <td><c:out value="${customer.idCard}"/></td>
-                                <td><c:out value="${customer.phoneNumber}"/></td>
-                                <td><c:out value="${customer.email}"/></td>
+                                <td style="word-wrap: break-word"><c:out value="${customer.phoneNumber}"/></td>
+                                <td style="word-wrap: break-word" ><c:out value="${customer.email}"/></td>
                                 <td><c:out value="${customer.address}"/></td>
                                 <c:forEach var="customerType" items="${customerTypeList}">
                                     <c:if test="${customer.idCustomerType == customerType.id}">
@@ -335,31 +342,31 @@
 
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" name="name" required>
+                        <input type="text" title="Nhập vào họ tên của bạn" class="form-control" name="name" required>
                     </div>
 
                     <div class="form-group">
                         <label>Birthday</label>
-                        <input type="date" name="birthday" class="form-control" required>
+                        <input type="date" title="Nhập vào năm-tháng-ngày sinh" name="birthday" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>ID Card Number</label>
-                        <input type="number" min="100000000" max="999999999" name="idCard" class="form-control" required></input>
+                        <input type="number" min="100000000" max="999999999" title="Nhập số CMND 9 Chữ số" name="idCard" class="form-control" required></input>
                     </div>
 
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input type="text" pattern="(09|01[2|6|8|9])+([0-9]{8})\b"  name="phoneNumber" class="form-control" required></input>
+                        <input type="text" pattern="(09|01[2|6|8|9])+([0-9]{8})\b"  name="phoneNumber" title="Nhập số điện thoại từ 10 đến 11 số"  class="form-control" required></input>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" name="email" class="form-control" required></input>
+                        <input type="email" title="Nhập đúng định dạng email" name="email" class="form-control" required></input>
                     </div>
 
                     <div class="form-group">
                         <label>Address</label>
-                        <input name="address" class="form-control" required></input>
+                        <input name="address" title="Nhập vào địa chỉ của bạn" class="form-control" required></input>
                     </div>
 
                     <div class="form-group">

@@ -147,37 +147,37 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <c:if test="${customer != null}">
-                    <input type="hidden" name="id" value="<c:out value='${customer.id}'></c:out>"/>
+                    <input type="hidden" name="id" value="<c:out value='${customer.id}'></c:out>" required>
                 </c:if>
                 <div class="modal-body">
 
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" name="name" required value="<c:out value='${customer.name}'></c:out>">
+                        <input type="text" class="form-control" name="name" required value="<c:out value='${customer.name}'></c:out>" required>
                     </div>
 
                     <div class="form-group">
                         <label>Birthday</label>
-                        <input name="birthday" class="form-control" value="<c:out value='${customer.birthday}'></c:out>"></input>
+                        <input type="date" name="birthday" class="form-control" value="<c:out value='${customer.birthday}'></c:out>" required>
                     </div>
 
                     <div class="form-group">
                         <label>ID Card Number</label>
-                        <input name="idCard" class="form-control" value="<c:out value='${customer.idCard}'></c:out>"></input>
+                        <input type="number" min="100000000" max="999999999" name="idCard" class="form-control" value="<c:out value='${customer.idCard}'></c:out>" required>
                     </div>
 
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input name="phoneNumber" class="form-control" value="<c:out value='${customer.phoneNumber}'></c:out>"></input>
+                        <input type="number" pattern="(09|01[2|6|8|9])+([0-9]{8})\b" name="phoneNumber" class="form-control" value="<c:out value='${customer.phoneNumber}'></c:out>" required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input name="email" class="form-control" value="<c:out value='${customer.email}'></c:out>"></input>
+                        <input type="email" name="email" class="form-control" value="<c:out value='${customer.email}'></c:out>" required>
                     </div>
 
                     <div class="form-group">
                         <label>Address</label>
-                        <input name="address" class="form-control" value="<c:out value='${customer.address}'></c:out>"></input>
+                        <input type="text" name="address" class="form-control" value="<c:out value='${customer.address}'></c:out>" required>
                     </div>
 
                     <div class="form-group">

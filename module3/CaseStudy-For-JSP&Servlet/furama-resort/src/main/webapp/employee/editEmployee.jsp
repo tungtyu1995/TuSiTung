@@ -153,36 +153,36 @@
 
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" name="name" required value="<c:out value='${employee.name}'></c:out>">
+                        <input type="text" class="form-control" name="name" required value="<c:out value='${employee.name}'></c:out>" required>
                     </div>
 
                     <div class="form-group">
                         <label>Birthday</label>
-                        <input name="birthday" class="form-control" value="<c:out value='${employee.birthday}'></c:out>"></input>
+                        <input type="date" name="birthday" class="form-control" value="<c:out value='${employee.birthday}'></c:out>" required>
                     </div>
 
                     <div class="form-group">
                         <label>ID Card Number</label>
-                        <input name="idCard" class="form-control" value="<c:out value='${employee.idCard}'></c:out>"></input>
+                        <input type="number" min="100000000" max="999999999" name="idCard" class="form-control" value="<c:out value='${employee.idCard}'></c:out>" required>
                     </div>
 
                     <div class="form-group">
                         <label>Salary</label>
-                        <input name="salary" class="form-control" value="<c:out value='${employee.salary}'></c:out>"></input>
+                        <input type="number" min="1" step="any" name="salary" class="form-control" value="<c:out value='${employee.salary}'></c:out>" required>
                     </div>
 
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input name="phoneNumber" class="form-control" value="<c:out value='${employee.phoneNumber}'></c:out>"></input>
+                        <input type="number" pattern="(09|01[2|6|8|9])+([0-9]{8})\b" name="phoneNumber" class="form-control" value="<c:out value='${employee.phoneNumber}'></c:out>" required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input name="email" class="form-control" value="<c:out value='${employee.email}'></c:out>"></input>
+                        <input type="email" name="email" class="form-control" value="<c:out value='${employee.email}'></c:out>" required>
                     </div>
 
                     <div class="form-group">
                         <label>Address</label>
-                        <input name="address" class="form-control" value="<c:out value='${employee.address}'></c:out>"></input>
+                        <input name="address" class="form-control" value="<c:out value='${employee.address}'></c:out>" required>
                     </div>
 
                     <div class="form-group">

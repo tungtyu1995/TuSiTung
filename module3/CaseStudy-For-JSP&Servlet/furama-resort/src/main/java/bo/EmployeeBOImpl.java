@@ -52,4 +52,9 @@ public class EmployeeBOImpl implements EmployeeBO {
     public void delete(int id) {
         this.employeeDAO.delete(id);
     }
+
+    @Override
+    public List<Employee> findByName(String name) {
+        return employeeDAO.findByName(name);
+    }
 }
