@@ -25,12 +25,12 @@
 
                     <div class="form-group">
                         <label>English:</label>
-                        <input type="text" name="word" class="form-control">
+                        <input type="text" name="word" value="${english}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label>Vietnamese::</label>
-                        <input type="text" name="vnd" value="${result}" class="form-control" readonly>
+                        <input value="${vietnamese}" class="form-control" readonly>
                     </div>
 
                     <div>

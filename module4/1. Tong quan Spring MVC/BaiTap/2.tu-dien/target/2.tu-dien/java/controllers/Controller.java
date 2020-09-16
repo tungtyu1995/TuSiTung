@@ -17,7 +17,7 @@ public class Controller {
 
     @PostMapping("/view")
     public static ModelAndView search(@RequestParam String word) {
-        ModelAndView modelAndView = new ModelAndView("view");
+       String english = word;
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("read", "đọc");
         hashMap.put("book", "sách");
@@ -29,8 +29,9 @@ public class Controller {
         if (hashMap.get(word) == null) {
             word = "Mẹ mày nhập từ khó thế !!!";
         } else word = hashMap.get(word);
-        modelAndView.addObject("work", word);
-        modelAndView.addObject("result", word);
+        ModelAndView modelAndView = new ModelAndView("view");
+        modelAndView.addObject("vietnamese", word);
+        modelAndView.addObject("english",english);
         return modelAndView;
     }
 }
