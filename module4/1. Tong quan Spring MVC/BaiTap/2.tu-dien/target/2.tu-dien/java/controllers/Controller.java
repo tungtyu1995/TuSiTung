@@ -1,8 +1,6 @@
 package controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
@@ -17,7 +15,7 @@ public class Controller {
 
     @PostMapping("/view")
     public static ModelAndView search(@RequestParam String word) {
-       String english = word;
+        String english = word;
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("read", "đọc");
         hashMap.put("book", "sách");
@@ -31,7 +29,7 @@ public class Controller {
         } else word = hashMap.get(word);
         ModelAndView modelAndView = new ModelAndView("view");
         modelAndView.addObject("vietnamese", word);
-        modelAndView.addObject("english",english);
+        modelAndView.addObject("english", english);
         return modelAndView;
     }
 }
