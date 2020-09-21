@@ -15,7 +15,7 @@
 <h2>Sandwich Condiments</h2>
 <form method="post" action="/save">
     <p>
-        <input type="checkbox" name="condiment" value="Lettuce">Lettuce</input>
+        <input type="checkbox" name="condiment" value="Lettuce" checked>Lettuce</input>
         <input type="checkbox" name="condiment" value="Tomato">Tomato</input>
         <input type="checkbox" name="condiment" value="Mustard">Mustard</input>
         <input type="checkbox" name="condiment" value="Sprouts">Sprouts</input>
@@ -23,11 +23,14 @@
     <input type="submit" name="submit" value="Save">
     <hr>
     <h2>Condiment List</h2>
+
     <c:forEach var="condiment" items="${condiment}">
         <c:out value="${condiment}"></c:out> <br>
     </c:forEach>
-</form>
 
+    <c:out value="${msg}"/>
+
+</form>
 
 
 </body>

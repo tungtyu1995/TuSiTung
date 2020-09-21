@@ -15,10 +15,12 @@ public class SandwichController {
         return "show";
     }
     @PostMapping("/save")
-    public ModelAndView save(@RequestParam String[] condiment ){
-
+    public ModelAndView save(@RequestParam (required = false) String[] condiment ){
         ModelAndView modelAndView = new ModelAndView("show");
-        modelAndView.addObject("condiment",condiment);
+        modelAndView.addObject("condiment", condiment);
+        if (condiment == null){
+           modelAndView.addObject("msg", "chưa chọn gia vị");
+        }
         return modelAndView;
     }
 }
