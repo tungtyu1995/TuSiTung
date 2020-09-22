@@ -1,14 +1,19 @@
 package vn.codegym.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import vn.codegym.model.Email;
 import vn.codegym.repository.EmailRepository;
 import vn.codegym.repository.EmailRepositoryImpl;
 
 import java.util.List;
 
+@Service
 public class EmailServiceImpl implements EmailService {
 
-    EmailRepository emailRepository = new EmailRepositoryImpl();
+    @Autowired
+    EmailRepository emailRepository;
+
     @Override
     public List<String> getLanguage() {
         return this.emailRepository.getLanguage();

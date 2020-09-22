@@ -1,5 +1,6 @@
 package vn.codegym.repository;
 
+import org.springframework.stereotype.Repository;
 import vn.codegym.model.Email;
 
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Repository
 public class EmailRepositoryImpl implements EmailRepository {
 
     private static final Map<Integer, Email> emails;

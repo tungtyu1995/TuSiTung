@@ -1,23 +1,21 @@
 package vn.codegym.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import vn.codegym.model.Email;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import vn.codegym.service.EmailService;
-import vn.codegym.service.EmailServiceImpl;
 
 import java.util.List;
 
-@RequestMapping({"","/email"})
+@RequestMapping({"", "/email"})
 @Controller
 public class EmailController {
 
-//    @Autowired
-//    private EmailService emailService;
-
-    private EmailService emailService = new EmailServiceImpl();
+    @Autowired
+    private EmailService emailService;
 
     @GetMapping("")
     public ModelAndView getEmailPage() {
@@ -32,7 +30,7 @@ public class EmailController {
 
 
     @GetMapping("/create")
-    public ModelAndView showForm(Model model) {
+    public ModelAndView showAdd(Model model) {
         List<String> listLanguage = emailService.getLanguage();
         List<String> listPageSize = emailService.getPageSize();
         model.addAttribute("listLanguage", listLanguage);

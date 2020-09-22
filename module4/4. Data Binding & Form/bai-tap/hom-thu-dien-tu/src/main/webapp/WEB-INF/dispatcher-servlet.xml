@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!-- Vi tri dat vn.codegym.controllers -->
+    <!-- Vi tri dat vn.codegym -->
     <context:component-scan base-package="vn.codegym"/>
 
     <mvc:annotation-driven/>
