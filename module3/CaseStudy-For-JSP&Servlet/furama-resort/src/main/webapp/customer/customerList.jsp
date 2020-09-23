@@ -357,7 +357,7 @@
 
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input type="text" pattern="(09|01[2|6|8|9])+([0-9]{8})\b"  name="phoneNumber" title="Nhập số điện thoại từ 10 đến 11 số"  class="form-control" required></input>
+                        <input type="number" pattern="(09|01[2|6|8|9])+([0-9]{8})\b"  name="phoneNumber" title="Nhập số điện thoại từ 10 đến 11 số"  class="form-control" required></input>
                     </div>
                     <div class="form-group">
                         <label>Email</label>

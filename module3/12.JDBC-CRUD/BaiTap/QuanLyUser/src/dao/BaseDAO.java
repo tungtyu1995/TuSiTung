@@ -1,4 +1,5 @@
 package dao;
 
-public class BaseDao {
+public class BaseDAO {
+
 }

@@ -131,7 +131,6 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="/customerServlet?action=delete" method="post">
-
                 <div class="modal-header">
                     <input type="hidden" name="id" value="<c:out value='${id}'></c:out>"/>
                     <h4 class="modal-title">Delete Customer</h4>

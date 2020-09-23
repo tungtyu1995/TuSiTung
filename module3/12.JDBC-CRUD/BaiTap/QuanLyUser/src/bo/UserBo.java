@@ -1,8 +1,8 @@
 package bo;
 
-import dao.IUserDao;
+import dao.IUserDAO;
 
-import dao.UserDao;
+import dao.UserDAO;
 import model.User;
 
 import java.sql.SQLException;
@@ -12,12 +12,12 @@ import java.util.List;
 public class UserBo implements IUserBo {
 
 
-    private IUserDao userDao =new UserDao();
+    private IUserDAO userDao =new UserDAO();
 
-    public List<User> findUserByCountry(String country){
+    public List<User> findUserByCountry(String name){
         List<User> users = new ArrayList<>();
         for (User user: userDao.selectAllUsers()) {
-            if(user.getCountry().toLowerCase().contains(country))
+            if(user.getName().toLowerCase().contains(name))
                 users.add(user);
         }
         return users;

@@ -74,8 +74,8 @@ public class UserServlet extends HttpServlet {
 
     private void findUserCountry(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String country = request.getParameter("country");
-        List<User> users = this.userBO.findUserByCountry(country);
-        request.setAttribute("listFindCountry", users);
+        List<User> userList = this.userBO.findUserByCountry(country);
+        request.setAttribute("userList", userList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/view.jsp");
         dispatcher.forward(request, response);
     }
@@ -83,8 +83,8 @@ public class UserServlet extends HttpServlet {
 
     private void listUser(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        List<User> listUser = userBO.selectAllUsers();
-        request.setAttribute("listUser", listUser);
+        List<User> userList = userBO.selectAllUsers();
+        request.setAttribute("userList", userList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
         dispatcher.forward(request, response);
     }
@@ -134,8 +134,8 @@ public class UserServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         userBO.deleteUser(id);
 
-        List<User> listUser = userBO.selectAllUsers();
-        request.setAttribute("listUser", listUser);
+        List<User> userList = userBO.selectAllUsers();
+        request.setAttribute("userList", userList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
         dispatcher.forward(request, response);
     }

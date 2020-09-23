@@ -37,7 +37,13 @@ public class UserServlet extends HttpServlet {
                     updateUser(request, response);
                     break;
                 case "find":
-                    findUserCountry(request, response);
+                    findUserName(request, response);
+                    break;
+                case "delete":
+                    deleteUser(request, response);
+                    break;
+                    default:
+                    listUser(request, response);
                     break;
             }
         } catch (SQLException ex) {
@@ -61,7 +67,7 @@ public class UserServlet extends HttpServlet {
                     showEditForm(request, response);
                     break;
                 case "delete":
-                    deleteUser(request, response);
+                    showDeleteForm(request,response);
                     break;
                 default:
                     listUser(request, response);
@@ -72,9 +78,9 @@ public class UserServlet extends HttpServlet {
         }
     }
 
-    private void findUserCountry(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String country = request.getParameter("country");
-        List<User> users = this.userBO.findUserByCountry(country);
+    private void findUserName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+        List<User> users = this.userBO.findUserByCountry(name);
         request.setAttribute("listFindCountry", users);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/view.jsp");
         dispatcher.forward(request, response);
@@ -107,10 +113,11 @@ public class UserServlet extends HttpServlet {
 
     private void insertUser(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
+        int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String country = request.getParameter("country");
-        User newUser = new User(name, email, country);
+        User newUser = new User(id,name, email, country);
         userBO.insertUser(newUser);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/create.jsp");
         dispatcher.forward(request, response);
@@ -127,6 +134,15 @@ public class UserServlet extends HttpServlet {
         userBO.updateUser(book);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/edit.jsp");
         dispatcher.forward(request, response);
+    }
+    private void showDeleteForm(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        User existingUser = userBO.selectUser(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/delete.jsp");
+        request.setAttribute("user", existingUser);
+        dispatcher.forward(request, response);
+
     }
 
     private void deleteUser(HttpServletRequest request, HttpServletResponse response)

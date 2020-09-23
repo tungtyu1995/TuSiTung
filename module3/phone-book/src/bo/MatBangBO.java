@@ -15,13 +15,12 @@ public class MatBangBO implements IMatBangBO {
         List<MatBang> objs = new ArrayList<>();
         try {
             for (MatBang obj: iMatBangDAO.selectAllObjs()) {
-                if(obj.getLoaiVanPhong().toLowerCase().contains(loaiVanPhong))
+                if(obj.getLoaiVanPhong().equals(loaiVanPhong))
                     objs.add(obj);
             }
         }catch (Exception e){
             e.printStackTrace();
         }
-
         return objs;
     }
 
@@ -29,7 +28,7 @@ public class MatBangBO implements IMatBangBO {
         List<MatBang> objs = new ArrayList<>();
         try {
             for (MatBang obj: iMatBangDAO.selectAllObjs()) {
-                if(obj.getGia().toLowerCase().contains(gia))
+                if(obj.getGia().equals(gia))
                     objs.add(obj);
             }
         }catch (Exception e){
@@ -43,13 +42,12 @@ public class MatBangBO implements IMatBangBO {
         List<MatBang> objs = new ArrayList<>();
         try {
             for (MatBang obj: iMatBangDAO.selectAllObjs()) {
-                if(obj.getTang().toLowerCase().contains(tang))
+                if(obj.getTang().contains(tang))
                     objs.add(obj);
             }
         }catch (Exception e){
             e.printStackTrace();
         }
-
         return objs;
     }
 
@@ -73,10 +71,5 @@ public class MatBangBO implements IMatBangBO {
     @Override
     public void deleteObj(String id) throws SQLException {
         this.iMatBangDAO.deleteObj(id);
-    }
-
-    @Override
-    public void updateObj(MatBang obj) throws SQLException {
-        this.iMatBangDAO.updateObj(obj);
     }
 }

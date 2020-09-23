@@ -94,7 +94,6 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
                     addUserPermision(request, response);
                     break;
                 case "test-without-tran":
-
                     testWithoutTran(request, response);
                     break;
                 default:
