@@ -1,5 +1,4 @@
-<iframe id="img-of-the-day"
-        width="560" height="315" frameborder="0" allowfullscreen></iframe>
+<img id="img-of-the-day" style="width: 500px", height="400px">
 <script>
     let query = 'https://api.nasa.gov/planetary/apod?api_key=7fc7zVOJdonBJ3O4sD0BzQ3Znz4dRz8SqTBl4h0w';
     let request = new XMLHttpRequest();
@@ -13,8 +12,8 @@
     request.send();
 </script>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <body>
+<br>
 <br>
 <form action="/create-comment" method="post" th:object="${comment}">
     <select th:field="*{mark}">
@@ -37,6 +36,7 @@
     <tr>
         <th>id</th>
         <th>author</th>
+        <th>mark</th>
         <th>feedback</th>
         <th>totalLike</th>
 
@@ -45,9 +45,11 @@
     <tr th:each="comment : ${comments}">
         <td th:text="${comment.id}"></td>
         <td th:text="${comment.author}"></td>
+        <td th:text="${comment.mark}"></td>
         <td th:text="${comment.feedback}"></td>
         <td th:text="${comment.totalLike}"></td>
-        <td><a th:href="@{/update-like/__${comment.id}__ }">LIKE</a></td>
+        <td><a th:href="@{/update-like/{id}(id=${comment.id})}">LIKE</a></td>
+
 </table>
 </tr>
 </body>
