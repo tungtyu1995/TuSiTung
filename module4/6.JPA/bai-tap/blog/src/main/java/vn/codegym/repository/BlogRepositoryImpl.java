@@ -1,11 +1,14 @@
 package vn.codegym.repository;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import vn.codegym.model.Blog;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
+
 @Transactional
 @Repository
 public class BlogRepositoryImpl implements BlogRepository {

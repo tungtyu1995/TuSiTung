@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class BlogServiceImlp implements BlogService {
+public class BlogServiceImpl implements BlogService {
 
     @Autowired
     private BlogRepository blogRepository;

@@ -9,7 +9,8 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
-    mavenCentral()}
+    mavenCentral()
+}
 
 dependencies {
     compile group: 'javax.servlet', name: 'servlet-api', version: '2.5'

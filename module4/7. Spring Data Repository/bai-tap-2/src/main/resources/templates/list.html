@@ -6,6 +6,19 @@
 </head>
 <body>
 <a href="/create-blog">Create new Blog</a>
+<br>
+<form action="/search-blog">
+    <label>Input text:</label>
+    <input type="hidden" name="action" value="search">
+    <input type="text" th:name="inputSearch">
+    <input type="submit" value="Search">
+</form>
+
+<p>
+    <a href="/">Blogs list</a>
+</p>
+
+
 <h1>Blog</h1>
 <table border="1" style="border-collapse: collapse">
     <tr>

@@ -12,7 +12,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.model.Blog;
 import vn.codegym.service.BlogService;
 
-import java.util.List;
 
 @Controller
 public class BlogController {
@@ -21,7 +20,7 @@ public class BlogController {
 
 
     @GetMapping("/")
-    public String listBlogs(Model model) {
+    public String listBlog(Model model) {
         model.addAttribute("blogs", blogService.findAll());
         return "/list";
     }
@@ -44,6 +43,7 @@ public class BlogController {
     public ModelAndView showCreateForm() {
         return new ModelAndView("/create", "blog", new Blog());
     }
+
 
     @PostMapping("/create-blog")
     public String createBlog(@ModelAttribute Blog blog, RedirectAttributes redirectAttributes) {
@@ -68,7 +68,7 @@ public class BlogController {
     }
 
     @PostMapping("/edit-blog")
-    public String updateBlog(@ModelAttribute("blog") Blog blog){
+    public String updateBlog(@ModelAttribute("blog") Blog blog) {
         blogService.update(blog);
         return "redirect:/";
     }

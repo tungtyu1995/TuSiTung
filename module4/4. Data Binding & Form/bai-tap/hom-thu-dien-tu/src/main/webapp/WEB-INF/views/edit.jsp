@@ -5,7 +5,7 @@
   Time: 10:29 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -29,11 +29,12 @@
         </tr>
         <tr>
             <td><form:label path="signature">Signature: </form:label></td>
-            <td><form:textarea path="signature" /></td>
+            <td><form:textarea path="signature"/></td>
         </tr>
         <tr>
             <td><input type="submit" value="edit"/></td>
-            <td><button type="button"/>
+            <td>
+                <button type="button"/>
                 <a href="/email" style="text-decoration: none">Cancel</a></td>
         </tr>
     </table>

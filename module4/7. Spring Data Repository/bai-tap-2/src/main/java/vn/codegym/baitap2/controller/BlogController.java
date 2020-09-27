@@ -6,11 +6,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.SortDefault;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.baitap2.model.Blog;
@@ -84,5 +80,13 @@ public class BlogController {
     public String deleteBlog(@PathVariable Long id) {
         blogService.remove(id);
         return "redirect:/";
+    }
+
+    @GetMapping("/search-blog")
+    public ModelAndView searchByName(@RequestParam String inputSearch, @SortDefault(sort = "time", direction = Sort.Direction.DESC) @PageableDefault(value = 2) Pageable pageable) {
+        ModelAndView modelAndView = new ModelAndView("list");
+        modelAndView.addObject("blog", new Blog());
+        modelAndView.addObject("blogs", blogService.findAllByNameContaining(inputSearch, pageable));
+        return modelAndView;
     }
 }

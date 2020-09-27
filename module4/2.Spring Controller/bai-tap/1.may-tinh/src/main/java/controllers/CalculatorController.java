@@ -18,8 +18,8 @@ public class CalculatorController {
         Double result = number1 + number2;
         ModelAndView modelAndView = new ModelAndView("view");
         modelAndView.addObject("result", result);
-        modelAndView.addObject("number1",number1);
-        modelAndView.addObject("number2",number2);
+        modelAndView.addObject("number1", number1);
+        modelAndView.addObject("number2", number2);
         return modelAndView;
     }
 
@@ -28,28 +28,28 @@ public class CalculatorController {
         Double result = number1 - number2;
         ModelAndView modelAndView = new ModelAndView("view");
         modelAndView.addObject("result", result);
-        modelAndView.addObject("number1",number1);
-        modelAndView.addObject("number2",number2);
+        modelAndView.addObject("number1", number1);
+        modelAndView.addObject("number2", number2);
         return modelAndView;
     }
 
     @PostMapping("/multiplication")
-    public static ModelAndView multiplication(@RequestParam  Double number1, Double number2) {
+    public static ModelAndView multiplication(@RequestParam Double number1, Double number2) {
         Double result = number1 * number2;
         ModelAndView modelAndView = new ModelAndView("view");
         modelAndView.addObject("result", result);
-        modelAndView.addObject("number1",number1);
-        modelAndView.addObject("number2",number2);
+        modelAndView.addObject("number1", number1);
+        modelAndView.addObject("number2", number2);
         return modelAndView;
     }
 
     @PostMapping("/division")
-    public static ModelAndView division(@RequestParam  Double number1, Double number2) {
+    public static ModelAndView division(@RequestParam Double number1, Double number2) {
         Double result = number1 / number2;
         ModelAndView modelAndView = new ModelAndView("view");
         modelAndView.addObject("result", result);
-        modelAndView.addObject("number1",number1);
-        modelAndView.addObject("number2",number2);
+        modelAndView.addObject("number1", number1);
+        modelAndView.addObject("number2", number2);
         return modelAndView;
     }
 

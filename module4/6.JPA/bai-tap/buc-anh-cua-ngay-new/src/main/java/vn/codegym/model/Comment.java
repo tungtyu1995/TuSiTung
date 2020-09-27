@@ -18,7 +18,6 @@ public class Comment {
     private Long totalLike;
 
 
-
     public Long getId() {
         return id;
     }

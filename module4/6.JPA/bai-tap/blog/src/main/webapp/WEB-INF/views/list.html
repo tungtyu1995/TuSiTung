@@ -16,7 +16,7 @@
     </tr>
     <th:block th:each="blog : ${blogs}">
         <tr>
-            <td ><a th:href="@{/view-blog/__${blog.id}__ }" th:text="${blog.name}"></a></td>
+            <td><a th:href="@{/view-blog/__${blog.id}__ }" th:text="${blog.name}"></a></td>
             <td th:text="${blog.type}"></td>
             <td><a th:href="@{/edit-blog/__${blog.id}__ }">Edit</a></td>
             <td><a th:href="@{/delete-blog/__${blog.id}__ }">Delete</a></td>

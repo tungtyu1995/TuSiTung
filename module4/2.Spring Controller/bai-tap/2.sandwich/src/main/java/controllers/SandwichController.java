@@ -11,15 +11,16 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("")
 public class SandwichController {
     @GetMapping()
-    public String showHome(){
+    public String showHome() {
         return "show";
     }
+
     @PostMapping("/save")
-    public ModelAndView save(@RequestParam (required = false) String[] condiment ){
+    public ModelAndView save(@RequestParam(required = false) String[] condiment) {
         ModelAndView modelAndView = new ModelAndView("show");
         modelAndView.addObject("condiment", condiment);
-        if (condiment == null){
-           modelAndView.addObject("msg", "chưa chọn gia vị");
+        if (condiment == null) {
+            modelAndView.addObject("msg", "chưa chọn gia vị");
         }
         return modelAndView;
     }

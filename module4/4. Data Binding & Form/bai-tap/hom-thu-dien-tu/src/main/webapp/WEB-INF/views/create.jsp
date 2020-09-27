@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Settings</title>
@@ -17,7 +17,7 @@
     <table>
         <tr>
             <td><form:label path="id">ID: </form:label></td>
-            <td><form:input path="id" /></td>
+            <td><form:input path="id"/></td>
         </tr>
         <tr>
             <td><form:label path="languages">languages:</form:label></td>
@@ -33,11 +33,12 @@
         </tr>
         <tr>
             <td><form:label path="signature">Signature: </form:label></td>
-            <td><form:textarea path="signature" /></td>
+            <td><form:textarea path="signature"/></td>
         </tr>
         <tr>
             <td><input type="submit" value="Add"/></td>
-            <td><button type="button"/>
+            <td>
+                <button type="button"/>
                 <a href="/email">Cancel</a></td>
         </tr>
     </table>

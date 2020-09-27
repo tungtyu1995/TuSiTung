@@ -14,16 +14,16 @@ import repository.UserRepository;
 @Controller
 public class UserController {
     @GetMapping("")
-    public ModelAndView home(){
+    public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView("home", "login", new Login());
         return modelAndView;
     }
 
     @PostMapping("/login")
-    public ModelAndView login(@ModelAttribute("login") Login login){
+    public ModelAndView login(@ModelAttribute("login") Login login) {
 
         User user = UserRepository.checkLogin(login);
-        if(user == null){
+        if (user == null) {
             ModelAndView modelAndView = new ModelAndView("error");
             return modelAndView;
         } else {

@@ -19,4 +19,6 @@ public interface BlogService {
     void remove(Long id);
 
     Page<Blog> findAll(Pageable pageable);
+
+    Page<Blog> findAllByNameContaining(String name, Pageable pageable);
 }

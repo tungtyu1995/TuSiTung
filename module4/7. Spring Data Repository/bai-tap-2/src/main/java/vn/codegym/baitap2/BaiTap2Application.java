@@ -9,5 +9,4 @@ public class BaiTap2Application {
     public static void main(String[] args) {
         SpringApplication.run(BaiTap2Application.class, args);
     }
-
 }
