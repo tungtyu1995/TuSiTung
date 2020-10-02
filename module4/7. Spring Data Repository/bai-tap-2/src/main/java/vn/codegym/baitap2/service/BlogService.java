@@ -21,4 +21,12 @@ public interface BlogService {
     Page<Blog> findAll(Pageable pageable);
 
     Page<Blog> findAllByNameContaining(String name, Pageable pageable);
+
+    Page<Blog>findAllByCategoryAndNameContaining(String cateName, String name, Pageable pageable);
+
+
+
+    Page<Blog> findAllByTypeContaining(String type, Pageable pageable);
+
+    Page<Blog> findAllByContentContaining(String content, Pageable pageable);
 }

@@ -2,18 +2,28 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Create Blog</title>
+    <title>Edit Blog</title>
 </head>
 <body>
-<h1>Create Blog</h1>
+<h1>Edit Blog</h1>
 <p>
-    <a href="/">Blogs list</a>
+    <a href="/blog/">Blog list</a>
 </p>
 <th:block th:if="${message}">
     <p th:text="${message}"></p>
 </th:block>
-<form th:action="@{/create-blog}" th:object="${blog}" method="post">
+<form th:action="@{/blog/edit-blog}" th:object="${blog}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+
     <table>
+        <tr>
+            <td>
+                <select th:field="*{category}" id="category">
+                    <option th:each="a: ${categoryList}" th:text="${a.nameCategory}"
+                            th:value="${a.idCategory}"></option>
+                </select>
+            </td>
+        </tr>
         <tr>
             <td>Blog Name:</td>
             <td><input type="text" th:field="*{name}"/></td>
@@ -28,7 +38,7 @@
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="Create Blog"></td>
+            <td><input type="submit" value="Edit Blog"></td>
         </tr>
     </table>
 </form>

@@ -1,24 +1,26 @@
 package vn.codegym.baitap2.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.time.LocalDateTime;
+import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
 
 
 @Entity
+@Table
 public class Blog {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
 
     private Long id;
-    private String name;
+
+        private String name;
     private String type;
     private String content;
     private Date time;
+
+    @ManyToOne
+    @JoinColumn(name = "idCategory")
+    private Category category;
 
     public Blog() {
         this.time = Calendar.getInstance().getTime();
@@ -62,5 +64,13 @@ public class Blog {
 
     public void setTime(Date time) {
         this.time = time;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

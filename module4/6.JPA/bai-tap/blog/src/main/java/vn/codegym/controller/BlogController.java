@@ -80,4 +80,20 @@ public class BlogController {
         blogService.remove(blog);
         return "redirect:/";
     }
+    //    @GetMapping("/blogs")
+//    public ModelAndView listBlogs(@PageableDefault(value = 5) Pageable pageable, @RequestParam(value = "search",defaultValue = "")String search,@RequestParam(value = "searchCategogy",defaultValue = "all")String searchCategogy){
+//        Page<Blog> blogs = null;
+//        if ((search.equals("")) && searchCategogy.equals("all") ) {
+//            blogs = blogService.findAll(pageable);
+//        } else if(!search.equals("") && searchCategogy.equals("all")) {
+//                blogs = blogService.findAllByNameContaining(search,pageable);
+//            }else if (search.equals("") && !searchCategogy.equals("all")) {
+//                blogs = blogService.findAllByCategory_Name(searchCategogy,pageable);
+//            }
+//        ModelAndView modelAndView = new ModelAndView("blog/blog/list");
+//        modelAndView.addObject("categorys", categoryService.findAll());
+//        modelAndView.addObject("blogs", blogs);
+//        modelAndView.addObject("search", search);
+//        return modelAndView;
+//    }
 }
