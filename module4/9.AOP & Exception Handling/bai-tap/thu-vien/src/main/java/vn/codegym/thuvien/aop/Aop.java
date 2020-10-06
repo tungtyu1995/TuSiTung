@@ -13,26 +13,30 @@ import java.util.Arrays;
 @Component
 public class Aop {
     int count = 0;
+
     @AfterReturning("execution(public * vn.codegym.thuvien.controller.BookController.borrowBook(..))")
-    public void showResultBorrow(){
+    public void showResultBorrow() {
 //        count++;
         System.out.println("Cho muon thanh cong!!!");
     }
+
     @AfterReturning("execution(public * vn.codegym.thuvien.controller.BookController.giveBackBook(..))")
-    public void showResultGiveBack(){
+    public void showResultGiveBack() {
 //        count++;
         System.out.println("Tra sach thanh cong!!!");
     }
+
     @AfterThrowing(value = "execution(public * vn.codegym.thuvien.controller.BookController.borrowBook(..) )", throwing = "e")
-    public void show(JoinPoint joinPoint, Exception e){
+    public void show(JoinPoint joinPoint, Exception e) {
 //        count++;
         String className = joinPoint.getTarget().getClass().getSimpleName();
         String method = joinPoint.getSignature().getName();
         String args = Arrays.toString(joinPoint.getArgs());
         System.out.println(String.format("[Hệ Thống] co loi xay ra khi muon sach: %s.%s%s: %s", className, method, args, e.getMessage()));
     }
+
     @AfterThrowing(value = "execution(public * vn.codegym.thuvien.controller.BookController.giveBackBook(..) )", throwing = "e")
-    public void showGiveBack(JoinPoint joinPoint, Exception e){
+    public void showGiveBack(JoinPoint joinPoint, Exception e) {
 //        count++;
         String className = joinPoint.getTarget().getClass().getSimpleName();
         String method = joinPoint.getSignature().getName();
@@ -41,8 +45,8 @@ public class Aop {
     }
 
     @After("execution(public * vn.codegym.thuvien.controller.BookController.*(..))")
-    public void totalViewer(){
+    public void totalViewer() {
         count++;
-        System.out.println("Total: "+count);
+        System.out.println("Total: " + count);
     }
 }

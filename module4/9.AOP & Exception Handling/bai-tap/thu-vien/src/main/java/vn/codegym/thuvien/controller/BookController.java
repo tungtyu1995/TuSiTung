@@ -15,7 +15,7 @@ import java.util.Map;
 
 @Controller
 public class BookController {
-    int count =0;
+//    int count = 0;
     Map<Integer, Book> bookList = new HashMap<>();
 
     @Autowired
@@ -37,7 +37,7 @@ public class BookController {
         if (book == null) {
             return new ModelAndView("error");
         }
-        int temp = (int) Math.round(Math.random() * 99999);
+        int temp = (int) Math.round(Math.random() * 1000);
         ModelAndView modelAndView = new ModelAndView("borrow","book",book);
         modelAndView.addObject("temp", temp);
         return modelAndView;
@@ -75,6 +75,4 @@ public class BookController {
     public ModelAndView showErrorGiveBack(){
         return new ModelAndView("errorBack");
     }
-
-
 }

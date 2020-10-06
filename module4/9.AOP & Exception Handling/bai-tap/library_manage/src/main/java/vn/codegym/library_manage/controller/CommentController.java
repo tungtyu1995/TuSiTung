@@ -14,7 +14,7 @@ import vn.codegym.library_manage.service.CommentService;
 
 @Controller
 public class CommentController {
-    Comment comment1 = new Comment();
+    Comment commentErr = new Comment();
     @Autowired
     CommentService commentService;
 
@@ -29,7 +29,7 @@ public class CommentController {
     public String addNewCmt(@ModelAttribute Comment comment) throws CommentException {
         for (String value : commentService.getList().values()){
             if (comment.getContent().contains(value)){
-                comment1 = comment;
+                commentErr = comment;
                 throw new CommentException();
             }
         }
@@ -40,7 +40,7 @@ public class CommentController {
 
     @ExceptionHandler(CommentException.class)
     public ModelAndView showError(){
-        return new ModelAndView("error","comment",comment1);
+        return new ModelAndView("error","commentErr",commentErr);
     }
 
 

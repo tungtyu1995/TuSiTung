@@ -12,7 +12,7 @@
     <input type="text" name="code">Give back</input>
     <input type="submit" value="Accept">
 </form>
-<table border="1">
+<table border="1px" style="border-collapse: collapse">
     <tr>
         <td>STT</td>
         <td>Name</td>
@@ -23,7 +23,9 @@
         <td th:text="${c.count}"></td>
         <td th:text="${book.name}"></td>
         <td th:text="${book.amount}"></td>
-        <td><a th:href="@{/books/borrow/{id}(id=${book.id})}">Borrow</a></td>
+        <td>
+            <a th:href="@{/books/borrow/{id}(id=${book.id})}">Borrow</a>
+        </td>
     </tr>
 
 </table>

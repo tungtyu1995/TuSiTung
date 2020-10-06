@@ -5,10 +5,10 @@
     <title>Erros</title>
 </head>
 <body>
-<p>Lỗi cmt co tu cam: </p>
+<p>Lỗi comment có từ bị cấm: </p>
 <th:block>
-    <tr th:object="${comment}">
-        <td th:text="${comment.getContent()}"></td>
+    <tr th:object="${commentErr}">
+        <td th:text="${commentErr.getContent()}"></td>
     </tr>
 </th:block>
 <br>
