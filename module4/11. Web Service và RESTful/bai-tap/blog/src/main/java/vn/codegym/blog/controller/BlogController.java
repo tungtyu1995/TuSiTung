@@ -19,32 +19,34 @@ public class BlogController {
     CategoryService categoryService;
 
     @GetMapping("/blog")
-    public ResponseEntity<List<Blog>> getListBlog(){
+    public ResponseEntity<List<Blog>> getListBlog() {
         List<Blog> blogList = blogService.getAll();
         if (blogList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        else {
-            return new ResponseEntity<>(blogList,HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(blogList, HttpStatus.OK);
         }
     }
+
     @PostMapping("/blog")
-    public ResponseEntity addBlog(@RequestBody Blog blog){
+    public ResponseEntity addBlog(@RequestBody Blog blog) {
         blogService.save(blog);
         return new ResponseEntity(HttpStatus.OK);
     }
+
     @GetMapping("/blog/{id}")
-    public ResponseEntity<Blog> findStudentById(@PathVariable Long id){
+    public ResponseEntity<Blog> findStudentById(@PathVariable Long id) {
         Blog blog = blogService.findById(id);
-        if(blog==null){
+        if (blog == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(blog, HttpStatus.OK);
     }
+
     @PutMapping("/blog/{id}")
-    public ResponseEntity<Blog> updateBlog(@PathVariable Long id, @RequestBody Blog blog){
+    public ResponseEntity<Blog> updateBlog(@PathVariable Long id, @RequestBody Blog blog) {
         Blog currentBlog = blogService.findById(id);
-        if(currentBlog==null){
+        if (currentBlog == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         currentBlog.setTitleBlog(blog.getTitleBlog());
@@ -55,9 +57,10 @@ public class BlogController {
 
         return new ResponseEntity<>(currentBlog, HttpStatus.OK);
     }
+
     @DeleteMapping("/blog/{id}")
-    public ResponseEntity deleteBlog(@PathVariable Long id){
-        Blog blog=blogService.findById(id);
+    public ResponseEntity deleteBlog(@PathVariable Long id) {
+        Blog blog = blogService.findById(id);
         blogService.remove(blog);
         return new ResponseEntity<>(blog, HttpStatus.OK);
     }

@@ -1,25 +1,21 @@
 package vn.codegym.blog.model;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
-
-    @OneToMany(targetEntity = Blog.class)
-    private Collection<Blog> blogs;
+    @OneToMany
+    private List<Blog> blogs;
 
     public Category() {
     }
-
-    public Category(String name) {
-    }
-
 
     public Long getId() {
         return id;
@@ -37,11 +33,11 @@ public class Category {
         this.name = name;
     }
 
-    public Collection<Blog> getBlogs() {
+    public List<Blog> getBlogs() {
         return blogs;
     }
 
-    public void setBlogs(Collection<Blog> blogs) {
+    public void setBlogs(List<Blog> blogs) {
         this.blogs = blogs;
     }
 }

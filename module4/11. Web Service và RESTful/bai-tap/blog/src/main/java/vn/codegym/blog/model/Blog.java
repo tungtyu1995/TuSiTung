@@ -10,6 +10,7 @@ public class Blog {
     private String titleBlog;
     private String contentBlog;
 
+
     @ManyToOne()
     @JoinColumn(name = "category_id")
     private Category category;

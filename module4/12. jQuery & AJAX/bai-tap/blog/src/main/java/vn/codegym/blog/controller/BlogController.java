@@ -62,11 +62,6 @@ public class BlogController {
         return blogs;
     }
 
-
-
-
-
-
     @GetMapping("/blog/sort")
     public String showSortList(@RequestParam(name = "title",defaultValue = "")String search, Model model,
                                @PageableDefault(value = 4) Pageable pageable){
