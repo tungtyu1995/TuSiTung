@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let nhapVao = prompt("Nhập chuỗi vào đây");
+    let arr = nhapVao.split("", );
+    let nguyenAm = "aoiyeuAOIYEU";
+    let dem = 0;
+    for(let i = 0; i < arr.length; i++){
+        if(nguyenAm.indexOf(arr[i]) !== -1){
+            dem +=1
+        }
+    }
+    alert("Số các nguyên âm trong chuỗi: " + dem)
+</script>
+</body>
+</html>

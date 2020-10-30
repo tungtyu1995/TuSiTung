@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="so1">
+<input type="text" id="so2">
+<br>
+<input type="button" onclick="f()" value="Adition(+)"/>
+<input type="button" onclick="f1()" value="Subtraction(-)"/>
+<input type="button" onclick="f2()" value="multiplication(X)"/>
+<input type="button" onclick="f3()" value="Division(/)"/>
+<p id="kq"></p>
+<script>
+    function f() {
+        let a = parseInt(document.getElementById("so1").value);
+        let b = parseInt(document.getElementById("so2").value);
+
+        let t = a + b;
+
+        alert(t)
+    }
+
+    function f1() {
+        let a = parseInt(document.getElementById("so1").value);
+        let b = parseInt(document.getElementById("so2").value);
+        let h = a - b;
+        alert(h)
+    }
+
+    function f2() {
+        let a = parseInt(document.getElementById("so1").value);
+        let b = parseInt(document.getElementById("so2").value);
+        let x = a * b;
+        alert(x)
+    }
+
+    function f3() {
+        let a = parseInt(document.getElementById("so1").value);
+        let b = parseInt(document.getElementById("so2").value);
+        let k = a / b;
+        alert(k)
+
+    }
+</script>
+
+</body>
+
+</html>

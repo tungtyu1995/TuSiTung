@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FURAMA</title>
+</head>
+<body>
+<script>
+    let nameCustomer;
+    let cmnd;
+    let birthDay;
+    let email;
+    let address;
+    let typeCustomer;
+    let discount;
+    let people;
+    let rentDays;
+    let typeService;
+    let typeRoom;
+    check = false;
+
+    //Nhập tên
+    let tempName = "";
+    nameCustomer = prompt('Nhập Vào Họ Và Tên');
+    nameCustomer = nameCustomer.trim();
+    nameCustomer = nameCustomer.toLowerCase();
+    for (let i = 0; i < nameCustomer.length; i++) {
+        if (nameCustomer.charAt(i) === " " && nameCustomer.charAt(i + 1) === " ") {
+            continue;
+        }
+        if (i === 0 || nameCustomer.charAt(i - 1) === " ") {
+            tempName += nameCustomer.charAt(i).toUpperCase();
+            continue;
+        }
+        tempName += nameCustomer.charAt(i);
+    }
+
+    nameCustomer = tempName;
+
+    //nhập cmnd
+    do {
+        cmnd = prompt('Nhập Vào Số CMND');
+        if (!isNaN(cmnd)) {
+            cmnd = Number.parseInt(cmnd);
+        }
+        if (!Number.isInteger(cmnd)) {
+            alert("CMND không đúng");
+            continue;
+        }
+        if (cmnd < 10000000 || cmnd > 999999999) {
+            alert("CMND không đúng");
+            continue;
+        }
+        check = true
+    } while (!check);
+
+    //Nhập bithday
+    do {
+        birthDay = prompt("Nhập vào ngày/tháng/năm sinh: (DD/MM/YYYY): ");
+        count = birthDay.length;
+        let num;
+        for (let i = 0; i < count; i++) {
+            num = birthDay.substring(i, i + 1);
+            if (i === 2 || i === 5) {
+                if (num !== '/') {
+                    count--;
+                }
+            } else {
+                continue;
+            }
+        }
+        let dd = parseInt(birthDay.substring(0, 2));
+        if (dd >= 32 || dd <= 0 || Number.isNaN(dd)) {
+            count--;
+        }
+        let mm = parseInt(birthDay.substring(3, 5));
+        if (mm >= 13 || mm <= 0 || Number.isNaN(mm)) {
+            count--;
+        }
+        if (mm === 2 && dd > 29) {
+            count--;
+        }
+        switch (mm) {
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                if (dd > 30) {
+                    count--;
+                }
+                break;
+        }
+        let yyyy = parseInt(birthDay.substr(6, 4));
+        let currentYear = new Date().getFullYear();
+        if (yyyy >= (currentYear - 18) || yyyy <= (currentYear - 100)) {
+            count--;
+        }
+    } while (count !== 10);
+
+
+    //email
+    check = false;
+    do {
+        let countAt = 0;
+        let countDoc = 0;
+        email = prompt('Nhập Vào Địa Chỉ email');
+        for (let i = 0; i < email.length; i++) {
+            if (email.charAt(i) === "@") {
+                countAt++;
+                for (let j = i + 1; j < email.length; j++) {
+                    if (email.charAt(j) === ".") {
+                        countDoc++;
+                    }
+                }
+            }
+        }
+        if (countAt != 1 || countDoc < 1) {
+            check = false;
+            alert("Email bạn nhập không đúng1")
+        } else {
+            if (email.charAt(0) !== "@") {
+                check = true;
+            } else {
+                check = false;
+                alert("Email bạn nhập không đúng")
+            }
+        }
+    } while (!check);
+
+    //Giảm giá
+    do {
+        discount = parseFloat(prompt("Nhập Vào Giảm Giá ( % )"));
+    } while (discount <= 0 || !Number.isInteger(discount));
+
+    //Số người đi cùng
+    do {
+        people = parseFloat(prompt("Nhập Vào Số Người đi cùng"));
+    } while (people <= 0 || !Number.isInteger(people));
+
+    //Số ngày thuê
+    do {
+        rentDays = parseFloat(prompt("Nhập Vào Số Ngày Thuê "));
+    } while (rentDays <= 0 || !Number.isInteger(rentDays));
+
+
+    address = prompt('Nhập Vào Địa Chỉ ');
+    typeCustomer = prompt('Nhập Vào Loại Customer (Diamond, Platinum, Gold, Silver, Member)');
+    typeService = prompt('Nhập Vào Loại Dịch Vụ(Villa, House, Room) ');
+    typeRoom = prompt('Nhập Vào Loại Phòng Thuê (Vip, Business,  Normal)');
+
+
+    alert('Họ Và Tên: ' + nameCustomer +
+        '\nSố CMND: ' + cmnd +
+        '\nNgày Tháng Năm Sinh: ' + birthDay +
+        '\nĐịa Chỉ email: ' + email +
+        '\nĐịa Chỉ: ' + address +
+        '\nLoại Customer: ' + typeCustomer +
+        '\nGiảm Giá: ' + discount +
+        '\nSố Người: ' + people +
+        '\nSố Ngày Thuê: ' + rentDays +
+        '\nLoại Dịch Vụ: ' + typeService +
+        '\nLoại Phòng Thuê: ' + typeRoom)
+
+
+</script>
+</body>
+</html>

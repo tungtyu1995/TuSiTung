@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+
+    <input type="text" id="so1">
+    <input type="text" id="so2">
+
+    <br>
+    <input type="button" onclick="tinh('+')" value="Adition(+)"/>
+    <input type="button" onclick="tinh('-')" value="Subtraction(-)"/>
+    <input type="button" onclick="tinh('*')" value="multiplication(X)"/>
+    <input type="button" onclick="tinh('/')" value="Division(/)"/>
+    <input type="reset" value="reset">
+    <p id="ketqua"></p>
+</form>
+
+
+<script>
+
+
+    function tinh(pheptinh) {
+        let a = parseInt(document.getElementById('so1').value);
+        let b = parseInt(document.getElementById('so2').value);
+        let c1 = a + b;
+        let c2 = a - b;
+        let c3 = a * b;
+        let c4 = a / b;
+        if (pheptinh === '+') {
+            document.getElementById('ketqua').innerText = c1;
+        } else if (pheptinh === '-') {
+            document.getElementById('ketqua').innerText = c2;;
+        } else if (pheptinh === '*') {
+            document.getElementById('ketqua').innerText = c3;;
+        } else if (pheptinh === '/') {
+            document.getElementById('ketqua').innerText = c4;
+        } else {
+            'bó tay'
+        }
+    }
+
+
+</script>
+
+
+</body>
+</html>

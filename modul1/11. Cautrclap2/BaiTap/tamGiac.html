@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+<h3>In tam giác vuông với các góc vuông nằm ở các vị trí khác nhau</h3>
+<script>
+    let text1 = '';
+    for (let i = 1; i <= 5; i++) {
+        for (let j = i; j >= 1; j--) {
+            text1 += "*";
+        }
+        text1 += "<br>";
+    }
+    document.write(text1);
+</script>
+<br>
+<script>
+    let text2 = '';
+    for (let i = 1; i <= 5; i++) {
+        for (let j = i; j <= 5; j++) {
+            text2 += "*";
+        }
+        text2 += "<br>";
+    }
+    document.write(text2);
+</script>
+<br>
+<script>
+    let text3 = "";
+    for (let i = 1; i <= 5; i++) {
+        for (let j = 5; j >= 1; j--) {
+
+            if (j > i) {
+                text3 += "&nbsp&nbsp";
+            } else {
+                text3 += "*"
+            }
+        }
+        text3 += "<br>";
+    }
+    document.write(text3);
+</script>
+<br>
+<script>
+    let string3 = "";
+    for (let i = 5; i >= 1; i--) {
+        for (let j = 5; j >= 1; j--) {
+            if (j > i) {
+                string3 += "&nbsp&nbsp"
+            } else {
+                string3 += "*";
+            }
+        }
+        string3 += "<br>";
+    }
+    document.write(string3);
+</script>
+<br>
+<script>
+    let i, j;
+    for (i = 1; i < 7; i++) {
+        for (j = 1; j <= 7; j++) {
+            if (!((i == 1 && (j == 1 || j == 4 || j == 7))
+                || (i == 4 && (j == 1 || j == 7))
+                || (i == 5 && (j <= 2 || j >= 6))
+                || (i == 6 && (j <= 3 || j >= 5)))) {
+                document.write(" * ");
+            } else {
+                document.write(" &nbsp&nbsp")
+            }
+
+        }
+        document.write("<br>")
+    }
+</script>
+</body>
+</html>

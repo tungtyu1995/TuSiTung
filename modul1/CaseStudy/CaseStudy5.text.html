@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FURAMA</title>
+</head>
+<body>
+<style>
+    table {
+        border: 1px solid blue;
+        border-collapse: collapse;
+    }
+
+    td, th {
+        border: 1px solid lightgrey;
+        width: 120px;
+        height: 35px;
+        text-align: center;
+    }
+
+</style>
+<label>Add new customer -</label>
+<input type="button" onclick="addNewCustomer()" value="ADD">
+<br><br>
+<p id="result"></p>
+
+<script>
+    let customerList = [
+        ['tung1', 12345678, '20/04/1995', 'tung@1.com', 'Đà Nẵng', 'Platinum',
+            25, 1, 7, 'Villa', 'Business'],
+        ['tung2', 12345678, '10/09/1994', 'tung@2.com', 'Đà Nẵng', 'Diamond',
+            25, 2, 6, 'House', 'Normal'],
+        ['tung3', 12345678, '22/06/1993', 'tung@3.com', 'Huế', 'Silver',
+            10, 3, 9, 'Room', 'Business'],
+        ['tung4', 12345678, '20/04/1991', 'tung@4.com', 'Quảng Trị', 'Platinum',
+            20, 3, 7, 'Villa', 'Vip'],
+        ['tung5', 12345678, '10/09/1990', 'tung@5.com', 'Đà Nẵng', 'Diamond',
+            35, 4, 6, 'House', 'Normal'],
+    ];
+    display();
+
+    function display() {
+        let tableString = '';
+        tableString += '<table>\n' +
+            '    <caption>FURAMA RESORT CUSTOMER</caption>\n' +
+            '    <tr>\n' +
+            '        <th>No.</th>\n' +
+            '        <th>Customer</th>\n' +
+            '        <th>CMND</th>\n' +
+            '        <th>Birthday</th>\n' +
+            '        <th>Email</th>\n' +
+            '        <th>Address</th>\n' +
+            '        <th>Customer Type</th>\n' +
+            '        <th>Discount</th>\n' +
+            '        <th>People</th>\n' +
+            '        <th>Rent Days</th>\n' +
+            '        <th>Service Type</th>\n' +
+            '        <th>Room Class</th>\n' +
+            '        <th>Total Amount</th>\n' +
+            '        <th>Edit Info</th>\n' +
+            '        <th>Delete Info</th>\n' +
+            '    </tr>';
+        for (let i = 0; i < customerList.length; i++) {
+            tableString += '<tr>';
+            tableString += '<td>' + (i + 1) + '</td>';
+            for (let j = 0; j < customerList[i].length; j++) {
+                tableString += '<td>' + customerList[i][j] + '</td>';
+            }
+            tableString += '<td>' + 'Total Amount' + '</td>' +
+                '<td><button onclick="editCustomer(' + i + ')">Edit</button></td>' +
+                '<td><button onclick="deleteCustomer(' + i + ')">Delete</button></td>';
+            tableString += '</tr>';
+        }
+        tableString += '</table>';
+        document.getElementById('result').innerHTML = tableString;
+    }
+
+    function addNewCustomer() {
+        let num = prompt('Bạn muốn thêm bao nhiêu customer ?');
+        for (let i = 0; i < num; i++) {
+            let newCustomer = [];
+            let msg = '';
+            for (let j = 0; j < 11; j++) {
+                switch (j) {
+                    case 0:
+                        msg = 'customer name';
+                        break;
+                    case 1:
+                        msg = 'cmnd';
+                        break;
+                    case 2:
+                        msg = 'birthday';
+                        break;
+                    case 3:
+                        msg = 'email';
+                        break;
+                    case 4:
+                        msg = 'customer address';
+                        break;
+                    case 5:
+                        msg = 'customer type';
+                        break;
+                    case 6:
+                        msg = 'discount';
+                        break;
+                    case 7:
+                        msg = 'people';
+                        break;
+                    case 8:
+                        msg = 'rent days';
+                        break;
+                    case 9:
+                        msg = 'service type';
+                        break;
+                    case 10:
+                        msg = 'room class';
+                        break;
+                }
+                newCustomer[j] = prompt("Person " + (i + 1) + "_" + msg + ":");
+            }
+            customerList.push(newCustomer);
+        }
+        display();
+    }
+
+    function editCustomer(num) {
+        let string = '';
+        for (let j = 0; j < 11; j++) {
+            string += (j + 1) + '. ' + customerList[num][j] + '\n';
+        }
+        let choose = prompt("\n" + "Chọn thứ bạn cần chỉnh sửa: " + '\n' + string);
+        let msg = '';
+        switch (choose - 1) {
+            case 0:
+                msg = 'name';
+                break;
+            case 1:
+                msg = 'cmnd';
+                break;
+            case 2:
+                msg = 'birthday';
+                break;
+            case 3:
+                msg = 'email';
+                break;
+            case 4:
+                msg = 'customer address';
+                break;
+            case 5:
+                msg = 'customer type';
+                break;
+            case 6:
+                msg = 'discount';
+                break;
+            case 7:
+                msg = 'people included';
+                break;
+            case 8:
+                msg = 'rent days';
+                break;
+            case 9:
+                msg = 'service type';
+                break;
+            case 10:
+                msg = 'room class';
+                break;
+        }
+        customerList[num][choose - 1] = prompt('Enter ' + msg + ":");
+        display();
+    }
+
+    function deleteCustomer(num) {
+        let choose = confirm('Bạn có thực sự muốn xóa ' + customerList[num][0] + '?');
+        if (choose) {
+            customerList.splice(num, 1);
+        } else {
+            alert('Bạn không muốn xóa.');
+        }
+        display();
+    }
+</script>
+</body>
+</html>

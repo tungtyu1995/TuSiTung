@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    let nunber = prompt("Nhập vào số cần tính");
+    alert(tinhTongVaTich(nunber));
+
+    function tinhTongVaTich(number) {
+        let tong = 0;
+        let tich = 1;
+        let arrNunber = nunber.split("");
+        for (let i = 0; i < arrNunber.length; i++) {
+            arrNunber[i] = parseInt(arrNunber[i]);
+            tong += arrNunber[i];
+            tich *= arrNunber[i];
+        }
+        return "Tổng các chữ số của: " + nunber + " bằng: " + tong + "\n"
+            + " Tích các chữ số của: " + nunber + " bằng: " + tich
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <p>Amount</p>
+    <input name="amount" type="text" id="a">
+
+    <p>From Currency:</p>
+    <select id="from" name="from ">
+        <option value="vn">Việt Nam</option>
+        <option value="usd">USD</option>
+    </select>
+
+    <p>To Currency</p>
+    <select id="to" name="to">
+        <option value="usd">USD</option>
+        <option value="vn">Việt Nam</option>
+    </select>
+    <br><br>
+    <input type="button" onclick="f()" value="convert"/>
+<p id="kt"></p>
+
+</form>
+<script>
+    function f() {
+        let a =  document.getElementById('a').value;
+        let from = document.getElementById('from').value;
+        let to = document.getElementById('to').value;
+        let ketqua = 0;
+        if (from == "vn" && to == "usd") {
+            ketqua= a/23000
+        }
+        else if (from =="usd" && to=="vn"){
+            ketqua=a*23000
+        }
+       else if(from == "vn" && to == "vn"){
+           ketqua=a
+        }
+       else if (from == "usd" && to == "usd"){
+           ketqua=a
+        }
+        else {'nhập lại'}
+
+        document.getElementById('kt').innerHTML= ketqua;
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let n = parseInt(prompt("Nhập vào số n"));
+   alert(tinhGiaiThua(n));
+   function tinhGiaiThua(n){
+       let giaiThua = 1;
+       if(n % 2 === 0){
+           for(let i = 2; i <= n; i = i+2){
+               giaiThua *=i;
+           }
+        return "Giai thừa các số chẵn " + " của "+ n + " bằng: " + giaiThua;
+       }
+       else if(n % 2 !== 0){
+           for (let j =1 ; j <= n; j = j+2){
+               giaiThua *=j;
+           }
+        return  "Giai thừa các số lẻ " + " của: " + n+ " bằng "+ giaiThua
+       }
+   }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FURAMA</title>
+</head>
+<body>
+<script>
+
+    let nameCustomer = 'Từ Sỹ Tùng';
+    let cmnd = '123456789';
+    let birthDay = '01/27/1995';
+    let email = 'Tung@gmail.cu';
+    let address = 'Đà Nẵng';
+    let typeCustomer = 'Diamond';
+    let discount = 20;
+    let people = 2;
+    let rentDays = 8;
+    let typeService = 'Villa';
+    let typeRoom = 'Vip';
+    let moneyPerDay = 0;
+    let money = 0;
+
+
+
+    function bill() {
+        //Điều Kiện typeService
+        if (typeService === 'Villa') {
+            money = 500;
+        } else if (typeService === 'House') {
+            money = 300;
+        } else if (typeService === 'Room') {
+            money = 100;
+        }
+
+
+        //Điều kiện address
+        let teamp = 0;
+        if (address === 'Đà Nẵng') {
+            teamp += 20;
+        } else if (address === 'Huế') {
+            teamp += 10;
+        } else if (address === 'Quảng Nam') {
+            teamp += 5;
+        }
+        //Điều kiện rentDays
+        if (rentDays > 7) {
+            teamp += 30;
+        } else if (rentDays > 5) {
+            teamp += 20;
+        } else if (rentDays > 2) {
+            teamp += 10;
+
+            //Điều kiện typeCustomer
+        }
+        if (typeCustomer === "Diamond") {
+            teamp = 15
+        } else if (typeCustomer === 'Platium') {
+            teamp = 10;
+        } else if ('Gold') {
+            teamp = 5
+        } else if (typeCustomer === "Silver ") {
+            teamp = 2;
+        }
+        // Điều kiện tuổi
+        let current = new Date().getFullYear();
+        let birthday1 = new Date(birthDay).getFullYear();
+        let ageCustomer = current - birthday1;
+        if (ageCustomer >= 30 && address === 'Đà Nẵng') {
+            teamp += 2;
+        } else if (ageCustomer >= 20 && address === 'Đà Nẵng') {
+            teamp += 1;
+        }
+        moneyPerDay = money * rentDays - teamp;
+        alert('Tổng số tiền phải thanh toán: ' + moneyPerDay)
+    }
+
+
+    //Xuất ra thông tin Customer
+    function display() {
+        alert('1. Họ Và Tên: ' + nameCustomer +
+            '\n2. Số CMND: ' + cmnd +
+            '\n3. Ngày Tháng Năm Sinh: ' + birthDay +
+            '\n4. Địa Chỉ email: ' + email +
+            '\n5. Địa Chỉ: ' + address +
+            '\n6. Loại Customer: ' + typeCustomer +
+            '\n7. Giảm Giá: ' + discount +
+            '\n8. Số Người: ' + people +
+            '\n9. Số Ngày Thuê: ' + rentDays +
+            '\n10. Loại Dịch Vụ: ' + typeService +
+            '\n11. Loại Phòng Thuê: ' + typeRoom
+        )
+
+    }
+
+    //Edit thông tin Customer
+    function edit() {
+
+        let edit = parseInt(prompt('Nhập vào thông tin cần sửa:' +
+            '\n1.Họ Và Tên: ' + nameCustomer +
+            '\n 2.Số CMND: ' + cmnd +
+            '\n 3.Ngày Tháng Năm Sinh: ' + birthDay +
+            '\n 4.Địa Chỉ emai: ' + email +
+            '\n 5.Địa Chỉ: ' + address +
+            '\n 6.Loại Customer: ' + typeCustomer +
+            '\n 7.Giảm Giá: ' + discount +
+            '\n 8.Số người: ' + people +
+            '\n 9.Số Ngày Thuê: ' + rentDays +
+            '\n 10.Loại Dịch Vụ: ' + typeService +
+            '\n 11.Loại Phòng Thuê: ' + typeRoom));
+
+
+        switch (edit) {
+            case 1:
+                nameCustomer = prompt('Nhập Vào Họ Và Tên');
+                break;
+            case 2:
+                cmnd = prompt('Nhập Vào Số CMND');
+                break;
+            case 3:
+                birthDay = prompt('Nhập vào Ngày Tháng Năm Sinh:');
+                break;
+            case 4:
+                email = prompt('Nhập vào Địa Chỉ email: ');
+                break;
+            case 5:
+                address = prompt('Nhập vào Địa Chỉ email');
+                break;
+            case 6:
+                typeCustomer = prompt('Loại Customer: ');
+                break;
+            case 7:
+                discount = parseInt(prompt('Giảm Giá: '));
+                break;
+            case 8:
+                people = parseInt(prompt('Nhập vào Số Người: '));
+                break;
+            case 9:
+                rentDays = parseInt(prompt('Nhập vào Số Ngày Thuê: '));
+                break;
+            case 10:
+                typeService = prompt('Nhập vào Loại Dịch Vụ: ');
+                break;
+            case 11:
+                typeRoom = prompt('Nhập vào Loại Phòng Thuê: ');
+
+
+        }
+        display();
+    }
+
+    //menu lựa chọn
+    function menu() {
+        let choose = parseInt(prompt("1.bill\n" +
+            "2.display\n" + "3.edit"));
+
+        switch (choose) {
+            case 1:
+                bill();
+                menu();
+                break;
+            case 2:
+                display();
+                menu();
+                break;
+            case 3:
+                edit();
+                menu();
+
+            default:
+                alert('Failed');
+                menu()
+        }
+    }
+
+    menu();
+
+</script>
+</body>
+</html>

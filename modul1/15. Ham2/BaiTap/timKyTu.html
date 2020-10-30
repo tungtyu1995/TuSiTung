@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let n = parseInt(prompt("Mảng có bao nhiêu ký tự ??"));
+    let arr = new Array(n);
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = prompt("Nhập vào ký tự thứ: " + (i + 1));
+    }
+    let characters = prompt("Nhập vào ký tự cần tìm");
+    let count = 0;
+
+    function find(arr) {
+        for (let i = 0; i < arr.length; i++) {
+            if (characters === arr[i]) {
+                count += 1;
+            }
+        }
+        if (count === 0) {
+            return -1
+        } else {
+            return count;
+        }
+    }
+    alert("mảng có " + find(arr) + " ký tự " + characters)
+</script>
+</body>
+</html>

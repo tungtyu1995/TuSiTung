@@ -1,0 +1,13 @@
+// template
+<h2>Today's article</h2>
+<hr>
+<div *ngFor="let art of articles">
+  <a href="{{art.url}}" target="_blank">{{art.title}}</a>
+</div>
+<hr>
+<textarea [(ngModel)]="article.title" cols="70"></textarea>
+<textarea [(ngModel)]="article.url" cols="70"></textarea>
+<input (click)="updateArticle()" type="button" value="Update">
+
+
+@CodeGym, 2020

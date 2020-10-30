@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sinh Viên</title>
+</head>
+<body>
+<script>
+    class Students {
+        constructor(mssv, name, birthday, gender, className, schoolYear) {
+            this.mssv = mssv;
+            this.name = name;
+            this.birthday = birthday;
+            this.gender = gender;
+            this.className = className;
+            this.schoolYear = schoolYear;
+        }
+        setMssv(mssv){
+            this.mssv = mssv;
+        }
+        getMssv(){
+            return this.mssv;
+        }
+        setName(name){
+            this.name = name;
+        }
+        getName(){
+            return this.name;
+        }
+        setBirthday(birthday){
+            this.birthday = birthday;
+        }
+        getBirthday(){
+            return this.birthday;
+        }
+        setGender(gender){
+            this.gender = gender;
+        }
+        getGender(){
+            return this.gender;
+        }
+        setClassName(className){
+            this.className = className;
+        }
+        getClassName(){
+            return this.className;
+        }
+        setSchooYear(schooYear){
+            this.schoolYear = schooYear;
+        }
+        getSchoolYear(){
+            return this.schoolYear;
+        }
+
+    }
+    let studentList = [];
+    let student1 = new Students('001', 'Nguyen Van A', '20/04/1990', 'Male', 'C0520', 2020);
+    let student2 = new Students('007', 'Nguyen Thi B', '25/08/1980', 'Female', 'C0218', 2018);
+    let student3 = new Students('003', 'Phan Van C', '30/10/1970', 'Male', 'C0120', 2020);
+    let student4 = new Students('009', 'Chi C', '22/07/1998', 'Male', 'C0420', 2020);
+    let student5 = new Students('002', 'Tran Dan', '10/04/1985', 'Male', 'C0619', 2019);
+    let student6 = new Students('004', 'Thi No', '28/02/1990', 'Female', 'C0320', 2020);
+    studentList.push(student1);
+    studentList.push(student2);
+    studentList.push(student3);
+    studentList.push(student4);
+    studentList.push(student5);
+    studentList.push(student6);
+
+    menuList();
+    function menuList(){
+        let option = prompt('Menu List' + '\n'+
+            '1. Display Students' + '\n' +
+            '2. Add New Student' + '\n' +
+            '3. Remove Student With MSSV' + '\n' +
+            '4. Remove Student With Index' + '\n' +
+            '5. Search Student' + '\n' +
+            '6. Sort Students' + '\n' +
+            '7. CANCEL MENU' + '\n' +
+            '');
+        switch (option) {
+            case "1":
+                displayStudents();
+                break;
+            case "2":
+                addStudent();
+                break;
+            case "3":
+                removeStudentWithMssv();
+                break;
+            case "4":
+                removeStudentWithIndex();
+                break;
+            case "5":
+                searchStudent();
+                break;
+            case "6":
+                sortStudents();
+                break;
+            case "7":
+            default:
+                alert('Menu cancelled!');
+                break;
+        }
+    }
+
+
+    function displayStudents(){
+        let listString = "";
+        for(let i = 0; i < studentList.length; i++){
+            listString += (i+1) + ". "+"  Mssv: " + studentList[i].getMssv() + ' - Tên: ' +
+                studentList[i].getName() + ' - Birthday: ' + studentList[i].getBirthday() + ' - Gender: ' +
+                studentList[i].getGender() + ' - ClassName: ' +  studentList[i].getClassName() + ' - SchoolYear: ' +
+                studentList[i].getSchoolYear() + '\n';
+        }
+        alert(listString);
+        menuList();
+        let gender = prompt('Nhập vào giới tính:');4fxhhx
+        let className = prompt('Nhập vào tên lớp:');
+        let schoolYear = prompt('Nhập vào khóa học:');
+        let newStudent = new Students();
+        newStudent.setMssv(mssv);
+        newStudent.setName(name);
+        newStudent.setBirthday(birthday);
+        newStudent.setGender(gender);
+        newStudent.setClassName(className);
+        newStudent.setSchooYear(schoolYear);
+        studentList.push(newStudent);
+        displayStudents();
+        menuList();
+    }
+
+
+    function removeStudentWithMssv(){
+        let mssv = prompt('Nhập vào mã số sinh viên muốn xóa:');
+        let index = -1;
+        for(let i = 0; i < studentList.length; i++){
+            if(mssv === studentList[i].getMssv()) {
+                index = i;
+                break;
+            }
+        }
+        if(index !== -1) {
+            let choose = confirm('Bạn có muốn xóa sinh viên ' + studentList[index].getName() + '?');
+            if(choose){
+                studentList.splice(index, 1);
+            } else {
+                alert('Không xóa sinh viên ');
+            }
+
+        } else {
+            alert('Không tìm thấy MSSV!');
+        }
+        displayStudents();
+        menuList();
+    }
+
+
+    function removeStudentWithIndex(){
+        let index = prompt('Nhập số thứ tự sinh viên muốn xóa:');
+        if(index >= 1) {
+            let choose = confirm('Bạn  có thực sự muốn xóa sinh viên: ' + studentList[index-1].getName() + '?');
+            if (choose){
+                studentList.splice(index-1, 1);
+            } else {
+                alert('Không xóa sinh viên!');
+            }
+        } else {
+            alert('Không tìm thấy!');
+        }
+        displayStudents();
+        menuList();
+    }
+
+
+    function searchStudent(){
+        let searchInput = prompt('Nhập thông tin sinh viên cần tìm kiếm:');
+        let searchResult = "";
+        let index = -1;
+        for(let i = 0; i < studentList.length; i++) {
+            if (searchInput === studentList[i].getMssv() ||
+                searchInput === studentList[i].getName().toUpperCase() ||
+                searchInput === studentList[i].getName().toLowerCase()) {
+                index = i;
+                break;
+            }
+        }
+        if(index !== -1){
+            searchResult += (index + 1) + ' --- ' + "Tên: "+
+                studentList[index].getMssv() + " - Name:" +
+                studentList[index].getName() + " - Birthday: " +
+                studentList[index].getBirthday() + " - Gender: " +
+                studentList[index].getGender() + " - ClassName: " +
+                studentList[index].getClassName() + " - SchoolYear " +
+                studentList[index].getSchoolYear();
+            alert('Result' + '\n' + searchResult);
+        }
+        menuList();
+    }
+
+
+    function sortStudents(){
+        let arrMssv = [];
+        for(let i = 0; i < studentList.length; i++){
+            arrMssv.push(parseInt(studentList[i].getMssv()));
+        }
+        arrMssv.sort(function(a, b){
+            if (a > b) return 1;
+            if (a < b) return -1;
+            return 0;
+        });
+        let sortString = "";
+        for (let i = 0; i < arrMssv.length; i++) {
+            for (let x of studentList){
+                if (arrMssv[i] === parseInt(x.getMssv())) {
+                    sortString += (i + 1) + ' MSSV: ' +
+                        x.getMssv() + ' - Name: ' +
+                        x.getName() + ' - Birthday: ' +
+                        x.getBirthday() + ' - Gender: ' +
+                        x.getGender() + ' - ClassName: ' +
+                        x.getClassName() + ' - SchoolYear: ' +
+                        x.getSchoolYear() + '\n';
+                }
+            }
+        }
+        alert(sortString);
+    }
+
+
+</script>
+</body>
+</html>

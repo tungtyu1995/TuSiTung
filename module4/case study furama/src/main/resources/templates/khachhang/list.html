@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/index :: head"></head>
+
+<head>
+    <title>Title</title>
+    <style>
+        button {
+            margin-bottom: 10px;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        .custom-search-form {
+            margin-top: 5px;
+        }
+
+        .btn-default {
+            font-size: 20px;
+            padding: 5px;
+            margin-left: 10px;
+        }
+
+        .form-control {
+            padding: 17px 10px;
+            line-height: 37px;
+        }
+
+        .menu {
+            float: none;
+        }
+    </style>
+</head>
+<body>
+<nav th:replace="/index :: header"></nav>
+<ul th:replace="/index :: menu"></ul>
+<div class="container">
+    <form th:action="@{/khachhangs}">
+        <div class="row">
+            <div class="col-xs-6 col-md-3">
+                <button type="button" class="btn btn-outline-primary">
+                    <a th:href="@{/create-khachhang}">Tạo Khách Hàng Mới</a></button>
+            </div>
+            <!--            <div class="col-xs-6 col-md-3">-->
+            <!--                <button type="button" class="btn btn-outline-primary">-->
+            <!--                    <a th:href="@{/khachhangsession}">Lịch Sử Chỉnh Sửa</a></button>-->
+            <!--            </div>-->
+
+            <div class="col-md-6">
+                <div class="input-group custom-search-form">
+                    <input type="hidden" name="name" value="search">
+                    <input type="text" name="search" placeholder="Tìm Kiếm">
+                    <input type="submit" value="Search">
+                </div>
+
+                <!--                <div class="col-md-6">-->
+                <!--                <div class="input-group custom-search-form">-->
+                <!--                    <input type="text" class="form-control" name="search" placeholder="Tìm Kiếm">-->
+                <!--                    <span class="input-group-btn">-->
+                <!--              <input class="btn btn-default" type="submit" value="Search">-->
+                <!--              <span class="fas fa-search"></span>-->
+                <!--             </input>-->
+                <!--             </span>-->
+                <!--                </div>-->
+
+            </div>
+        </div>
+    </form>
+</div>
+<div class="container">
+    <table class="table table-sm table-primary">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Mã Khách Hàng</th>
+            <th>Tên Khách Hàng</th>
+            <th>Loại Khách Hàng</th>
+            <th>Ngày Sinh</th>
+            <th>Giới Tính</th>
+            <th>CMND</th>
+            <th>Số ĐT</th>
+            <th>Email</th>
+            <th>Địa Chỉ</th>
+            <th>Thao Tác</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="khachhang, khachhangSta : ${khachhangs}">
+            <tr>
+                <td><a th:href="@{/view-khachhang/__${khachhang.id}__ }" th:text="${khachhangSta.index+1}"></a></td>
+                <td th:text="${khachhang.idKhachHang}"></td>
+                <td th:text="${khachhang.hoTen}"></td>
+                <td th:text="${khachhang.loaiKhachHang.tenLoaiKhachHang}"></td>
+                <td th:text="${khachhang.ngaySinh}"></td>
+                <td th:text="${khachhang.gioiTinh}"></td>
+                <td th:text="${khachhang.soCMND}"></td>
+                <td th:text="${khachhang.sDT}"></td>
+                <td th:text="${khachhang.email}"></td>
+                <td th:text="${khachhang.diaChi}"></td>
+
+                <td><a th:href="@{/edit-khachhang/__${khachhang.id}__ }">
+                    <button type="submit" class="fas fa-edit">Edit</button>
+                </a></td>
+
+                <td><a href="#deleteKhachhang" class="delete" title="Delete" id="delete" th:data-id="${khachhang.id}"
+                       th:data-name="${khachhang.hoTen}"
+                       data-toggle="modal">
+                    <button type="submit" class="fas fa-edit">Delete</button>
+                </a></td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+    <div>
+        <a th:href="@{'/khachhangs'(page=${khachhangs.number - 1},search =${search})}"
+           th:if="${khachhangs.hasPrevious()}">Previous</a>
+        <span th:text="${khachhangs.number + 1}"></span>/<span th:text="${khachhangs.totalPages}"></span>
+        <a th:href="@{'/khachhangs'(page=${khachhangs.number + 1},search =${search})}" th:if="${khachhangs.hasNext()}">Next</a>
+    </div>
+</div>
+<div th:replace="/index :: footer"></div>
+<div id="deleteKhachhang" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="/delete-khachhang" method="post" style="font-size: 17px">
+                <div class="modal-header">
+                    <p class="modal-title">Xóa khách hàng</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="id">
+                    <p>Bạn Có Muốn Xóa Khách Hàng</p>
+                    <p id="name"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $(".delete").click(function () {
+        $("#id").val($(this).data("id"));
+        $("#name").text($(this).data("name"));
+    })
+</script>
+
+<div th:replace="/index :: dangnhap"></div>
+</html>
