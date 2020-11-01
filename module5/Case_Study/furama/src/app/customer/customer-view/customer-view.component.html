@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="card border-info">
+    <h3 class="card-header bg-info">Customer Detail</h3>
+    <div class="card-body">
+
+      <div *ngIf="customerView; else elseBlock">
+        <div>
+          ID: {{customerView.id}}
+        </div>
+        <div>
+          Name: {{customerView.name}}
+        </div>
+        <div>
+          Birthday: {{customerView.birthday}}
+        </div>
+        <div>
+          Id Card: {{customerView.idCard}}
+        </div>
+        <div>
+          Phone Number: {{customerView.phoneNumber}}
+        </div>
+        <div>
+          Email: {{customerView.email}}
+        </div>
+        <div>
+          Address: {{customerView.address}}
+        </div>
+        <div>
+          Id CustomerType: {{customerView.idCustomerType}}
+        </div>
+      </div>
+
+      <ng-template #elseBlock>
+        <p style="color: red">No data</p>
+      </ng-template>
+    </div>
+  </div>
+
+</div>

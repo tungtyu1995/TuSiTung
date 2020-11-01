@@ -1,0 +1,56 @@
+<h3 class="row d-flex justify-content-center" >Thêm Mới Khách Hàng</h3>
+<form class="w-75 mx-auto mt-3" [formGroup]="formCreateCustomer" >
+  <div class="form-group">
+    <p>ID Khách hàng</p>
+    <input class="form-control" type="text" formControlName="id">
+    <p *ngIf="false" class="text-danger">Vui Lòng Nhập ID</p>
+  </div>
+
+  <div class="form-group">
+    <p>Họ Và Tên</p>
+    <input class="form-control" type="text" formControlName="name">
+    <p *ngIf="false" class="text-danger">Vui lòng nhập họ tên</p>
+  </div>
+
+  <div class="form-group">
+    <p>Ngày sinh</p>
+    <input class="form-control" type="text" formControlName="birthday">
+    <p *ngIf="false" class="text-danger">Vui lòng nhập ngày sinh</p>
+  </div>
+
+  <div class="form-group">
+    <p>CMND</p>
+    <input class="form-control" type="text" formControlName="idCard">
+    <p *ngIf="false" class="text-danger">Vui lòng nhập CMND</p>
+  </div>
+
+  <div class="form-group">
+    <p> Số Điện Thoại</p>
+    <input class="form-control" type="text" formControlName="phoneNumber">
+    <p *ngIf="false" class="text-danger">Vui lòng nhập số điện thoại</p>
+  </div>
+
+  <div class="form-group">
+    <p>Email</p>
+    <input class="form-control" type="text" formControlName="email">
+    <p *ngIf="false" class="text-danger">Vui lòng nhập Email</p>
+  </div>
+
+  <div class="form-group">
+    <p>Địa Chỉ</p>
+    <input class="form-control" type="text" formControlName="address">
+    <p *ngIf="false" class="text-danger">Vui lòng nhập địa chỉ</p>
+  </div>
+
+  <div class="form-group">
+    <p>Loại khách hàng</p>
+    <input class="form-control" type="text" formControlName="idCustomerType">
+    <p *ngIf="false" class="text-danger">Vui lòng nhập loại khách hàng</p>
+  </div>
+</form>
+<div class="row d-flex justify-content-center">
+  <div>
+  <button class="btn btn-success mx-4" (click)="createCustomer()" >Thêm mới</button>
+  <button class="btn btn-danger">Hủy</button>
+  </div>
+</div>
