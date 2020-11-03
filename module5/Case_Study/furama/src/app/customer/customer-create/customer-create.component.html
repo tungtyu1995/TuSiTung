@@ -1,56 +1,93 @@
-<h3 class="row d-flex justify-content-center" >Thêm Mới Khách Hàng</h3>
-<form class="w-75 mx-auto mt-3" [formGroup]="formCreateCustomer" >
+<h3 class="row d-flex justify-content-center">Thêm Mới Khách Hàng</h3>
+<form class="w-75 mx-auto mt-3" [formGroup]="formCreate">
+
   <div class="form-group">
     <p>ID Khách hàng</p>
     <input class="form-control" type="text" formControlName="id">
-    <p *ngIf="false" class="text-danger">Vui Lòng Nhập ID</p>
+    <p *ngIf="formCreate.controls.id.errors?.required && formCreate.controls.id.touched"
+       class="text-danger">Vui Lòng Nhập ID</p>
+    <p *ngIf="formCreate.controls.id.errors?.pattern && formCreate.controls.id.touched"
+       class="text-danger">Vui Lòng Nhập Đúng Định Dạng ID</p>
   </div>
 
   <div class="form-group">
     <p>Họ Và Tên</p>
     <input class="form-control" type="text" formControlName="name">
-    <p *ngIf="false" class="text-danger">Vui lòng nhập họ tên</p>
+    <p *ngIf="formCreate.controls.name.errors?.required && formCreate.controls.name.touched"
+       class="text-danger">Vui lòng nhập họ tên</p>
   </div>
 
   <div class="form-group">
     <p>Ngày sinh</p>
-    <input class="form-control" type="text" formControlName="birthday">
-    <p *ngIf="false" class="text-danger">Vui lòng nhập ngày sinh</p>
+    <mat-form-field>
+      <input class="form-control" formControlName="birthday" matInput [matDatepicker]="myDatepicker"
+             placeholder="nhập vào ngày sinh">
+      <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker></mat-datepicker>
+    </mat-form-field>
+    <p *ngIf="formCreate.controls.birthday.errors?.required && formCreate.controls.birthday.touched"
+       class="text-danger">Vui lòng nhập ngày sinh</p>
   </div>
 
   <div class="form-group">
     <p>CMND</p>
     <input class="form-control" type="text" formControlName="idCard">
-    <p *ngIf="false" class="text-danger">Vui lòng nhập CMND</p>
+    <p *ngIf="formCreate.controls.idCard.errors?.required && formCreate.controls.idCard.touched"
+       class="text-danger">Vui lòng nhập CMND</p>
+    <p *ngIf="formCreate.controls.idCard.errors?.pattern && formCreate.controls.idCard.touched"
+       class="text-danger">Vui lòng nhập đúng định dạng CMND</p>
   </div>
 
   <div class="form-group">
     <p> Số Điện Thoại</p>
     <input class="form-control" type="text" formControlName="phoneNumber">
-    <p *ngIf="false" class="text-danger">Vui lòng nhập số điện thoại</p>
+    <p
+      *ngIf="formCreate.controls.phoneNumber.errors?.required && formCreate.controls.phoneNumber.touched"
+      class="text-danger">Vui lòng nhập số điện thoại</p>
+    <p
+      *ngIf="formCreate.controls.phoneNumber.errors?.pattern && formCreate.controls.phoneNumber.touched"
+      class="text-danger">Vui lòng nhập đúng số điện thoại</p>
   </div>
 
   <div class="form-group">
     <p>Email</p>
     <input class="form-control" type="text" formControlName="email">
-    <p *ngIf="false" class="text-danger">Vui lòng nhập Email</p>
+    <p *ngIf="formCreate.controls.email.errors?.required && formCreate.controls.email.touched"
+       class="text-danger">Vui lòng nhập Email</p>
+    <p *ngIf="formCreate.controls.email.errors?.email && formCreate.controls.email.touched"
+       class="text-danger">Vui lòng nhập đúng định dạng Email</p>
   </div>
 
   <div class="form-group">
     <p>Địa Chỉ</p>
     <input class="form-control" type="text" formControlName="address">
-    <p *ngIf="false" class="text-danger">Vui lòng nhập địa chỉ</p>
+    <p *ngIf="formCreate.controls.address.errors?.required && formCreate.controls.address.touched"
+       class="text-danger">Vui lòng nhập địa chỉ</p>
   </div>
 
   <div class="form-group">
-    <p>Loại khách hàng</p>
-    <input class="form-control" type="text" formControlName="idCustomerType">
-    <p *ngIf="false" class="text-danger">Vui lòng nhập loại khách hàng</p>
+    <label>Loại khách hàng<sup class="text-danger ml-1">*</sup></label>
+    <select class="form-control" formControlName="customerType">
+      <option value=''>-select-</option>
+      <option *ngFor="let type of customerTypeList" [ngValue]="type">{{ type.name }}</option>
+    </select>
+    <p
+      *ngIf="formCreate.controls.customerType.errors?.required && formCreate.controls.customerType.touched"
+      class="text-danger">Vui lòng nhập loại khách hàng</p>
   </div>
+
+  <!--  <div class="form-group">-->
+  <!--    <p>Loại khách hàng</p>-->
+  <!--    <input class="form-control" type="text" formControlName="customerType">-->
+  <!--    <p-->
+  <!--      *ngIf="formCreate.controls.customerType.errors?.required && formCreate.controls.customerType.touched"-->
+  <!--      class="text-danger">Vui lòng nhập loại khách hàng</p>-->
+  <!--  </div>-->
+
 </form>
 <div class="row d-flex justify-content-center">
   <div>
-  <button class="btn btn-success mx-4" (click)="createCustomer()" >Thêm mới</button>
-  <button class="btn btn-danger">Hủy</button>
+    <button type="submit" class="btn btn-success mx-4" (click)="create()">Thêm mới</button>
+    <button class="btn btn-danger" [routerLink]="'/customer'">Hủy</button>
   </div>
 </div>

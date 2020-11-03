@@ -1,1 +1,68 @@
-<p>employee-view works!</p>
+<div class="container">
+  <div class="card border-info">
+    <h3 class="card-header bg-info">Thông tin nhân viên chi tiết</h3>
+    <div class="card-body">
+
+      <form class="w-75 mx-auto mt-3" [formGroup]="formView">
+
+        <div class="form-group">
+          <p>ID Khách hàng</p>
+          <input class="form-control" type="text" formControlName="id" readonly>
+        </div>
+
+        <div class="form-group">
+          <p>Họ Và Tên</p>
+          <input class="form-control" type="text" formControlName="name" readonly>
+        </div>
+
+        <div class="form-group">
+          <p>Ngày sinh</p>
+          <mat-form-field>
+            <input class="form-control" formControlName="birthday" matInput [matDatepicker]="myDatepicker5"
+                   placeholder="nhập vào ngày sinh" readonly>
+            <mat-datepicker-toggle matSuffix [for]="myDatepicker5"></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker5 startView="month"></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <p>CMND</p>
+          <input class="form-control" type="text" formControlName="idCard" readonly>
+        </div>
+
+        <div class="form-group">
+          <p>Tiền Lương</p>
+          <input class="form-control" type="text" formControlName="salary" readonly>
+        </div>
+
+        <div class="form-group">
+          <p> Số Điện Thoại</p>
+          <input class="form-control" type="text" formControlName="phoneNumber" readonly>
+        </div>
+
+        <div class="form-group">
+          <p>Email</p>
+          <input class="form-control" type="text" formControlName="email" readonly>
+        </div>
+
+        <div class="form-group">
+          <p>Địa Chỉ</p>
+          <input class="form-control" type="text" formControlName="address" readonly>
+        </div>
+
+        <div class="form-group">
+          <p>Chức vụ</p>
+          <input class="form-control" type="text" formControlName="position" readonly>
+        </div>
+
+      </form>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div>
+        <button class="btn btn-danger" [routerLink]="'/employee'">Back</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+

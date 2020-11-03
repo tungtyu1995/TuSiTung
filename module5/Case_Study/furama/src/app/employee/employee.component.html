@@ -1,1 +1,58 @@
-<p>employee works!</p>
+<div class="row justify-content-lg-between">
+  <h2>Danh Sách Nhân Viên</h2>
+
+  <div class="form-inline">
+    <input class="form-control mr-sm-2" type="text" placeholder="Tìm kiếm nhân viên " style="width: 400px"
+           [(ngModel)]="term">
+    <button class="btn btn-success" type="submit">Search</button>
+  </div>
+
+</div>
+
+<div class="row mt-3">
+  <a href="employee-create">
+    <button class="btn btn-success">Thêm Mới</button>
+  </a>
+
+  <table class="table table-hover table-striped mt-3">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Birthday</th>
+      <th>Id Card</th>
+      <th>salary</th>
+      <th>phoneNumber</th>
+      <th>email</th>
+      <th>address</th>
+      <th>Position</th>
+      <th>action:</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor="let obj of objList |filter: term |paginate: { itemsPerPage: 3, currentPage: p }; let i = index ">
+      <td scope="row">{{i + 1}}</td>
+      <td>{{obj.id}}</td>
+      <td>{{obj.name}}</td>
+      <td>{{obj.birthday|date: 'dd/MM/yyy'}}</td>
+      <td>{{obj.idCard}}</td>
+      <td>{{obj.salary}}</td>
+      <td>{{obj.phoneNumber}}</td>
+      <td>{{obj.email}}</td>
+      <td>{{obj.address}}</td>
+      <td>{{obj.position}}</td>
+
+      <td>
+        <button class="btn btn-sm btn-warning mr-3" [routerLink]="['/employee-edit/'+obj.id]">Sửa</button>
+
+        <button class="btn btn-sm btn-danger mr-3" (click)="openDialog(obj.id)">Xóa</button>
+
+        <button class="btn btn-sm btn-info" [routerLink]="['/employee-view/'+obj.id]">Xem</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

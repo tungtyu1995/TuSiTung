@@ -1,0 +1,92 @@
+{
+  "customer": [
+    {
+      "id": "KH4321",
+      "name": "khanh",
+      "birthday": "2020-11-26T17:00:00.000Z",
+      "idCard": "111111111",
+      "phoneNumber": "0901111111",
+      "email": "sdfsdf@gmail.com",
+      "address": "sdfsd",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      }
+    },
+    {
+      "id": "KH4653",
+      "name": "hà",
+      "birthday": "2020-11-27T17:00:00.000Z",
+      "idCard": "465748372",
+      "phoneNumber": "0911111111",
+      "email": "ha@gmail.com",
+      "address": "sdfsdf",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      }
+    },
+    {
+      "id": "KH5609",
+      "name": "tung1",
+      "birthday": "2020-11-19T17:00:00.000Z",
+      "idCard": "111555555",
+      "phoneNumber": "0900000000",
+      "email": "dfgdfg@gmail.com",
+      "address": "dfg",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      }
+    }
+  ],
+  "customerType": [
+    {
+      "id": 1,
+      "name": "Diamond"
+    },
+    {
+      "id": 2,
+      "name": "Platinum"
+    },
+    {
+      "id": 3,
+      "name": "Gold"
+    }
+  ],
+  "employee": [
+    {
+      "id": "NV1111",
+      "name": "tung123",
+      "birthday": "2020-11-12T17:00:00.000Z",
+      "idCard": "111111111",
+      "salary": "123",
+      "phoneNumber": "0901111111",
+      "email": "sdfsfsd@gmail.com",
+      "address": "123",
+      "position": ""
+    },
+    {
+      "id": "NV1231",
+      "name": "tung123",
+      "birthday": "2020-11-26T17:00:00.000Z",
+      "idCard": "1231231231",
+      "salary": "123",
+      "phoneNumber": "0901111111",
+      "email": "sdfsdf@gmail.com",
+      "address": "edsf",
+      "position": "sdfsdf"
+    },
+    {
+      "id": "NV9999",
+      "name": "hai",
+      "birthday": "2020-11-26T17:00:00.000Z",
+      "idCard": "1911111111",
+      "salary": "231",
+      "phoneNumber": "0901111111",
+      "email": "sdfsdf@gmail.com",
+      "address": "fsdf",
+      "position": "thái giám"
+    }
+  ]
+}

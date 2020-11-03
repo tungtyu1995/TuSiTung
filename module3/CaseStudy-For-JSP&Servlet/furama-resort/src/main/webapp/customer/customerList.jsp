@@ -246,10 +246,10 @@
                         <input type="submit" value="Search">
                     </form>
                     </div>
-<%--                    <li class="input-group" style="margin: -6px">--%>
-<%--                        <input type="text" id="search" name="name" class="form-control" placeholder="Search by Name">--%>
-<%--                    </li>--%>
-<%--                               <li><input type="submit" value="Search"></li>--%>
+                    <li class="input-group" style="margin: -6px">
+                        <input type="text" id="search" name="name" class="form-control" placeholder="Search by Name">
+                    </li>
+                               <li><input type="submit" value="Search"></li>
                 </ul>
             </div>
         </div>

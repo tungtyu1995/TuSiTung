@@ -1,1 +1,90 @@
-<p>customer-edit works!</p>
+<h3 class="row d-flex justify-content-center">Chỉnh Sửa Khách Hàng</h3>
+<form class="w-75 mx-auto mt-3" [formGroup]="formEdit">
+
+  <!--  <div class="form-group">-->
+  <!--    <p>ID Khách hàng</p>-->
+  <!--    <input class="form-control" type="text" formControlName="id">-->
+  <!--    <p *ngIf="formEditCustomer.controls.id.errors?.required && formEditCustomer.controls.id.touched"-->
+  <!--       class="text-danger">Vui Lòng Nhập ID</p>-->
+  <!--  </div>-->
+
+  <div class="form-group">
+    <p>Họ Và Tên</p>
+    <input class="form-control" type="text" formControlName="name">
+    <p *ngIf="formEdit.controls.name.errors?.required && formEdit.controls.name.touched"
+       class="text-danger">Vui Lòng Nhập Tên</p>
+  </div>
+
+  <div class="form-group">
+    <p>Ngày sinh</p>
+    <mat-form-field>
+      <input class="form-control" formControlName="birthday" matInput [matDatepicker]="myDatepicker"
+             placeholder="nhap vao ngay sinh">
+      <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker></mat-datepicker>
+    </mat-form-field>
+    <p *ngIf="formEdit.controls.birthday.errors?.required && formEdit.controls.birthday.touched"
+       class="text-danger">Vui Lòng Nhập Ngày Sinh</p>
+  </div>
+
+  <div class="form-group">
+    <p>CMND</p>
+    <input class="form-control" type="text" formControlName="idCard">
+    <p *ngIf="formEdit.controls.idCard.errors?.required && formEdit.controls.idCard.touched"
+       class="text-danger">Vui Lòng Nhập CMND</p>
+    <p *ngIf="formEdit.controls.idCard.errors?.pattern && formEdit.controls.idCard.touched"
+       class="text-danger">Vui Lòng Nhập Đúng Định Dạng CMND</p>
+  </div>
+
+  <div class="form-group">
+    <p> Số Điện Thoại</p>
+    <input class="form-control" type="text" formControlName="phoneNumber">
+    <p *ngIf="formEdit.controls.phoneNumber.errors?.required && formEdit.controls.phoneNumber.touched"
+       class="text-danger">Vui Lòng Nhập Số Điện Thoại</p>
+    <p *ngIf="formEdit.controls.phoneNumber.errors?.pattern && formEdit.controls.phoneNumber.touched"
+       class="text-danger">Vui Lòng Nhập Đúng Số Điện Thoại</p>
+  </div>
+
+  <div class="form-group">
+    <p>Email</p>
+    <input class="form-control" type="text" formControlName="email">
+    <p *ngIf="formEdit.controls.email.errors?.required && formEdit.controls.email.touched"
+       class="text-danger">Vui Lòng Nhập Email</p>
+    <p *ngIf="formEdit.controls.email.errors?.email && formEdit.controls.email.touched"
+       class="text-danger">Vui Lòng Nhập Đúng Định Dạng Email</p>
+  </div>
+
+  <div class="form-group">
+    <p>Địa Chỉ</p>
+    <input class="form-control" type="text" formControlName="address">
+    <p *ngIf="formEdit.controls.address.errors?.required && formEdit.controls.address.touched"
+       class="text-danger">Vui Lòng Nhập Địa Chỉ</p>
+  </div>
+
+  <div class="form-group">
+    <label>Loại khách hàng<sup class="text-danger ml-1">*</sup></label>
+    <select class="form-control" formControlName="customerType">
+      <option [ngValue]="formEdit.value.customerType">{{ formEdit.value.customerType.name }}</option>
+      <option *ngFor="let type of customerTypeList" [ngValue]="type">{{ type.name }}</option>
+    </select>
+        <p
+          *ngIf="formEdit.controls.customerType.errors?.required && formEdit.controls.customerType.touched"
+          class="text-danger">Vui Lòng Nhập Loại Khách Hàng</p>
+  </div>
+
+<!--  <div class="form-group">-->
+<!--    <p>Loại khách hàng</p>-->
+<!--    <input class="form-control" type="text" formControlName="customerType">-->
+<!--    <p-->
+<!--      *ngIf="formEdit.controls.customerType.errors?.required && formEdit.controls.customerType.touched"-->
+<!--      class="text-danger">Vui Lòng Nhập Loại Khách Hàng</p>-->
+<!--  </div>-->
+
+</form>
+<div class="row d-flex justify-content-center">
+  <div>
+    <button type="submit" class="btn btn-success mx-4" (click)="edit()">Sửa</button>
+    <button class="btn btn-danger" [routerLink]="'/customer'">Hủy</button>
+  </div>
+</div>
+

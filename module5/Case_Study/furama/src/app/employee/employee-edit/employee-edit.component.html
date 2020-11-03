@@ -1,1 +1,89 @@
-<p>employee-edit works!</p>
+<h3 class="row d-flex justify-content-center">Chỉnh Sửa Thông Tin Nhân Viên</h3>
+<form class="w-75 mx-auto mt-3" [formGroup]="formEdit">
+
+<!--  <div class="form-group">-->
+<!--    <p>ID Khách hàng</p>-->
+<!--    <input class="form-control" type="text" formControlName="id">-->
+<!--    <p *ngIf="formEdit.controls.id.errors?.required && formEdit.controls.id.touched"-->
+<!--       class="text-danger">Vui Lòng Nhập ID</p>-->
+<!--    <p *ngIf="formEdit.controls.id.errors?.pattern && formEdit.controls.id.touched"-->
+<!--       class="text-danger">Vui Lòng Nhập Đúng Định Dạng ID</p>-->
+<!--  </div>-->
+
+  <div class="form-group">
+    <p>Họ Và Tên</p>
+    <input class="form-control" type="text" formControlName="name">
+    <p *ngIf="formEdit.controls.name.errors?.required && formEdit.controls.name.touched"
+       class="text-danger">Vui lòng nhập họ tên</p>
+  </div>
+
+  <div class="form-group">
+    <p>Ngày sinh</p>
+    <mat-form-field>
+      <input class="form-control" formControlName="birthday" matInput [matDatepicker]="myDatepicker5"
+             placeholder="nhập vào ngày sinh">
+      <mat-datepicker-toggle matSuffix [for]="myDatepicker5"></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker5 startView="month"></mat-datepicker>
+    </mat-form-field>
+    <p *ngIf="formEdit.controls.birthday.errors?.required && formEdit.controls.birthday.touched"
+       class="text-danger">Vui lòng nhập ngày sinh</p>
+  </div>
+
+  <div class="form-group">
+    <p>CMND</p>
+    <input class="form-control" type="text" formControlName="idCard">
+    <p *ngIf="formEdit.controls.idCard.errors?.required && formEdit.controls.idCard.touched"
+       class="text-danger">Vui lòng nhập CMND</p>
+    <p *ngIf="formEdit.controls.idCard.errors?.pattern && formEdit.controls.idCard.touched"
+       class="text-danger">Vui lòng nhập đúng định dạng CMND</p>
+  </div>
+
+  <div class="form-group">
+    <p>Tiền Lương</p>
+    <input class="form-control" type="text" formControlName="salary">
+    <p *ngIf="formEdit.controls.salary.errors?.required && formEdit.controls.salary.touched"
+       class="text-danger">Vui lòng nhập tiền lương</p>
+  </div>
+
+  <div class="form-group">
+    <p> Số Điện Thoại</p>
+    <input class="form-control" type="text" formControlName="phoneNumber">
+    <p
+      *ngIf="formEdit.controls.phoneNumber.errors?.required && formEdit.controls.phoneNumber.touched"
+      class="text-danger">Vui lòng nhập số điện thoại</p>
+    <p
+      *ngIf="formEdit.controls.phoneNumber.errors?.pattern && formEdit.controls.phoneNumber.touched"
+      class="text-danger">Vui lòng nhập đúng số điện thoại</p>
+  </div>
+
+  <div class="form-group">
+    <p>Email</p>
+    <input class="form-control" type="text" formControlName="email">
+    <p *ngIf="formEdit.controls.email.errors?.required && formEdit.controls.email.touched"
+       class="text-danger">Vui lòng nhập Email</p>
+    <p *ngIf="formEdit.controls.email.errors?.email && formEdit.controls.email.touched"
+       class="text-danger">Vui lòng nhập đúng định dạng Email</p>
+  </div>
+
+  <div class="form-group">
+    <p>Địa Chỉ</p>
+    <input class="form-control" type="text" formControlName="address">
+    <p *ngIf="formEdit.controls.address.errors?.required && formEdit.controls.address.touched"
+       class="text-danger">Vui lòng nhập địa chỉ</p>
+  </div>
+
+  <div class="form-group">
+    <p>Chức vụ</p>
+    <input class="form-control" type="text" formControlName="position">
+    <p
+      *ngIf="formEdit.controls.position.errors?.required && formEdit.controls.position.touched"
+      class="text-danger">Vui lòng nhập chức vụ</p>
+  </div>
+
+</form>
+<div class="row d-flex justify-content-center">
+  <div>
+    <button type="submit" class="btn btn-success mx-4" (click)="edit()">Sửa</button>
+    <button class="btn btn-danger" [routerLink]="'/employee'">Hủy</button>
+  </div>
+</div>

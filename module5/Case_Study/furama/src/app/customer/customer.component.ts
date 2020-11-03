@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Customer} from "./model.customer";
-import {Data} from "@angular/router";
-import {inspect} from "util";
+import {CustomerService} from '../server/customer.service'
+import {CustomerDeleteComponent} from "./customer-delete/customer-delete.component";
+import {MatDialog} from "@angular/material/dialog";
+import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -9,48 +11,56 @@ import {inspect} from "util";
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css']
 })
-export class CustomerComponent {
-  // @ts-ignore
-  public customers: Customer[] = [
-    {
-      id: '123',
-      name: 'abc',
-      birthday: '12/12/2012',
-      idCard: 12,
-      phoneNumber: '8098977',
-      email: 'ghfgh',
-      address: 'jhf',
-      idCustomerType: 12
-    },
-    {
-      id: '129',
-      name: 'xyz',
-      birthday: '12/12/2019',
-      idCard: 1234,
-      phoneNumber: '80989774',
-      email: 'ghfghghfg',
-      address: 'jhf',
-      idCustomerType: 12
-    },
+export class CustomerComponent implements OnInit {
+  term: any;
+  p: any;
 
-  ];
 
-  private _customer: Customer;
+  public create_msg: string = '';
+  public edit_msg: string = '';
+  public delete_msg: string = '';
 
-  get customer(): Customer {
-    return this._customer;
+  public objList;
+
+  constructor(
+    public customerServer: CustomerService,
+    public dialog: MatDialog,
+
+    //dùng để báo ms
+    private route: ActivatedRoute
+  ) {
   }
 
-  set customer(value: Customer) {
-    this._customer = value;
+
+  ngOnInit(): void {
+    this.customerServer.getAll().subscribe(data => {
+      this.objList = data;
+      console.log(this.objList);
+      this.sendMessage();
+    })
   }
 
-  onClick(item: Customer) {
-    console.log(item);
-    this._customer = item;
+  sendMessage(){
+    console.log(this.route.snapshot.queryParamMap.get('create_msg'));
+    this.create_msg = this.route.snapshot.queryParamMap.get('create_msg');
+    this.edit_msg = this.route.snapshot.queryParamMap.get('edit_msg');
+    this.delete_msg = this.route.snapshot.queryParamMap.get('delete_msg');
   }
 
-  onGetCustomer(value: Customer) {
-    this.customers.unshift(value);
+
+  openDialog(customerId): void {
+    this.customerServer.getByID(customerId).subscribe(dataCustomer => {
+      const dialogRef = this.dialog.open(CustomerDeleteComponent, {
+        width: '400px',
+        data: {data1: dataCustomer},
+        disableClose: true
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.ngOnInit()
+      });
+    });
+
   }
 }
