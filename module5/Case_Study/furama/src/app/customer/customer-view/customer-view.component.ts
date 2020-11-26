@@ -12,6 +12,7 @@ export class CustomerViewComponent implements OnInit {
 
   public formView: FormGroup;
   public customerOfId;
+  public customerTypeList;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -38,6 +39,8 @@ export class CustomerViewComponent implements OnInit {
         console.log(data);
         this.formView.patchValue(data)
       })
-    })
+    });
+    this.customerServer.getCustomerType()
+      .subscribe(data => this.customerTypeList = data, error => this.customerTypeList = []);
   }
 }

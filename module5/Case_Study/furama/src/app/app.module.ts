@@ -24,18 +24,16 @@ import { HomePageComponent } from './home-page/home-page.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CustomerDeleteComponent } from './customer/customer-delete/customer-delete.component';
 import { EmployeeDeleteDialogComponent } from './employee/employee-delete-dialog/employee-delete-dialog.component';
+import {MedicalRecordComponent} from "./medical-record/medical-record.component";
+import {MedicalRecordEditComponent} from "./medical-record/medical-record-edit/medical-record-edit.component";
+// @ts-ignore
+import {ErrComponent} from "../../../err/err.component";
 
 const routes: Routes = [
-  {path: '', component: HomePageComponent},
-  {path: 'customer', component: CustomerComponent},
-  {path: 'customer-edit/:id', component: CustomerEditComponent},
-  {path: 'customer-create', component: CustomerCreateComponent},
-  {path: 'customer-view/:id', component: CustomerViewComponent},
-
-  {path: 'employee', component: EmployeeComponent},
-  {path: 'employee-edit/:id', component: EmployeeEditComponent},
-  {path: 'employee-create', component: EmployeeCreateComponent},
-  {path: 'employee-view/:id', component: EmployeeViewComponent},
+  {path: '', component: MedicalRecordComponent},
+  {path: 'medicalRecord', component: MedicalRecordComponent},
+  {path: 'medicalRecord-edit/:id', component: MedicalRecordEditComponent},
+  {path: '**', component: ErrComponent},
 
   // {path: '**', component: PageNotFoundComponent},
 ];

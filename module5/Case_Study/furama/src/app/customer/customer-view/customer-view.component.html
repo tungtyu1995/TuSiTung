@@ -45,7 +45,9 @@
 
         <div class="form-group">
           <p>Loại khách hàng</p>
-          <input class="form-control" type="text" formControlName="customerType" readonly>
+<!--          <input class="form-control" type="text" formControlName="customerType" readonly>-->
+          <option [ngValue]="formView.value.customerType">{{ formView.value.customerType.name }}</option>
+
         </div>
 
       </form>

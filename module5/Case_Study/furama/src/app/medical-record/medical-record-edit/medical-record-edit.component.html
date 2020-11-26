@@ -1,0 +1,71 @@
+<h3 class="row d-flex justify-content-center">Chỉnh Sửa Khách Hàng</h3>
+<form class="w-75 mx-auto mt-3" [formGroup]="formEdit">
+
+
+  <input class="form-control" type="hidden" formControlName="id">
+
+
+  <div class="form-group">
+    <p>Mã Bệnh Án</p>
+    <input class="form-control" type="text" formControlName="idRecord" readonly>
+  </div>
+
+  <div class="form-group">
+    <p>Mã Bệnh Nhân</p>
+    <input class="form-control" type="text" formControlName="patientId" readonly>
+  </div>
+
+  <div class="form-group">
+    <p>Tên Bệnh Nhân</p>
+    <input class="form-control" type="text" formControlName="patientName">
+  </div>
+
+
+  <div class="form-group">
+    <p>Ngày Nhập Viện</p>
+    <mat-form-field>
+      <input class="form-control" formControlName="startIn" matInput [matDatepicker]="myDatepicker"
+             placeholder="nhập vào ngày nhập viện">
+      <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker></mat-datepicker>
+    </mat-form-field>
+    <p *ngIf="formEdit.controls.startIn.errors?.required && formEdit.controls.startIn.touched"
+       class="text-danger">Trường này không được để trống</p>
+  </div>
+
+  <div class="form-group">
+    <p>Ngày Ra Viện</p>
+    <mat-form-field>
+      <input class="form-control" formControlName="startOut" matInput [matDatepicker]="myDatepicker1"
+             placeholder="nhập vào ngày nhập viện">
+      <mat-datepicker-toggle matSuffix [for]="myDatepicker1"></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker1></mat-datepicker>
+    </mat-form-field>
+    <p *ngIf="formEdit.controls.startOut.errors?.required && formEdit.controls.startOut.touched"
+       class="text-danger">Trường này không được để trống</p>
+  </div>
+
+  <div class="form-group">
+    <p>Lý Do Nhập Viện</p>
+    <textarea class="form-control" type="text" formControlName="reason" ></textarea>
+  </div>
+
+  <div class="form-group">
+    <p>Phương Pháp Điều Trị</p>
+    <input class="form-control" type="text" formControlName="reason" >
+  </div>
+
+  <div class="form-group">
+    <p>Bác Sĩ Điều Trị</p>
+    <input class="form-control" type="text" formControlName="reason">
+  </div>
+
+</form>
+<div class="row d-flex justify-content-center">
+  <div>
+    <button type="submit" class="btn btn-success mx-4" (click)="edit()">Sửa</button>
+    <button class="btn btn-danger" [routerLink]="'/medicalRecord'">Trở về danh sách</button>
+  </div>
+</div>
+
+

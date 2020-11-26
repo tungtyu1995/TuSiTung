@@ -1,0 +1,26 @@
+{
+  "medicalRecord": [
+    {
+      "id": 2,
+      "idRecord": "BA-112",
+      "patientId": "BN-123",
+      "patientName": "Nguyễn Văn C",
+      "startIn": "2020-11-25T17:00:00.000Z",
+      "startOut": "2020-11-19T17:00:00.000Z",
+      "reason": "Suy thận mạn",
+      "treatmentMethods": "Chạy thận",
+      "doctorName": "Nguyễn Đôn D"
+    },
+    {
+      "id": 3,
+      "idRecord": "BA-223",
+      "patientId": "BN-984",
+      "patientName": "Tôn Nữ D",
+      "startIn": "2020-11-10T17:00:00.000Z",
+      "startOut": "2020-11-26T17:00:00.000Z",
+      "reason": "Covid-2019",
+      "treatmentMethods": "Cách ly và theo dõi thường xuyên",
+      "doctorName": "La Văn N"
+    }
+  ]
+}

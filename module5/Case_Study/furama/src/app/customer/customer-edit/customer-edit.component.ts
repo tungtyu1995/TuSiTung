@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CustomerService} from '../../server/customer.service';
 import {Router, ActivatedRoute} from '@angular/router';
 
@@ -39,14 +39,14 @@ export class CustomerEditComponent implements OnInit {
       this.customerServer.getByID(this.customerOfId).subscribe(data => {
         console.log(data);
         this.formEdit.patchValue(data)
-      })
+      });
     });
     this.customerServer.getCustomerType()
       .subscribe(data => this.customerTypeList = data, error => this.customerTypeList = []);
   }
 
   edit() {
-    this.customerServer.edit(this.formEdit.value, this.customerOfId).subscribe(data =>{
+    this.customerServer.edit(this.formEdit.value, this.customerOfId).subscribe(data => {
       this.router.navigate(['customer'], {queryParams: {edit_msg: 'Sửa Thành Công !!!', si: true}});
       // this.router.navigateByUrl('customer')
     })

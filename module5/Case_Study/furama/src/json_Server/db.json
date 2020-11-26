@@ -1,21 +1,8 @@
 {
   "customer": [
     {
-      "id": "KH4321",
-      "name": "khanh",
-      "birthday": "2020-11-26T17:00:00.000Z",
-      "idCard": "111111111",
-      "phoneNumber": "0901111111",
-      "email": "sdfsdf@gmail.com",
-      "address": "sdfsd",
-      "customerType": {
-        "id": 2,
-        "name": "Platinum"
-      }
-    },
-    {
       "id": "KH4653",
-      "name": "hà",
+      "name": "hà123",
       "birthday": "2020-11-27T17:00:00.000Z",
       "idCard": "465748372",
       "phoneNumber": "0911111111",
@@ -38,6 +25,32 @@
         "id": 1,
         "name": "Diamond"
       }
+    },
+    {
+      "id": "KH5783",
+      "name": "dfgdfg",
+      "birthday": "2020-11-26T17:00:00.000Z",
+      "idCard": "1111111111",
+      "phoneNumber": "0901583746",
+      "email": "fsfsfd@gamil.com",
+      "address": "dfds",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      }
+    },
+    {
+      "id": "KH6744",
+      "name": "fdgdfg",
+      "birthday": "2020-11-26T17:00:00.000Z",
+      "idCard": "111111111",
+      "phoneNumber": "0913444411",
+      "email": "gfhydhf@gmail.com",
+      "address": "fgdgf",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      }
     }
   ],
   "customerType": [
@@ -55,17 +68,6 @@
     }
   ],
   "employee": [
-    {
-      "id": "NV1111",
-      "name": "tung123",
-      "birthday": "2020-11-12T17:00:00.000Z",
-      "idCard": "111111111",
-      "salary": "123",
-      "phoneNumber": "0901111111",
-      "email": "sdfsfsd@gmail.com",
-      "address": "123",
-      "position": ""
-    },
     {
       "id": "NV1231",
       "name": "tung123",
@@ -87,6 +89,48 @@
       "email": "sdfsdf@gmail.com",
       "address": "fsdf",
       "position": "thái giám"
+    }
+  ],
+  "medicalRecord": [
+    {
+      "idRecord": "BA-001",
+      "patientId": "BN-435",
+      "patientName": "Nguyễn Văn A",
+      "startIn": "07-08-2016",
+      "startOut": "08-08-2019",
+      "reason": "Ung thư gan giai đoạn cuối",
+      "treatmentMethods": "Mổ",
+      "doctorName": "Lê Văn B"
+    },
+    {
+      "idRecord": "BA-112",
+      "patientId": "BN-123",
+      "patientName": "Nguyễn Văn C",
+      "startIn": "10-08-2019",
+      "startOut": "10-08-2020",
+      "reason": "Suy thận mạn",
+      "treatmentMethods": "Chạy thận",
+      "doctorName": "Nguyễn Đôn D"
+    },
+    {
+      "idRecord": "BA-223",
+      "patientId": "BN-984",
+      "patientName": "Tôn Nữ D",
+      "startIn": "11-01-2020",
+      "startOut": "08-08-2020",
+      "reason": "Covid-2019",
+      "treatmentMethods": "Cách ly và theo dõi thường xuyên",
+      "doctorName": "La Văn N"
+    },
+    {
+      "idRecord": "BA-444",
+      "patientId": "BN-153",
+      "patientName": "Đoàn Thị E",
+      "startIn": "07-08-2017",
+      "startOut": "08-08-2018",
+      "reason": "Ung thư phổi giai đoạn cuối",
+      "treatmentMethods": "Xạ trị",
+      "doctorName": "Lê Văn B"
     }
   ]
 }
