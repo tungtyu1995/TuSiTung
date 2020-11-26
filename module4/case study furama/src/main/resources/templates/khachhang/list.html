@@ -121,6 +121,7 @@
         <a th:href="@{'/khachhangs'(page=${khachhangs.number + 1},search =${search})}" th:if="${khachhangs.hasNext()}">Next</a>
     </div>
 </div>
+
 <div th:replace="/index :: footer"></div>
 <div id="deleteKhachhang" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
